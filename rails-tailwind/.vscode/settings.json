@@ -1,0 +1,14 @@
+{
+  "ruby.useLanguageServer": true,
+  "ruby.useBundler": true,
+  "ruby.intellisense": "rubyLocate",
+  "ruby.format": "rufo",
+  "files.associations": {
+    "*.html.erb": "html"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "editor.formatOnSave": true,
+  "files.autoSave": "onFocusChange"
+}
