@@ -251,7 +251,7 @@ end
 def setup_i18n
   copy_file 'config/initializers/i18n.rb', force: true
   directory 'config/locales', force: true
-  run 'cp $(bundle exec i18n-tasks gem-path)/templates/config/i18n-tasks.yml config/'
+  copy_file 'config/i18n-tasks.yml', force: true
   run 'i18n-tasks normalize'
 end
 

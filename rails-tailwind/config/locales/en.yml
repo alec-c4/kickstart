@@ -1,30 +1,27 @@
 ---
 en:
-  security:
-    access_denied: Access denied!
-
-  navigation: 
+  navigation:
     account: Account
     profile: Edit profile
+    sign_in: Login
     sign_out: Logout
     sign_up: Register
-    sign_in: Login
-
-  users: 
+  security:
+    access_denied: Access denied!
+  users:
     profile:
-      profile: Profile
-      first_name: First name
-      last_name: Last name
-      gender: Gender
       birthday: Birthday
-      photo: Photo / Avatar
-      timezone: Timezone
-      genders: 
-        male: Male
+      first_name: First name
+      gender: Gender
+      genders:
         female: Female
-        other: Other
+        male: Male
         not_specified: Not specified
-
+        other: Other
+      last_name: Last name
+      photo: Photo / Avatar
+      profile: Profile
+      timezone: Timezone
     profiles:
-      update_successful: Profile updated
       submit_update: Update profile
+      update_successful: Profile updated
