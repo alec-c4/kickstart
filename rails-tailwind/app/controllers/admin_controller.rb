@@ -4,7 +4,7 @@ class AdminController < ApplicationController
     private
   
     def check_admin
-      #TODO: add admin check
+      raise Pundit::NotAuthorizedError unless signed_in? && current_user.is_admin?
     end
   end
   

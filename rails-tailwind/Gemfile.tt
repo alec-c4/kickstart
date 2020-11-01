@@ -23,6 +23,7 @@ gem "name_of_person"
 ### Auth
 gem "devise"
 gem "devise-pwned_password"
+gem "pundit"
 
 ### SEO
 gem "meta-tags"

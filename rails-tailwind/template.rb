@@ -278,6 +278,10 @@ def setup_devise
   copy_file 'app/models/user.rb', force: true
 end
 
+def setup_pundit
+  generate 'pundit:install'
+end
+
 def setup_user_tools
   directory 'app/controllers/users', force: true
   directory 'app/views/users', force: true

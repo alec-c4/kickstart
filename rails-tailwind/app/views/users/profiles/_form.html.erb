@@ -2,22 +2,22 @@
 
   <div class="grid grid-cols-6 gap-6">
     <div class="col-span-6 sm:col-span-3">
-      <%= f.label "First name", class: "form-label" %>
+      <%= f.label t('users.profile.first_name'), class: "form-label" %>
       <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-text", required: true %>
     </div>
 
     <div class="col-span-6 sm:col-span-3">
-      <%= f.label "Last name", class: "form-label" %>
+      <%= f.label t('users.profile.last_name'), class: "form-label" %>
       <%= f.text_field :last_name, autocomplete: "last_name", class: "form-text", required: true %>
     </div>
 
     <div class="col-span-6 sm:col-span-3">
-      <%= f.label "Gender", class: "form-label" %>
+      <%= f.label t('users.profile.gender'), class: "form-label" %>
       <%= f.select :gender, [
-          ["Male",:male],
-          ["Female",:female],
-          ["Other",:other],
-          ["Not specified", :not_specified],
+          [t('users.profile.genders.male'),:male],
+          [t('users.profile.genders.female'),:female],
+          [t('users.profile.genders.other'),:other],
+          [t('users.profile.genders.not_specified'), :not_specified],
           ],
           {},{class: "form-text form-select"} %>
     </div>
@@ -25,7 +25,7 @@
 
   <div class="mt-6 grid grid-cols-6 gap-6">
     <div class="col-span-6 sm:col-span-3">
-      <%= f.label "Birthday", class: "form-label" %>
+      <%= f.label t('users.profile.birthday'), class: "form-label" %>
       <div class="date_select_set">
         <%= f.date_select :birthday, {start_year: Date.today.year - 110, end_year: Date.today.year}, {class: "form-text form-select"} %>
       </div>
@@ -33,7 +33,7 @@
   </div>
 
   <div class="mt-6">
-    <%= f.label "Photo", class: "form-label" %>
+    <%= f.label t('users.profile.photo'), class: "form-label" %>
     <div class="mt-2 flex items-center">
       <span class="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100">
         <%= render partial: 'users/profiles/photo', locals: {u: current_user}  %>
@@ -47,13 +47,13 @@
 
   <div class="mt-6 grid grid-cols-6 gap-6">
     <div class="col-span-6 sm:col-span-3">
-      <%= f.label "Timezone", class: "form-label" %>
+      <%= f.label t('users.profile.timezone'), class: "form-label" %>
       <%= f.time_zone_select :time_zone, nil, {}, class: "form-text form-select" %>
     </div>
   </div>
 
   <div class="mt-6">
-    <%= f.submit %>
+    <%= f.submit t('users.profiles.submit_update') %>
   </div>
 
 <% end %>

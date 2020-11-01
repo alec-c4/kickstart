@@ -1,9 +1,12 @@
 class ApplicationController < ActionController::Base
     include Pagy::Backend
+    include Pundit
 
     before_action :set_locale
     before_action :configure_permitted_parameters, if: :devise_controller?
   
+    rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
     respond_to :html
    
     protected
@@ -20,6 +23,11 @@ class ApplicationController < ActionController::Base
   
     private
   
+    def user_not_authorized
+      flash[:alert] = t("security.access_denied")
+      redirect_to(request.referer || root_path)
+    end
+
     ### TimeZone
   
     def browser_time_zone
