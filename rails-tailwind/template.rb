@@ -23,8 +23,10 @@ def apply_template!
     setup_active_storage
     setup_tailwind
     setup_i18n
+    setup_tests
     setup_devise
     setup_user_tools
+    setup_pagy
 
     setup_dev_test
     setup_basic_logic
@@ -78,8 +80,8 @@ def gemfile_requirement(name)
 end
 
 def setup_vscode
-  copy_file '.editorconfig'
-  directory '.vscode'
+  copy_file '.editorconfig', force: true  
+  directory '.vscode', force: true  
 end
 
 def setup_git
@@ -91,7 +93,7 @@ def setup_gemfile
 end
 
 def setup_generators
-  copy_file 'config/initializers/generators.rb'
+  copy_file 'config/initializers/generators.rb', force: true  
 end
 
 def setup_js_packages
@@ -176,9 +178,12 @@ def setup_basic_logic
   copy_file 'app/helpers/flash_helper.rb', force: true
   copy_file 'app/views/layouts/_flash.html.erb', force: true
 
+  copy_file 'app/views/layouts/_account_items.html.erb', force: true
+
   gsub_file 'app/views/layouts/application.html.erb', /<%= yield %>/ do
     <<-LAYOUT
   <header>
+      <%= render partial: 'layouts/account_items' %>
       </header>
 
       <main class="container">
@@ -244,7 +249,8 @@ def setup_active_storage
 end
 
 def setup_i18n
-  copy_file 'config/initializers/i18n.rb'  
+  copy_file 'config/initializers/i18n.rb', force: true
+  directory 'config/locales', force: true
   run 'cp $(bundle exec i18n-tasks gem-path)/templates/config/i18n-tasks.yml config/'
   run 'i18n-tasks normalize'
 end
@@ -280,6 +286,20 @@ end
 def setup_tailwind
   copy_file 'tailwind.config.js', force: true
   copy_file 'postcss.config.js', force: true
+end
+
+def setup_tests
+  generate 'rspec:install'
+  generate 'cucumber:install'
+  run 'cp $(i18n-tasks gem-path)/templates/rspec/i18n_spec.rb spec/'
+  directory 'spec', force: true
+  directory 'features', force: true
+end
+
+def setup_pagy
+  copy_file 'config/initializers/pagy.rb', force: true  
+  copy_file 'app/helpers/application_helper.rb', force: true  
+  copy_file 'app/frontend/stylesheets/pagy.scss', force: true
 end
 
 def setup_rubocop

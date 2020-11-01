@@ -39,6 +39,7 @@ gem "bootsnap"<%= gemfile_requirement("bootsnap") %>, require: false
 gem "config"
 gem "image_processing"<%= gemfile_requirement("image_processing") %>
 gem "mailgun-ruby"
+gem "pagy"
 
 ### Background Processing
 gem "sidekiq"
@@ -52,6 +53,19 @@ group :development, :test do
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
   gem "standard", "~> 0.2.0", require: false
+
+  gem "capybara"
+  gem "cucumber-rails", require: false
+  gem "email_spec"
+  gem "factory_bot_rails"
+  gem "ffaker"
+  gem "rails-controller-testing"
+  gem "rspec-rails"
+  gem "shoulda-matchers"
+end
+
+group :test do
+  gem "database_cleaner"
 end
 
 group :development do

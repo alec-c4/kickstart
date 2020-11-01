@@ -1,0 +1,8 @@
+---
+en:
+  navigation: 
+    account: Account
+    profile: Edit profile
+    sign_out: Logout
+    sign_up: Register
+    sign_in: Login
