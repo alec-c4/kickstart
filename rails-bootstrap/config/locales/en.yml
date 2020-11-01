@@ -1,0 +1,27 @@
+---
+en:
+  navigation:
+    account: Account
+    profile: Edit profile
+    sign_in: Login
+    sign_out: Logout
+    sign_up: Register
+  security:
+    access_denied: Access denied!
+  users:
+    profile:
+      birthday: Birthday
+      first_name: First name
+      gender: Gender
+      genders:
+        female: Female
+        male: Male
+        not_specified: Not specified
+        other: Other
+      last_name: Last name
+      photo: Photo / Avatar
+      profile: Profile
+      timezone: Timezone
+    profiles:
+      submit_update: Update profile
+      update_successful: Profile updated

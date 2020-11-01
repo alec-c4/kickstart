@@ -1,0 +1,27 @@
+---
+ru:
+  navigation:
+    account: Аккаунт
+    profile: Редактировать профиль
+    sign_in: Вход
+    sign_out: Выход
+    sign_up: Регистрация
+  security:
+    access_denied: Доступ запрещён!
+  users:
+    profile:
+      birthday: Дата рождения
+      first_name: Имя
+      gender: Пол
+      genders:
+        female: Женский
+        male: Мужской
+        not_specified: Не указан
+        other: Другой
+      last_name: Фамилия
+      photo: Фото
+      profile: Профиль
+      timezone: Временная зона
+    profiles:
+      submit_update: Обновить профиль
+      update_successful: Профиль обновлён

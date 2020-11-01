@@ -1,0 +1,7 @@
+<h1><%= t('users.profile.profile') %></h1>
+
+<%- if current_user.photo.attached? %>
+  <%= image_tag current_user.photo.variant(resize: "200x200") %>
+<%- end %>
+
+<%= render 'form' %>

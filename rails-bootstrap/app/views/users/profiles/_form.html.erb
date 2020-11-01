@@ -1,0 +1,36 @@
+<%= bootstrap_form_with(model: current_user, url: profile_path, method: :put, local: true) do |f| %>
+  <div>
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", label: t('users.profile.first_name') %>
+  </div>
+
+  <div>
+    <%= f.text_field :last_name, autocomplete: "last_name", label: t('users.profile.last_name') %>
+  </div>
+
+  <div>
+    <%= f.select :gender, [
+        [t('users.profile.genders.male'),:male],
+        [t('users.profile.genders.female'),:female],
+        [t('users.profile.genders.other'),:other],
+        [t('users.profile.genders.not_specified'), :not_specified],
+    ],
+                 {}, label: t('users.profile.gender') %>
+  </div>
+
+  <div>
+    <%= f.date_select :birthday, {start_year: Date.today.year - 110, end_year: Date.today.year}, label: t('users.profile.birthday') %>
+  </div>
+
+  <div>
+    <%= f.file_field :photo, label: t('users.profile.photo') %>
+  </div>
+
+  <div>
+    <%= f.time_zone_select :time_zone, nil, {}, label: t('users.profile.timezone') %>
+  </div>
+
+  <div class="actions">
+    <%= f.primary t('users.profiles.submit_update') %>
+  </div>
+
+<% end %>

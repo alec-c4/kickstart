@@ -1,0 +1,23 @@
+<h2><%= t('.change_your_password') %></h2>
+
+<%= bootstrap_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= f.hidden_field :reset_password_token %>
+
+  <div class="field">
+    <% if @minimum_password_length %>
+      <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em><br />
+    <% end %>
+    <%= f.password_field :password, autofocus: true, autocomplete: "new-password", label: t('.new_password') %>
+  </div>
+
+  <div class="field">
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", label: t('.confirm_new_password') %>
+  </div>
+
+  <div class="actions">
+    <%= f.primary t('.change_my_password') %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
