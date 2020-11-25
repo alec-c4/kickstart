@@ -265,13 +265,13 @@ def setup_devise
   uncomment_lines devise_migration_file, /t\.(integer|datetime|inet|string)/
 
   in_root { inject_into_file devise_migration_file, 
-        "\n\n## Profile\n
-        t.string :first_name\n
-        t.string :last_name\n
-        t.string :gender\n
-        t.date :birthday\n\n
+        "\n## Profile
+        t.string :first_name
+        t.string :last_name
+        t.string :gender
+        t.date :birthday
 
-        ## Settings\n
+        ## Settings
         t.string :time_zone", after: "t.datetime :locked_at" }
 
   directory 'app/views/devise', force: true
