@@ -1,6 +1,6 @@
 require 'rails/all'
 
-RAILS_REQUIREMENT = ">= 6.0.3"
+RAILS_REQUIREMENT = ">= 6.1.1"
 
 def apply_template!
   assert_minimum_rails_version
@@ -23,6 +23,7 @@ def apply_template!
     setup_active_storage
     setup_bootstrap
     setup_i18n
+    copy_scaffold_templates
     setup_tests
     setup_devise
     setup_user_tools
@@ -243,9 +244,11 @@ def setup_active_storage
   in_root { 
     gsub_file as_migration_file, /create_table :active_storage_blobs/, "create_table :active_storage_blobs, id: :uuid"
     gsub_file as_migration_file, /create_table :active_storage_attachments/, "create_table :active_storage_attachments, id: :uuid"
+    gsub_file as_migration_file, /create_table :active_storage_variant_records/, "create_table :active_storage_variant_records, id: :uuid"
 
-    gsub_file as_migration_file, /t\.references :record,(\s)* null: false, polymorphic: true, index: false/, "t.references :record, null: false, polymorphic: true, index: false, type: :uuid"
-    gsub_file as_migration_file, /t\.references :blob,(\s)* null: false/, "t.references :blob, null: false, type: :uuid"
+    gsub_file as_migration_file, /t\.references :record,(.)* null: false, polymorphic: true, index: false/, "t.references :record, null: false, polymorphic: true, index: false, type: :uuid"
+    gsub_file as_migration_file, /t\.references :blob,(.)* null: false/, "t.references :blob, null: false, type: :uuid"
+    gsub_file as_migration_file, /t\.belongs_to :blob,(.)* index: false/, "t.belongs_to :blob, null: false, index: false, type: :uuid"
   }
 end
 
@@ -254,6 +257,13 @@ def setup_i18n
   directory 'config/locales', force: true
   copy_file 'config/i18n-tasks.yml', force: true
   run 'i18n-tasks normalize'
+end
+
+def copy_scaffold_templates
+  directory 'lib/templates/erb/scaffold', force: true
+  inside 'lib/templates/erb/scaffold' do
+    run 'for f in *.template; do mv -- "$f" "${f%.template}.tt"; done'
+  end
 end
 
 def setup_devise
