@@ -1,0 +1,7 @@
+Rails/FilePath:
+  Exclude:
+    - 'lib/tasks/cucumber.rake'
+    
+Rails/CreateTableWithTimestamps:
+  Exclude:
+    - 'db/migrate/*_create_active_storage_tables.active_storage.rb'    
