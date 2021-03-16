@@ -7,6 +7,7 @@ gem "rails", "<%= Rails.version %>"
 
 ### DB
 gem "pg"<%= gemfile_requirement("pg") %>
+gem "strong_migrations"
 
 ### Application
 gem "puma"<%= gemfile_requirement("puma") %>
@@ -67,10 +68,12 @@ end
 
 group :test do
   gem "database_cleaner"
+  gem "database_cleaner-active_record"
 end
 
 group :development do
   gem "amazing_print"
+  gem "letter_opener"
   gem "brakeman", require: false
   gem "bundler-audit"
   gem "fasterer"

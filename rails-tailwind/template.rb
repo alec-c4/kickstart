@@ -12,6 +12,7 @@ def apply_template!
   setup_gemfile
 
   after_bundle do
+    setup_strong_migrations
     setup_generators
     setup_js_packages
     setup_webpacker
@@ -93,6 +94,10 @@ def setup_gemfile
   template "Gemfile.tt", force: true  
 end
 
+def setup_strong_migrations
+    generate 'strong_migrations:install'
+end
+
 def setup_generators
   copy_file 'config/initializers/generators.rb', force: true  
 end
@@ -160,6 +165,9 @@ def setup_dev_test
     <<-RUBY
 
     config.action_mailer.default_url_options = {host: "localhost", port: 5000}
+    config.action_mailer.delivery_method = :letter_opener
+    config.action_mailer.perform_deliveries = true
+        
     # config.action_mailer.delivery_method = :mailgun
     # config.action_mailer.mailgun_settings = {
     #   api_key: Rails.application.credentials.mailgun[:api_key],
@@ -178,15 +186,10 @@ def setup_dev_test
     RUBY
   end
 
-  insert_into_file 'config/environments/test.rb', after: /config\.action_view\.raise_on_missing_translations = true\n/ do
+  insert_into_file 'config/environments/test.rb', after: /config\.action_view\.annotate_rendered_view_with_filenames = true\n/ do
     <<-RUBY
 
     config.action_mailer.default_url_options = {host: "localhost", port: 5000}
-    # config.action_mailer.delivery_method = :mailgun
-    # config.action_mailer.mailgun_settings = {
-    #   api_key: Rails.application.credentials.mailgun[:api_key],
-    #   domain: Rails.application.credentials.mailgun[:domain]
-    # }
   
     config.after_initialize do
       Bullet.enable = true
