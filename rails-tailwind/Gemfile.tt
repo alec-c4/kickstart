@@ -37,6 +37,7 @@ gem "i18n-tasks"
 gem "devise-i18n"
 
 ### Tools
+gem "active_interaction", "~> 4.0"
 gem "bootsnap"<%= gemfile_requirement("bootsnap") %>, require: false
 gem "config"
 gem "image_processing"<%= gemfile_requirement("image_processing") %>

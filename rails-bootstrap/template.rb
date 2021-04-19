@@ -1,6 +1,6 @@
 require 'rails/all'
 
-RAILS_REQUIREMENT = ">= 6.1.1"
+RAILS_REQUIREMENT = ">= 6.1.3"
 
 def apply_template!
   assert_minimum_rails_version
@@ -27,6 +27,7 @@ def apply_template!
     copy_scaffold_templates
     setup_tests
     setup_devise
+    setup_active_interaction
     setup_user_tools
     setup_pagy
 
@@ -37,9 +38,9 @@ def apply_template!
     run_rubocop
 
     say
-    say "        App successfully created!", :blue
+    say "App successfully created!", :green
     say
-    say "To get started with your new app:", :green
+    say "To get started with your new app:"
     say "  cd #{app_name}"
     say
     say "  1. # Update config/database.yml with your database credentials"
@@ -136,8 +137,7 @@ def setup_sidekiq
 end
 
 def setup_dev_test
-  insert_into_file 'config/environments/development.rb', after: /config\.file_watcher = ActiveSupport::EventedFileUpdateChecker\n/ do
-    <<-RUBY
+  inject_into_file 'config/environments/development.rb', after: /config\.file_watcher = ActiveSupport::EventedFileUpdateChecker\n/ do <<-'RUBY'
 
     config.action_mailer.default_url_options = {host: "localhost", port: 5000}
     config.action_mailer.delivery_method = :letter_opener
@@ -161,8 +161,7 @@ def setup_dev_test
     RUBY
   end
 
-  insert_into_file 'config/environments/test.rb', after: /config\.action_view\.annotate_rendered_view_with_filenames = true\n/ do
-    <<-RUBY
+  inject_into_file 'config/environments/test.rb', after: /config\.action_view\.annotate_rendered_view_with_filenames = true\n/ do <<-'RUBY'
 
     config.action_mailer.default_url_options = {host: "localhost", port: 5000}
   
@@ -294,6 +293,16 @@ end
 
 def setup_pundit
   generate 'pundit:install'
+end
+
+def setup_active_interaction
+  run 'mkdir app/interactions'
+  
+  inject_into_file 'config/application.rb', after: /config\.generators\.system_tests = nil\n/ do <<-'RUBY'
+
+  config.autoload_paths += Dir.glob("#{config.root}/app/interactions/*")
+  RUBY
+  end
 end
 
 def setup_user_tools

@@ -42,7 +42,9 @@ $ rails new app_name -m /path/to/template
 - [brakeman](https://github.com/presidentbeef/brakeman) and [bundler-audit](https://github.com/postmodern/bundler-audit) as security scanners
 - [fasterer](https://github.com/DamirSvrtan/fasterer) for performance optimization
 - [pry-rails](https://github.com/rweng/pry-rails) and [amazing_print](https://github.com/amazing-print/amazing_print) for better rails console
+- [active_interaction](https://github.com/AaronLasseigne/active_interaction) to make controllers thin
 - flash helper
 - landing page
 - profiles controller
 - admin and customer dashboards
+
