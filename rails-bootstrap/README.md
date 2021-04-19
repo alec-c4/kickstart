@@ -1,4 +1,4 @@
-# Jumpstart rails application with tailwind.css support
+# Jumpstart rails application with bootstrap 5.x support
 
 ## Usage 
 
