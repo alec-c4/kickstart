@@ -13,7 +13,7 @@ gem "strong_migrations"
 gem "puma"<%= gemfile_requirement("puma") %>
 
 ### Frontend
-gem "webpacker"<%= gemfile_requirement("webpacker") %>
+gem "vite_rails"
 
 ### JSON / API
 gem "jbuilder"<%= gemfile_requirement("jbuilder") %>
@@ -76,6 +76,7 @@ end
 group :development do
   gem "amazing_print"
   gem "letter_opener"
+  gem "js_from_routes"  
   gem "brakeman", require: false
   gem "bundler-audit"
   gem "fasterer"

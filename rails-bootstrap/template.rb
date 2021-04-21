@@ -12,15 +12,14 @@ def apply_template!
   setup_gemfile
 
   after_bundle do
-    setup_strong_migrations
     setup_generators
-    setup_js_packages
-    setup_webpacker
+    setup_frontend
     setup_procfile
     setup_sidekiq
 
     setup_gems
     setup_migrations
+    setup_strong_migrations   
     setup_active_storage
     setup_bootstrap
     setup_i18n
@@ -103,27 +102,22 @@ def setup_generators
   copy_file 'config/initializers/generators.rb', force: true  
 end
 
-def setup_js_packages
-  run 'yarn add -D @types/webpack-env'
-  run 'yarn add jstz bootstrap@next popper.js @fullhuman/postcss-purgecss'
-end
+def setup_frontend
+  run 'yarn add postcss postcss-import postcss-flexbugs-fixes postcss-preset-env @fullhuman/postcss-purgecss'
+  run 'yarn add jstz sass autoprefixer local-time'
+  run 'yarn add @rails/ujs @rails/activestorage @rails/actioncable'
+  run 'yarn add @hotwired/turbo-rails @js-from-routes/client stimulus stimulus-vite-helpers vite-plugin-full-reload vite-plugin-stimulus-hmr'
+  run 'yarn add jstz bootstrap@next popper.js'
 
-def setup_webpacker
   run 'rm -rf app/assets'
-  run 'mv app/javascript app/frontend'
-  gsub_file "config/webpacker.yml", /source_path: app\/javascript/, 'source_path: app/frontend'
-  rails_command 'webpacker:install:typescript'
-  remove_file 'app/frontend/packs/hello_typescript.ts'
-  remove_file 'app/frontend/packs/application.js'
-  copy_file 'app/frontend/packs/application.ts'
-  run 'mkdir app/frontend/stylesheets'
-  run 'mkdir app/frontend/javascripts'
+  directory 'app/frontend', force: true
+  run 'bundle exec vite install'
+  run 'rm app/frontend/entrypoints/application.js'
   run 'mkdir app/frontend/images'
   run  'touch app/frontend/images/.keep'
-  copy_file 'app/frontend/stylesheets/application.scss', force: true
-  copy_file 'app/frontend/stylesheets/custom.scss', force: true
-  copy_file 'app/frontend/javascripts/timezone.ts', force: true
-  copy_file 'app/frontend/javascripts/current_year.ts', force: true
+
+  copy_file 'config/vite.json', force: true
+  copy_file 'vite.config.ts', force: true
 end
 
 def setup_procfile
@@ -203,7 +197,8 @@ def setup_basic_logic
     LAYOUT
   end
 
-  gsub_file 'app/views/layouts/application.html.erb', /stylesheet_link_tag/, 'stylesheet_pack_tag'
+  gsub_file 'app/views/layouts/application.html.erb', /stylesheet_link_tag/, 'vite_stylesheet_tag'
+  gsub_file 'app/views/layouts/application.html.erb', /vite_javascript_tag/, 'vite_typescript_tag'
 
   # Home page
   copy_file 'app/controllers/pages_controller.rb', force: true
