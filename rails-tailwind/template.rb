@@ -365,4 +365,5 @@ def run_rubocop
   run 'bundle exec rubocop -a'
 end
 
+run "if uname | grep -q 'Darwin'; then pgrep spring | xargs kill -9; fi"
 apply_template!
