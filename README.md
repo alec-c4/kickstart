@@ -19,12 +19,12 @@ $ rails new app_name -m /path/to/template
 
 - ruby on rails application template 
 - postgresql database connector
-- webpacker as a frontend builder
+- vite as a frontend builder
 - bootstrap or tailwind.css frontend frameworks with scaffold templates 
 - [purge.css](https://purgecss.com/) to cleanup stylesheets
 - timezone detection with [jstz](https://github.com/iansinnott/jstz)
 - typescript for frontend
-- Procfile to run app, webpacker and sidekiq
+- Procfile to run app, vite and sidekiq
 - [Sidekiq](https://github.com/mperham/sidekiq) for background jobs
 - [VSCode](https://code.visualstudio.com/) configuration files
 - .gitignore file
