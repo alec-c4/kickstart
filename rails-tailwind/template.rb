@@ -106,7 +106,7 @@ def setup_frontend
   run 'yarn add postcss postcss-import postcss-flexbugs-fixes postcss-preset-env @fullhuman/postcss-purgecss'
   run 'yarn add jstz sass autoprefixer local-time'
   run 'yarn add @rails/ujs @rails/activestorage @rails/actioncable'
-  run 'yarn add @hotwired/turbo-rails @js-from-routes/client stimulus stimulus-vite-helpers vite-plugin-full-reload vite-plugin-stimulus-hmr'
+  run 'yarn add stimulus stimulus-vite-helpers vite-plugin-full-reload vite-plugin-stimulus-hmr'
   run 'yarn add tailwindcss @tailwindcss/aspect-ratio @tailwindcss/forms @tailwindcss/typography'
 
   run 'rm -rf app/assets'
@@ -330,6 +330,7 @@ def setup_rubocop
   copy_file '.rubocop_rails.yml', force: true  
   copy_file '.rubocop_rspec.yml', force: true  
   copy_file '.rubocop_strict.yml', force: true  
+  copy_file '.rubocop_metrics.yml', force: true
 end
 
 def run_rubocop

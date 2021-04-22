@@ -1,7 +1,21 @@
-Rails/FilePath:
+Style/ClassAndModuleChildren:
+  Enabled: true
   Exclude:
-    - 'lib/tasks/cucumber.rake'
-    
-Rails/CreateTableWithTimestamps:
+    - 'app/channels/application_cable/channel.rb'
+    - 'app/channels/application_cable/connection.rb'
+    - 'config/application.rb'
+
+Lint/EmptyBlock:
+  Enabled: true
   Exclude:
-    - 'db/migrate/*_create_active_storage_tables.active_storage.rb'    
+    - 'spec/factories/users.rb'
+
+Metrics/AbcSize: 
+  Enabled: true
+  Exclude:
+    - 'app/controllers/application_controller.rb'
+
+Layout/LineLength:
+  Enabled: true
+  Exclude:
+    - 'features/step_definitions/email_steps.rb'

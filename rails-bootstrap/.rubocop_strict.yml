@@ -1,6 +1,3 @@
-inherit_from:
-  - .rubocop_todo.yml
-
 Lint/Debugger: # don't leave binding.pry
   Enabled: true
   Exclude: []
@@ -20,3 +17,22 @@ Rails/FindEach: # each could severely affect the performance, use find_each
 Rails/UniqBeforePluck: # uniq.pluck and not pluck.uniq
   Enabled: true
   Exclude: []
+
+Style/FrozenStringLiteralComment:
+  Description: >-
+    Add the frozen_string_literal comment to the top of files
+    to help transition from Ruby 2.3.0 to Ruby 3.0.
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/Documentation:
+  Enabled: false      
+
+Style/ClassAndModuleChildren:
+  Enabled: true
+  EnforcedStyle: compact
+
+Style/HashLikeCase:
+  Enabled: false        

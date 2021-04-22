@@ -9,7 +9,7 @@ class User < ApplicationRecord
   
     before_destroy :delete_photo
   
-    def is_admin?
+    def admin?
       true #TODO rewrite with actual code
     end
 
