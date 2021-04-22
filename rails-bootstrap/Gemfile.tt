@@ -14,7 +14,7 @@ gem "puma"<%= gemfile_requirement("puma") %>
 
 ### Frontend
 gem "vite_rails"
-gem "turbo-rails"
+gem "view_component", require: "view_component/engine"
 
 ### JSON / API
 gem "jbuilder"<%= gemfile_requirement("jbuilder") %>

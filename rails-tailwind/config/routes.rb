@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     authenticated :user do
       root to: "customer/dashboard#index", as: :authenticated_root
     end
+
+    get "/terms", to: "pages#terms"
+    get "/privacy", to: "pages#privacy"    
   
     root to: "pages#home"
   end

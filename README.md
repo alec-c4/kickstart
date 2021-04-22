@@ -19,7 +19,7 @@ $ rails new app_name -m /path/to/template
 
 - ruby on rails application template 
 - postgresql database connector
-- vite as a frontend builder
+- [vite](https://vitejs.dev) as a frontend builder
 - bootstrap or tailwind.css frontend frameworks with scaffold templates 
 - [purge.css](https://purgecss.com/) to cleanup stylesheets
 - timezone detection with [jstz](https://github.com/iansinnott/jstz)
@@ -43,6 +43,7 @@ $ rails new app_name -m /path/to/template
 - [fasterer](https://github.com/DamirSvrtan/fasterer) for performance optimization
 - [pry-rails](https://github.com/rweng/pry-rails) and [amazing_print](https://github.com/amazing-print/amazing_print) for better rails console
 - [active_interaction](https://github.com/AaronLasseigne/active_interaction) to make controllers thin
+- [view_component](https://viewcomponent.org/) as a replacement for partials
 - flash helper
 - landing page
 - profiles controller

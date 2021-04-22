@@ -181,7 +181,7 @@ def setup_basic_logic
   gsub_file 'app/views/layouts/application.html.erb', /<%= yield %>/ do
     <<-LAYOUT
   <header>
-      <%= render partial: 'layouts/account_items' %>
+      <%= render partial: 'layouts/header' %>
       </header>
 
       <main class="container">
@@ -190,9 +190,7 @@ def setup_basic_logic
       </main>
 
       <footer class="footer">
-        <div class="container mt-5">
-          &copy; <span id="current_year"></span>, All rights reserved.
-        </div>
+        <%= render partial: 'layouts/footer' %>
       </footer>    
     LAYOUT
   end
