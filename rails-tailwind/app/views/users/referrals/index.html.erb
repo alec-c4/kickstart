@@ -1,0 +1,28 @@
+<h1><%= t('.title') %></h1>
+
+<p>
+  <%= t('.use_link') %>:
+  <br>
+  <code>
+    <%= link_to root_url(ref: current_user.referral_code), root_url(ref: current_user.referral_code) %>
+  </code>
+</p>
+
+<%- @referred = current_user.referred_users %>
+
+<%- unless @referred.empty?  %>
+  <p>
+    <%= t('.referred_users_list') %>:
+
+  <ul>
+    <%- @referred.each do |user| %>
+      <li>
+        <%= user.email %>
+        &nbsp;
+        <%= user.referral_completed_at? ? t('.status_complete') : t('.status_pending') %>
+      </li>
+    <% end %>
+  </ul>
+
+  </p>
+<%- end %>

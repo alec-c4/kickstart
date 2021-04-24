@@ -13,6 +13,15 @@
 
 ```
 $ rails new app_name -m /path/to/template
+$ rails credentials:edit --environment development
+$ rails db:create
+$ rails db:migrate
+```
+
+9. Uncomment following line in **config/initializers/devise.rb** file
+
+``` ruby
+config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id], Rails.application.credentials.google[:client_secret], name: "google"
 ```
 
 ## What's inside
@@ -29,7 +38,7 @@ $ rails new app_name -m /path/to/template
 - [VSCode](https://code.visualstudio.com/) configuration files
 - .gitignore file
 - [strong_migrations](https://github.com/ankane/strong_migrations)
-- authentication with [devise](https://github.com/heartcombo/devise) and [devise-pwned_password](https://github.com/michaelbanfield/devise-pwned_password)
+- authentication with [devise](https://github.com/heartcombo/devise) and [devise-pwned_password](https://github.com/michaelbanfield/devise-pwned_password) + google auth
 - [name_of_person](https://github.com/basecamp/name_of_person) to display username in different formats
 - authorization with [pundit](https://github.com/varvet/pundit)
 - pre-configured generators
@@ -45,7 +54,22 @@ $ rails new app_name -m /path/to/template
 - [active_interaction](https://github.com/AaronLasseigne/active_interaction) to make controllers thin
 - [view_component](https://viewcomponent.org/) as a replacement for partials
 - flash helper
+- referral system
 - landing page
 - profiles controller
 - admin and customer dashboards
 
+## Todo
+
+- add [erb linter](https://github.com/Shopify/erb-lint)
+- add documentation (howto's, best practices, carated list of libraries)
+- add deployments tools
+- add [devise_masquerade](https://github.com/oivoodoo/devise_masquerade)
+- add [reform](https://github.com/trailblazer/reform)
+- add [hotwire](https://hotwire.dev/)
+- add [notices](https://github.com/excid3/noticed)
+- add [flipper](https://github.com/jnunemaker/flipper) with Flipper UI to enable [flag management](https://boringrails.com/articles/feature-flags-simplest-thing-that-could-work/)
+- add [ahoy](https://github.com/ankane/ahoy) and [blazer](https://github.com/ankane/blazer)
+- add monitoring and analytics tools
+- add A11y
+- configure Tailwind.css JIT

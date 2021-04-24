@@ -32,6 +32,20 @@
   </div>
 <% end %>
 
+<h3><%= t('devise.social.connected_accounts') %></h3>
+
+<%- if current_user.identities.map(&:provider).include?("google") %>
+  <%= button_to identities_path(provider: 'google'), method: 'delete', class: 'btn btn-warning',
+                data: { confirm: t('devise.social.are_you_sure_to_disconnect') } do %>
+    <span><%= t('devise.social.disconnect', service: 'Google') %></span>
+  <% end %>
+<%- else %>
+  <%= button_to user_google_omniauth_authorize_path, class: 'btn btn-success' do %>
+    <span>Conect Google</span>
+  <% end %>
+<% end %>
+
+
 <h3><%= t('.cancel_my_account') %></h3>
 
 <p><%= t('.unhappy') %> <%= button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete, class: 'btn btn-danger' %></p>

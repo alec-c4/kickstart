@@ -10,12 +10,18 @@ Lint/EmptyBlock:
   Exclude:
     - 'spec/factories/users.rb'
 
-Metrics/AbcSize: 
+Metrics/AbcSize:
   Enabled: true
   Exclude:
     - 'app/controllers/application_controller.rb'
+    - 'app/controllers/users/omniauth_callbacks_controller.rb'
 
 Layout/LineLength:
   Enabled: true
   Exclude:
     - 'features/step_definitions/email_steps.rb'
+
+Metrics/MethodLength:
+  Enabled: true
+  Exclude:
+    - 'app/controllers/users/omniauth_callbacks_controller.rb'

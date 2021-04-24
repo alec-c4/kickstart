@@ -25,7 +25,7 @@ def apply_template!
     setup_i18n
     copy_scaffold_templates
     setup_tests
-    setup_devise
+    setup_auth
     setup_active_interaction
     setup_user_tools
     setup_pagy
@@ -104,15 +104,14 @@ end
 
 def setup_frontend
   run 'yarn add postcss postcss-import postcss-flexbugs-fixes postcss-preset-env @fullhuman/postcss-purgecss'
-  run 'yarn add jstz sass autoprefixer local-time'
+  run 'yarn add jstz sass autoprefixer local-time @fortawesome/fontawesome-free'
   run 'yarn add @rails/ujs @rails/activestorage @rails/actioncable'
   run 'yarn add stimulus stimulus-vite-helpers vite-plugin-full-reload vite-plugin-stimulus-hmr'
-  run 'yarn add jstz bootstrap@next popper.js'
+  run 'yarn add bootstrap@next @popperjs/core'
 
   run 'rm -rf app/assets'
   directory 'app/frontend', force: true
   run 'bundle exec vite install'
-  run 'rm app/frontend/entrypoints/application.js'
   run 'mkdir app/frontend/images'
   run  'touch app/frontend/images/.keep'
 
@@ -177,6 +176,10 @@ def setup_basic_logic
   copy_file 'app/views/layouts/_flash.html.erb', force: true
 
   copy_file 'app/views/layouts/_account_items.html.erb', force: true
+  copy_file 'app/views/layouts/_header.html.erb', force: true
+  copy_file 'app/views/layouts/_footer.html.erb', force: true
+  copy_file 'app/views/layouts/_analytics.html.erb', force: true
+
 
   gsub_file 'app/views/layouts/application.html.erb', /<%= yield %>/ do
     <<-LAYOUT
@@ -192,15 +195,17 @@ def setup_basic_logic
       <footer class="footer">
         <%= render partial: 'layouts/footer' %>
       </footer>    
+      <%= render partial: 'layouts/analytics' %>
     LAYOUT
   end
 
-  gsub_file 'app/views/layouts/application.html.erb', /stylesheet_link_tag/, 'vite_stylesheet_tag'
-  gsub_file 'app/views/layouts/application.html.erb', /vite_javascript_tag/, 'vite_typescript_tag'
+  gsub_file 'app/views/layouts/application.html.erb', /^.*<%= stylesheet_link_tag 'application', media: 'all' %>.*$/, ''
 
-  # Home page
+  # Pages
   copy_file 'app/controllers/pages_controller.rb', force: true
   copy_file 'app/views/pages/home.html.erb', force: true
+  copy_file 'app/views/pages/terms.html.erb', force: true
+  copy_file 'app/views/pages/privacy.html.erb', force: true
 
   # Customer controller
   copy_file 'app/controllers/customer_controller.rb', force: true
@@ -261,27 +266,27 @@ def copy_scaffold_templates
   end
 end
 
-def setup_devise
+def setup_auth
   generate 'devise:install'
   generate 'devise User'
 
   devise_migration_file = (Dir['db/migrate/*_devise_create_users.rb']).first
-
-  uncomment_lines devise_migration_file, /add_index/
-  uncomment_lines devise_migration_file, /t\.(integer|datetime|inet|string)/
-
-  in_root { inject_into_file devise_migration_file, 
-        "\n\n## Profile\n
-        t.string :first_name\n
-        t.string :last_name\n
-        t.string :gender\n
-        t.date :birthday\n\n
-
-        ## Settings\n
-        t.string :time_zone", after: "t.datetime :locked_at" }
+  copy_file 'migrations/create_users.rb', devise_migration_file, force: true
 
   directory 'app/views/devise', force: true
   copy_file 'app/models/user.rb', force: true
+
+  generate 'model Identity'
+
+  identity_migration_file = (Dir['db/migrate/*_create_identities.rb']).first
+  copy_file 'migrations/create_identities.rb', identity_migration_file, force: true
+
+
+  copy_file 'app/models/identity.rb', force: true
+
+  inject_into_file 'config/initializers/devise.rb', 
+    "# config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id], Rails.application.credentials.google[:client_secret], name: \"google\"\n\n", 
+    before: /# ==> Warden configuration/  
 end
 
 def setup_pundit
@@ -290,11 +295,12 @@ end
 
 def setup_active_interaction
   run 'mkdir app/interactions'
+  run  'touch app/interactions/.keep'  
   
   inject_into_file 'config/application.rb', after: /config\.generators\.system_tests = nil\n/ do <<-'RUBY'
 
   config.autoload_paths += Dir.glob("#{config.root}/app/interactions/*")
-  RUBY
+    RUBY
   end
 end
 

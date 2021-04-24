@@ -5,13 +5,23 @@ class ApplicationController < ActionController::Base
     before_action :set_locale
     before_action :configure_permitted_parameters, if: :devise_controller?
     around_action :configure_time_zone, if: :current_user
+    before_action :configure_referral_cookie
   
     rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
     respond_to :html
    
     protected
-    
+
+    def configure_referral_cookie
+      return unless params[:ref]
+
+      cookies[:referral_code] = {
+        value: params[:ref],
+        expires: 30.days.from_now
+      }
+    end
+
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: %i[name time_zone])
       devise_parameter_sanitizer.permit(:account_update, keys: %i[name time_zone])

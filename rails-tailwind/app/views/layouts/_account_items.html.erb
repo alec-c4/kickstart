@@ -1,7 +1,9 @@
 <% if signed_in? %>
 
   <%= link_to t('navigation.account'), edit_user_registration_path %>
-  <%= link_to t('navigation.profile'), edit_profile_path %>
+  <%= link_to t('navigation.profile_edit'), edit_profile_path %>
+  <%= link_to t('navigation.profile_view'), profile_path(current_user) %>
+  <%= link_to t('navigation.referrals_page'), referrals_path %>  
   <%= link_to t('navigation.sign_out'), destroy_user_session_path, method: :delete %>
 
 <% else %>

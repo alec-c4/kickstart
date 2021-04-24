@@ -1,10 +1,23 @@
 <% if signed_in? %>
-
-  <%= link_to t('navigation.account'), edit_user_registration_path %>
-  <%= link_to t('navigation.profile'), edit_profile_path %>
-  <%= link_to t('navigation.sign_out'), destroy_user_session_path, method: :delete %>
+	<li class="nav-item dropdown">
+	  <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	    Account
+	  </a>
+	  <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDarkDropdownMenuLink">
+		  <li><%= link_to t('navigation.account'), edit_user_registration_path, class: 'dropdown-item' %></li>
+		  <li><%= link_to t('navigation.profile_edit'), edit_profile_path, class: 'dropdown-item' %></li>
+		  <li><%= link_to t('navigation.profile_view'), profile_path(current_user), class: 'dropdown-item' %></li>
+		  <li><%= link_to t('navigation.referrals_page'), referrals_path, class: 'dropdown-item' %></li>  
+		  <li><%= link_to t('navigation.sign_out'), destroy_user_session_path, method: :delete, class: 'dropdown-item' %></li>
+	  </ul>
+	</li>
 
 <% else %>
-  <%= link_to t('navigation.sign_up'), new_user_registration_path %>
-  <%= link_to t('navigation.sign_in'), new_user_session_path %>
+	<li class="nav-item me-2">
+		<%= link_to t('navigation.sign_up'), new_user_registration_path, class: 'btn btn-primary' %>
+	</li>
+
+	<li class="nav-item me-2">
+		<%= link_to t('navigation.sign_in'), new_user_session_path, class: 'btn btn-secondary' %>
+	</li>
 <% end %>

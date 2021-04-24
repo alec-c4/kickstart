@@ -4,12 +4,16 @@ import "../javascripts/current_year";
 import "../channels/index.js";
 import "../controllers/index.js";
 
+import "bootstrap";
 import "vite/dynamic-import-polyfill";
-import "@rails/ujs";
+import "@fortawesome/fontawesome-free/css/all.css";
+
 import * as ActiveStorage from "@rails/activestorage";
 import LocalTime from "local-time";
+import Rails from "@rails/ujs";
 
-console.log('Vite ⚡️ Rails');
-
+Rails.start()
 ActiveStorage.start();
 LocalTime.start();
+
+console.log('Vite ⚡️ Rails');

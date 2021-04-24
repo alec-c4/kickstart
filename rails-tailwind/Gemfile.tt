@@ -23,8 +23,11 @@ gem "jbuilder"<%= gemfile_requirement("jbuilder") %>
 gem "name_of_person"
 
 ### Auth
-gem "devise"
+gem "devise", github: "heartcombo/devise"
 gem "devise-pwned_password"
+gem "omniauth"
+gem "omniauth-rails_csrf_protection"
+gem "omniauth-google-oauth2", "~> 1.0"
 gem "pundit"
 
 ### SEO

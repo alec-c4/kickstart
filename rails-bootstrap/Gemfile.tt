@@ -24,8 +24,11 @@ gem "name_of_person"
 gem "bootstrap_form", git: "https://github.com/bootstrap-ruby/bootstrap_form.git", branch: "bootstrap-5"
 
 ### Auth
-gem "devise"
+gem "devise", github: "heartcombo/devise"
 gem "devise-pwned_password"
+gem "omniauth"
+gem "omniauth-rails_csrf_protection"
+gem "omniauth-google-oauth2", "~> 1.0"
 gem "pundit"
 
 ### SEO
