@@ -53,6 +53,7 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 - [pry-rails](https://github.com/rweng/pry-rails) and [amazing_print](https://github.com/amazing-print/amazing_print) for better rails console
 - [active_interaction](https://github.com/AaronLasseigne/active_interaction) to make controllers thin
 - [view_component](https://viewcomponent.org/) as a replacement for partials
+- [flipper](https://github.com/jnunemaker/flipper) with Flipper UI to enable [flag management](https://boringrails.com/articles/feature-flags-simplest-thing-that-could-work/)
 - flash helper
 - referral system
 - landing page
@@ -68,7 +69,6 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 - add [reform](https://github.com/trailblazer/reform)
 - add [hotwire](https://hotwire.dev/)
 - add [notices](https://github.com/excid3/noticed)
-- add [flipper](https://github.com/jnunemaker/flipper) with Flipper UI to enable [flag management](https://boringrails.com/articles/feature-flags-simplest-thing-that-could-work/)
 - add [ahoy](https://github.com/ankane/ahoy) and [blazer](https://github.com/ankane/blazer)
 - add monitoring and analytics tools
 - add A11y

@@ -1,3 +1,5 @@
+require "sidekiq/web"
+
 Rails.application.routes.draw do
     ### All users
     # accounts
@@ -15,6 +17,11 @@ Rails.application.routes.draw do
       get "/", to: "dashboard#index", as: :dashboard
     end
   
+  authenticate :user, ->(u) { u.is_admin? } do
+    mount Sidekiq::Web => "/sidekiq"
+    mount Flipper::UI.app(Flipper) => "/flipper"
+  end
+
     authenticated :user do
       root to: "customer/dashboard#index", as: :authenticated_root
     end

@@ -1,18 +1,5 @@
 ---
 en:
-  admin:
-    dashboard:
-      index:
-        title: Admin dashboard
-  customer:
-    dashboard:
-      index:
-        title: Customer Dashboard
-  devise:
-    social:
-      are_you_sure_to_disconnect: Are you sure to disconnect?
-      connected_accounts: Connected accounts
-      disconnect: Disconnect %{service}
   navigation:
     account: Account
     profile_edit: Edit profile
@@ -40,10 +27,3 @@ en:
     profiles:
       submit_update: Update profile
       update_successful: Profile updated
-    referrals:
-      index:
-        referred_users_list: Referred users
-        status_complete: Complete
-        status_pending: Pending
-        title: Referrals
-        use_link: Use this link to refer other users

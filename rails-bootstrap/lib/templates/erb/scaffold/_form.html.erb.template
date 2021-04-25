@@ -1,5 +1,5 @@
 <%%= bootstrap_form_with(model: <%= model_resource_name %>, local: true) do |form| %>
- <%%= form.alert_message "#{pluralize(post.errors.count, 'error')} prohibited this post from being saved:" %>
+ <%%= form.alert_message "#{pluralize(model_resource_name.errors.count, 'error')} prohibited this post from being saved:" %>
 
 <% attributes.each do |attribute| -%>
   <div class="mb-3">

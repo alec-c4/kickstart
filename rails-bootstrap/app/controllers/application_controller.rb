@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   
     def user_not_authorized
       flash[:alert] = t("security.access_denied")
-      redirect_to(request.referer || root_path)
+      redirect_to root_path
     end
 
     ### TimeZone

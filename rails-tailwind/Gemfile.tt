@@ -44,6 +44,9 @@ gem "devise-i18n"
 gem "active_interaction", "~> 4.0"
 gem "bootsnap"<%= gemfile_requirement("bootsnap") %>, require: false
 gem "config"
+gem "flipper"
+gem "flipper-active_record"
+gem "flipper-ui"
 gem "image_processing"<%= gemfile_requirement("image_processing") %>
 gem "mailgun-ruby"
 gem "pagy"

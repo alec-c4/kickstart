@@ -29,6 +29,7 @@ def apply_template!
     setup_active_interaction
     setup_user_tools
     setup_pagy
+    setup_flipper
 
     setup_dev_test
     setup_basic_logic
@@ -325,6 +326,14 @@ def setup_pagy
   copy_file 'config/initializers/pagy.rb', force: true  
   copy_file 'app/helpers/application_helper.rb', force: true  
   copy_file 'app/frontend/stylesheets/pagy.scss', force: true
+end
+
+def setup_flipper
+  generate 'flipper:active_record'
+  copy_file 'config/initializers/flipper.rb', force: true  
+  flipper_migration_file = (Dir['db/migrate/*_create_flipper_tables.rb']).first
+
+  copy_file 'migrations/flipper_tables.rb', flipper_migration_file, force: true
 end
 
 def setup_rubocop
