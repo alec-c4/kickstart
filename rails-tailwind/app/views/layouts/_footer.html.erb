@@ -1,7 +1,7 @@
 <div class="container">
     <ul class="mb-0">
         <li class="inline mr-3">
-            &copy; <span id="current_year"></span>, All rights reserved.
+            &copy; <span id="current_year"><%= Date.today.year.to_s %></span>, All rights reserved.
         </li>      
         <li class="inline mr-3">
             <%= link_to "Terms", terms_path %>

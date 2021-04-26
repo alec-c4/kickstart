@@ -24,6 +24,8 @@ $ rails db:migrate
 config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id], Rails.application.credentials.google[:client_secret], name: "google"
 ```
 
+10. (IMPORTANT!!!) Replace method is_admin in user.rb with your code.
+
 ## What's inside
 
 - ruby on rails application template 

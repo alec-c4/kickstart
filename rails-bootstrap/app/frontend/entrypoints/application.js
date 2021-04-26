@@ -1,6 +1,5 @@
 import "../stylesheets/application.scss";
 import "../javascripts/timezone";
-import "../javascripts/current_year";
 import "../channels/index.js";
 import "../controllers/index.js";
 

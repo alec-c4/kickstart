@@ -30,6 +30,7 @@ def apply_template!
     setup_user_tools
     setup_pagy
     setup_flipper
+    setup_pundit
 
     setup_dev_test
     setup_basic_logic
@@ -291,6 +292,7 @@ end
 
 def setup_pundit
   generate 'pundit:install'
+    directory 'app/policies', force: true
 end
 
 def setup_active_interaction
