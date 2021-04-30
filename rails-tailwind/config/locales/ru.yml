@@ -1,5 +1,14 @@
 ---
 ru:
+  activerecord:
+    attributes:
+      user:
+        name: Имя
+  devise:
+    social:
+      are_you_sure_to_disconnect: Вы уверены, что хотите отключить?
+      connected_accounts: Подключенные аккаунты
+      disconnect: Отключиться от %{service}        
   navigation:
     account: Аккаунт
     profile_edit: Редактировать профиль
@@ -27,3 +36,4 @@ ru:
     profiles:
       submit_update: Обновить профиль
       update_successful: Профиль обновлён
+  wrong_format: должно быть в формате Имя Фамилия

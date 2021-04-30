@@ -1,36 +1,28 @@
-<%= bootstrap_form_with(model: current_user, url: profile_path, method: :put, local: true) do |f| %>
-  <div>
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", label: t('users.profile.first_name') %>
-  </div>
+<div class="container form">
+  <%= simple_form_for @user, url: profile_path, method: :put do |f| %>
+    <%= f.error_notification %>
 
-  <div>
-    <%= f.text_field :last_name, autocomplete: "last_name", label: t('users.profile.last_name') %>
-  </div>
-
-  <div>
-    <%= f.select :gender, [
+    <div class="form-inputs">
+      <%= f.input :first_name, autofocus: true, autocomplete: "first_name", label: t('users.profile.first_name') %>
+      <%= f.input :last_name, autocomplete: "last_name", label: t('users.profile.last_name') %>
+      <%= f.input :gender, collection: [
         [t('users.profile.genders.male'),:male],
         [t('users.profile.genders.female'),:female],
         [t('users.profile.genders.other'),:other],
         [t('users.profile.genders.not_specified'), :not_specified],
-    ],
-                 {}, label: t('users.profile.gender') %>
-  </div>
+      ], label_method: :first, value_method: :second, label: t('users.profile.gender'), include_blank: false %>
 
-  <div>
-    <%= f.date_select :birthday, {start_year: Date.today.year - 110, end_year: Date.today.year}, label: t('users.profile.birthday') %>
-  </div>
+      <%= f.input :birthday, as: :date, start_year: Date.today.year - 90,
+                  end_year: Date.today.year - 12,
+                  order: [:day, :month, :year], label: t('users.profile.birthday') %>
+      <%= f.input :photo, label: t('users.profile.photo') %>
+      <%= f.input :time_zone, label: t('users.profile.timezone') %>
+    </div>
 
-  <div>
-    <%= f.file_field :photo, label: t('users.profile.photo') %>
-  </div>
+    <div class="actions">
+      <%= f.button :submit, label: t('users.profiles.submit_update'), class: "btn btn-primary" %>
+    </div>
 
-  <div>
-    <%= f.time_zone_select :time_zone, nil, {}, label: t('users.profile.timezone') %>
-  </div>
+  <% end %>
 
-  <div class="actions">
-    <%= f.primary t('users.profiles.submit_update') %>
-  </div>
-
-<% end %>
+</div>

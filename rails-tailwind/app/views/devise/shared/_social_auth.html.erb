@@ -1,9 +1,11 @@
-<%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= button_to omniauth_authorize_path(resource_name, provider), method: :post, class: "btn btn-primary" do %>
-      <i class="fab fa-google"></i>
+<div class="my-3">
+  <%- if devise_mapping.omniauthable? %>
+    <%- resource_class.omniauth_providers.each do |provider| %>
+      <%= button_to omniauth_authorize_path(resource_name, provider), method: :post, class: "btn btn-primary" do %>
+        <i class="fab fa-google"></i>
         <%= OmniAuth::Utils.camelize(provider) %>
-      </span>
+        </span>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
+</div>

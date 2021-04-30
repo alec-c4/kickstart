@@ -23,6 +23,7 @@ def apply_template!
     setup_active_storage
     setup_tailwind
     setup_i18n
+    setup_simple_form
     copy_scaffold_templates
     setup_tests
     setup_auth
@@ -122,6 +123,7 @@ def setup_frontend
 end
 
 def setup_procfile
+  copy_file '.foreman', force: true  
   copy_file '.env', force: true  
   copy_file 'Procfile.dev', force: true  
 end
@@ -258,6 +260,10 @@ def setup_i18n
   directory 'config/locales', force: true
   copy_file 'config/i18n-tasks.yml', force: true
   run 'i18n-tasks normalize'
+end
+
+def setup_simple_form
+  generate "simple_form:install"
 end
 
 def copy_scaffold_templates

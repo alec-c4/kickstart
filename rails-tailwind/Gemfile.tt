@@ -13,14 +13,12 @@ gem "strong_migrations"
 gem "puma"<%= gemfile_requirement("puma") %>
 
 ### Frontend
+gem "simple_form"
 gem "vite_rails"
 gem "view_component", require: "view_component/engine"
 
 ### JSON / API
 gem "jbuilder"<%= gemfile_requirement("jbuilder") %>
-
-### View helpers
-gem "name_of_person"
 
 ### Auth
 gem "devise", github: "heartcombo/devise"

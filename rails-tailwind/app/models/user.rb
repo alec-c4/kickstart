@@ -9,9 +9,10 @@ class User < ApplicationRecord
   has_many :referred_users, class_name: "User", foreign_key: :referred_by_id,
                             inverse_of: :referred_by, dependent: :nullify
 
-  has_person_name
-
-  validates :first_name, :last_name, presence: true
+  validates :first_name, presence: true, on: :update
+  validates :last_name, presence: true, on: :update
+  validate :check_name_format, on: :create
+  
   validates :referral_code, uniqueness: true
 
   before_create :set_referral_code
@@ -57,8 +58,23 @@ class User < ApplicationRecord
   end
 
   ### Name
+  def name=(full_name)
+    self.first_name, self.last_name = full_name.to_s.squish.split(/\s/, 2)
+  end
+
+  def name
+    [first_name, last_name].join(" ")
+  end
+
+  def check_name_format
+    errors.add(:name, I18n.t(".wrong_format")) unless name.match? /^\S+\s\S+$/
+  end
 
   def to_s
-    name&.familiar
+    name
+  end
+
+  def flipper_id
+    "#{self.class.name};#{id}"
   end
 end

@@ -1,34 +1,33 @@
-<h2><%= t('.sign_up') %></h2>
+<div id="devise-form" class="form">
+  <h2><%= t(".sign_up") %></h2>
 
-<%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
+    <div class="form-inputs">
+      <%= f.input :name,
+                  required: true,
+                  autofocus: true ,
+                  input_html: { autocomplete: "name" }%>
+      <%= f.input :email,
+                  required: true,
+                  input_html: { autocomplete: "email" }%>
+      <%= f.input :password,
+                  required: true,
+                  hint: (t('devise.shared.minimum_password_length', count: @minimum_password_length) if @minimum_password_length),
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation,
+                  required: true,
+                  input_html: { autocomplete: "new-password" } %>
+    </div>
 
-  <div class="field">
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
+    <div class="form-actions">
+      <%= f.button :submit, t(".sign_up"), class: "btn btn-primary" %>
+    </div>
+  <% end %>
 
-  <div class="field">
-    <%= f.password_field :password, autocomplete: "new-password", 
-      help: "#{t('devise.shared.minimum_password_length', count: @minimum_password_length) if @minimum_password_length }" %>
-  </div>
+  <%= render 'devise/shared/social_auth' %>
 
-  <div class="field">
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+  <%= render "devise/shared/links" %>
 
-  <div class="d-none">
-    <%= f.time_zone_select :time_zone, nil, { default: browser_time_zone.name }, { class: "d-none" } %>
-  </div>
-
-  <div class="actions">
-    <%= f.primary t('.sign_up') %>
-  </div>
-<% end %>
-
-<%= render 'devise/shared/social_auth' %>
-
-<%= render "devise/shared/links" %>
+</div>

@@ -1,5 +1,5 @@
 class Customer::DashboardController < CustomerController
-    def index
-    end
+  def index
+    authorize %i[customer dashboard], :index?
   end
-  
+end

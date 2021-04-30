@@ -1,25 +1,25 @@
-<h2><%= t('.sign_in') %></h2>
+<div id="devise-form" class="form">
+  <h2><%= t(".sign_in") %></h2>
 
-<%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :email,
+                  required: false,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" } %>
+      <%= f.input :password,
+                  required: false,
+                  input_html: { autocomplete: "current-password" } %>
+      <%= f.input :remember_me, as: :boolean, wrapper_html: { class: "form-check form-switch my-2" } if devise_mapping.rememberable? %>
+    </div>
 
-  <div class="field">
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me, switch: true %>
+    <div class="form-actions">
+      <%= f.button :submit, t(".sign_in"), class: "btn btn-primary" %>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.primary t('.sign_in') %>
-  </div>
-<% end %>
+  <%= render 'devise/shared/social_auth' %>
 
-<%= render 'devise/shared/social_auth' %>
+  <%= render "devise/shared/links" %>
 
-<%= render "devise/shared/links" %>
+</div>

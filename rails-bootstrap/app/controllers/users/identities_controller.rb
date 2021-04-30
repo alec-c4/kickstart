@@ -2,6 +2,7 @@ class Users::IdentitiesController < CustomerController
   before_action :set_identity, only: %i[destroy]
 
   def destroy
+    authorize %i[users identities], :destroy?
     @identity.destroy!
     redirect_back fallback_location: root_url
   end
