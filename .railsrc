@@ -1,4 +1,3 @@
---skip-sprockets
 --skip-turbolinks
 --skip-javascript
 --skip-test

@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "<%= RUBY_VERSION %>"
 
-gem "rails", "<%= Rails.version %>"
+gem "rails", "~> <%= Rails.version %>"
 
 ### DB
 gem "pg"<%= gemfile_requirement("pg") %>
@@ -37,6 +37,10 @@ gem "friendly_id"
 gem "rails-i18n"
 gem "i18n-tasks"
 gem "devise-i18n"
+
+### Analytics
+gem "ahoy_matey"
+gem "blazer"
 
 ### Tools
 gem "active_interaction", "~> 4.0"

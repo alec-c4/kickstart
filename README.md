@@ -24,7 +24,18 @@ $ rails db:migrate
 config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id], Rails.application.credentials.google[:client_secret], name: "google"
 ```
 
-10. (IMPORTANT!!!) Replace method is_admin in user.rb with your code.
+10. (IMPORTANT!!!) Replace method is_admin in app/models/user.rb with your code.
+11. Replace following line in app/mailers/application_mailer.rb with your code
+
+```
+default from: "from@example.com"
+```
+
+12. Replace following line in config/initializers/devise.rb with your code
+
+```
+config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+```
 
 ## What's inside
 
@@ -56,6 +67,7 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 - [active_interaction](https://github.com/AaronLasseigne/active_interaction) to make controllers thin
 - [view_component](https://viewcomponent.org/) as a replacement for partials
 - [flipper](https://github.com/jnunemaker/flipper) with Flipper UI to enable [flag management](https://boringrails.com/articles/feature-flags-simplest-thing-that-could-work/)
+- [ahoy](https://github.com/ankane/ahoy) and [blazer](https://github.com/ankane/blazer) for business intelligence
 - flash helper
 - referral system
 - landing page
@@ -65,13 +77,12 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 ## Todo
 
 - add [erb linter](https://github.com/Shopify/erb-lint)
-- add documentation (howto's, best practices, carated list of libraries)
+- add documentation (howto's, best practices, curated list of libraries)
 - add deployments tools
 - add [devise_masquerade](https://github.com/oivoodoo/devise_masquerade)
-- add [reform](https://github.com/trailblazer/reform)
 - add [hotwire](https://hotwire.dev/)
 - add [notices](https://github.com/excid3/noticed)
-- add [ahoy](https://github.com/ankane/ahoy) and [blazer](https://github.com/ankane/blazer)
+- add [ahoy_email](https://github.com/ankane/ahoy_email) and [mailkick](https://github.com/ankane/mailkick)
 - add monitoring and analytics tools
 - add A11y
 - configure Tailwind.css JIT

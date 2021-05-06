@@ -20,7 +20,7 @@ class User < ApplicationRecord
   after_create :complete_referral!
   before_destroy :delete_photo
 
-  def admin?
+  def is_admin?
     true # TODO: rewrite with actual code
   end
 

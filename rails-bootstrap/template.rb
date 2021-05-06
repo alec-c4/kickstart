@@ -32,6 +32,7 @@ def apply_template!
     setup_pagy
     setup_flipper
     setup_pundit
+    setup_ahoy_blazer
 
     setup_dev_test
     setup_basic_logic
@@ -112,7 +113,6 @@ def setup_frontend
   run 'yarn add stimulus stimulus-vite-helpers vite-plugin-full-reload vite-plugin-stimulus-hmr'
   run 'yarn add bootstrap@next @popperjs/core'
 
-  run 'rm -rf app/assets'
   directory 'app/frontend', force: true
   run 'bundle exec vite install'
   run 'mkdir app/frontend/images'
@@ -202,8 +202,6 @@ def setup_basic_logic
       <%= render partial: 'layouts/analytics' %>
     LAYOUT
   end
-
-  gsub_file 'app/views/layouts/application.html.erb', /^.*<%= stylesheet_link_tag 'application', media: 'all' %>.*$/, ''
 
   # Pages
   copy_file 'app/controllers/pages_controller.rb', force: true
@@ -341,6 +339,18 @@ def setup_flipper
   flipper_migration_file = (Dir['db/migrate/*_create_flipper_tables.rb']).first
 
   copy_file 'migrations/flipper_tables.rb', flipper_migration_file, force: true
+end
+
+def setup_ahoy_blazer
+  generate 'ahoy:install'
+  run 'yarn add ahoy.js'
+  generate 'blazer:install'
+
+  ahoy_migration_file = (Dir['db/migrate/*_create_ahoy_visits_and_events.rb']).first
+  blazer_migration_file = (Dir['db/migrate/*_install_blazer.rb']).first
+
+  copy_file 'migrations/ahoy.rb', ahoy_migration_file, force: true
+  copy_file 'migrations/blazer.rb', blazer_migration_file, force: true
 end
 
 def setup_rubocop

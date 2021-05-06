@@ -18,8 +18,9 @@ Rails.application.routes.draw do
     end
   
   authenticate :user, ->(u) { u.is_admin? } do
-    mount Sidekiq::Web => "/sidekiq"
-    mount Flipper::UI.app(Flipper) => "/flipper"
+    mount Sidekiq::Web, at: "/sidekiq"
+    mount Flipper::UI.app(Flipper), at: "/flipper"
+    mount Blazer::Engine, at: "/blazer"
   end
 
     authenticated :user do
