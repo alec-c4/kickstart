@@ -3,17 +3,24 @@ ru:
   activerecord:
     attributes:
       user:
+        first_name: Имя
+        last_name: Фамилия
         name: Имя
+    errors:
+      messages:
+        wrong_name_format: должно быть в формате Имя Фамилия
   devise:
+    failure:
+      banned: Аккаунт заблокирован
     social:
       are_you_sure_to_disconnect: Вы уверены, что хотите отключить?
       connected_accounts: Подключенные аккаунты
-      disconnect: Отключиться от %{service}        
+      disconnect: Отключиться от %{service}
   navigation:
     account: Аккаунт
     profile_edit: Редактировать профиль
     profile_view: Профиль
-    referrals_page: Пригласить друга    
+    referrals_page: Пригласить друга
     sign_in: Вход
     sign_out: Выход
     sign_up: Регистрация
@@ -36,4 +43,3 @@ ru:
     profiles:
       submit_update: Обновить профиль
       update_successful: Профиль обновлён
-  wrong_format: должно быть в формате Имя Фамилия

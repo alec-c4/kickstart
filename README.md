@@ -24,14 +24,13 @@ $ rails db:migrate
 config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id], Rails.application.credentials.google[:client_secret], name: "google"
 ```
 
-10. (IMPORTANT!!!) Replace method is_admin in app/models/user.rb with your code.
-11. Replace following line in app/mailers/application_mailer.rb with your code
+10. Replace following line in app/mailers/application_mailer.rb with your code
 
 ```
 default from: "from@example.com"
 ```
 
-12. Replace following line in config/initializers/devise.rb with your code
+11. Replace following line in config/initializers/devise.rb with your code
 
 ```
 config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
@@ -54,6 +53,8 @@ config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.c
 - authentication with [devise](https://github.com/heartcombo/devise) and [devise-pwned_password](https://github.com/michaelbanfield/devise-pwned_password) + google auth
 - [name_of_person](https://github.com/basecamp/name_of_person) to display username in different formats
 - authorization with [pundit](https://github.com/varvet/pundit)
+- role management with [rolify](https://github.com/RolifyCommunity/rolify)
+- ability to ban user account
 - pre-configured generators
 - SEO tools - [meta-tags](https://github.com/kpumuk/meta-tags), [sitemap_generator](http://github.com/kjvarga/sitemap_generator) and [friendly_id](https://github.com/norman/friendly_id)
 - I18n tools - [rails-i18n](http://github.com/svenfuchs/rails-i18n) and [i18n-tasks](https://github.com/glebm/i18n-tasks)
@@ -73,6 +74,7 @@ config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.c
 - landing page
 - profiles controller
 - admin and customer dashboards
+- users administration with search
 
 ## Todo
 

@@ -3,12 +3,19 @@ en:
   activerecord:
     attributes:
       user:
+        first_name: First name
+        last_name: Last name
         name: Full Name
+    errors:
+      messages:
+        wrong_name_format: must contain both first and last name
   devise:
+    failure:
+      banned: You've banned
     social:
       are_you_sure_to_disconnect: Are you sure to disconnect?
       connected_accounts: Connected accounts
-      disconnect: Disconnect %{service}        
+      disconnect: Disconnect %{service}
   navigation:
     account: Account
     profile_edit: Edit profile
@@ -36,4 +43,3 @@ en:
     profiles:
       submit_update: Update profile
       update_successful: Profile updated
-  wrong_format: must contain both first and last name

@@ -32,6 +32,11 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :unlock_token # Only if unlock strategy is :email or :both
       t.datetime :locked_at
 
+      ## Ban
+      t.datetime :banned_at
+      t.text :ban_reason, null: false, default: ""
+      t.references :banned_by, foreign_key: {to_table: :users}, type: :uuid
+
       ## Profile
       t.string :first_name
       t.string :last_name
@@ -44,7 +49,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.datetime :referral_completed_at
 
       ## Settings
-
       t.string :time_zone
 
       t.timestamps null: false

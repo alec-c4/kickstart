@@ -1,14 +1,19 @@
 class User < ApplicationRecord
+  include PgSearch::Model
+
   devise :database_authenticatable, :registerable,
          :confirmable, :lockable, :timeoutable, :trackable,
          :recoverable, :rememberable, :trackable, :validatable, :pwned_password,
          :omniauthable, omniauth_providers: %i[google]
 
   has_many :identities, dependent: :destroy
+  belongs_to :banned_by, class_name: "User", optional: true
   belongs_to :referred_by, class_name: "User", optional: true
   has_many :referred_users, class_name: "User", foreign_key: :referred_by_id,
                             inverse_of: :referred_by, dependent: :nullify
+  has_many :visits, class_name: "Ahoy::Visit", dependent: :destroy
 
+  rolify
 
   validates :first_name, presence: true, on: :update
   validates :last_name, presence: true, on: :update
@@ -20,9 +25,19 @@ class User < ApplicationRecord
   after_create :complete_referral!
   before_destroy :delete_photo
 
-  def is_admin?
-    true # TODO: rewrite with actual code
-  end
+  ### Search
+  pg_search_scope :search,
+                  against: %i[email first_name last_name],
+                  using: {
+                    tsearch: { prefix: true },
+                    trigram: {}
+                  }
+
+  pg_search_scope :search_by_email,
+                  against: %i[email],
+                  using: { tsearch: { any_word: true } }
+
+  multisearchable against: %i[first_name last_name email]
 
   # scopes
   default_scope { order(created_at: :asc) }
@@ -34,8 +49,21 @@ class User < ApplicationRecord
     photo&.purge
   end
 
-  ### Referral
+  ### Ban
+  def account_active?
+    banned_at.nil?
+  end
 
+  def active_for_authentication?
+    super && account_active?
+  end
+
+  def inactive_message
+    # i18n-tasks-use t('devise.failure.banned')
+    account_active? ? super : :banned
+  end
+
+  ### Referral
   def set_referral_code
     loop do
       self.referral_code = SecureRandom.hex(6)
@@ -49,7 +77,6 @@ class User < ApplicationRecord
   end
 
   ### Devise async
-
   def send_devise_notification(notification, *args)
     if Rails.env.production?
       devise_mailer.send(notification, self, *args).deliver_later
@@ -68,7 +95,7 @@ class User < ApplicationRecord
   end
 
   def check_name_format
-    errors.add(:name, I18n.t(".wrong_format")) unless name.match? /^\S+\s\S+$/
+    errors.add(:name, I18n.t("activerecord.errors.messages.wrong_name_format")) unless name.match? /^\S+\s\S+$/
   end
 
   def to_s

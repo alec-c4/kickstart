@@ -7,6 +7,7 @@ gem "rails", "~> <%= Rails.version %>"
 
 ### DB
 gem "pg"<%= gemfile_requirement("pg") %>
+gem "pg_search"
 gem "strong_migrations"
 
 ### Application
@@ -27,6 +28,7 @@ gem "omniauth"
 gem "omniauth-rails_csrf_protection"
 gem "omniauth-google-oauth2", "~> 1.0"
 gem "pundit"
+gem "rolify"
 
 ### SEO
 gem "meta-tags"

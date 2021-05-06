@@ -222,6 +222,19 @@ def setup_basic_logic
   # Admin dashboard
   copy_file 'app/controllers/admin/dashboard_controller.rb', force: true
   copy_file 'app/views/admin/dashboard/index.html.erb', force: true
+
+  # Admin tools
+  copy_file 'app/controllers/admin/bans_controller.rb', force: true
+  copy_file 'app/controllers/admin/roles_controller.rb', force: true
+  copy_file 'app/controllers/admin/users_controller.rb', force: true
+
+  generate "migration EnableTrgmPsqlExtension"
+  trgm_migration_file = (Dir['db/migrate/*_enable_trgm_psql_extension.rb']).first
+  copy_file 'migrations/trgm.rb', trgm_migration_file, force: true
+  
+  sleep 1
+
+  generate "pg_search:migration:multisearch"
 end
 
 def setup_gems
@@ -293,6 +306,15 @@ def setup_auth
   inject_into_file 'config/initializers/devise.rb', 
     "# config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id], Rails.application.credentials.google[:client_secret], name: \"google\"\n\n", 
     before: /# ==> Warden configuration/  
+
+  generate "rolify Role User"
+  copy_file 'app/models/role.rb', force: true
+  copy_file 'config/initializers/rolify.rb', force: true  
+
+  rolify_migration_file = (Dir['db/migrate/*_rolify_create_roles.rb']).first
+  copy_file 'migrations/rolify.rb', rolify_migration_file, force: true
+
+  directory 'app/views/admin/users', force: true
 end
 
 def setup_pundit

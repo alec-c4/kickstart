@@ -1,16 +1,16 @@
 <div>
   <% if @user.photo.attached? %>
-    <%= image_tag @user.photo.variant(combine_options: {auto_orient: true, gravity: "center", resize: "200x200^"}).processed %>
-  <% else %>
-    <b>No photo</b>
-  <% end %>
+    <%= image_tag @user.photo.variant(auto_orient: true, gravity: "center" , resize: "200x200^" ).processed %>
+      <% else %>
+        <b>No photo</b>
+        <% end %>
 
-  <p>
-    <%= @user.name %>
-  </p>
+          <p>
+            <%= @user.name %>
+          </p>
 
-  <p>
-    <%= @user.email %>
-  </p>
+          <p>
+            <%= @user.email %>
+          </p>
 
 </div>

@@ -1,0 +1,18 @@
+<h1>Manage users</h1>
+
+<%= render 'admin/users/search_form' %>
+
+<table class="table table-hover">
+  <thead class="table-dark">
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col">Email</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+  <tbody id="users">
+  <%= render @users %>
+  </tbody>
+</table>
+
+<%== pagy_bootstrap_nav(@pagy) %>

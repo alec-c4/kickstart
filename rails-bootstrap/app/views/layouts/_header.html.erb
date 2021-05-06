@@ -1,14 +1,40 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown"
+      aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse flex-grow-1 text-right" id="navbarNav">
-    	<ul class="navbar-nav ms-auto flex-nowrap">
-			<%= render partial: 'layouts/account_items' %>
-    	</ul>
+      <ul class="navbar-nav ms-auto flex-nowrap">
+
+        <% if signed_in? && current_user.is_admin? %>
+          <li class="nav-item dropdown">
+            <div class="btn-group">
+              <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Admin tools
+              </button>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to "Admin dashboard" , admin_dashboard_path, class: "dropdown-item" %>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/flipper">Flipper console</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/sidekiq">Sidekiq console</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/blazer">Blazer console</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <% end %>
+
+            <%= render partial: 'layouts/account_items' %>
+      </ul>
     </div>
   </div>
 </nav>
-

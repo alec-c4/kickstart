@@ -1,0 +1,11 @@
+<h1>
+  Edit user
+</h1>
+
+<div class="max-w-full space-y-8">
+  <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+    <%= render 'form', user: @user %>
+  </div>
+</div><br>
+
+<%= link_to 'Show', [:admin, @user] %> | <%= link_to 'Back', admin_users_path %>
