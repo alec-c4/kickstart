@@ -1,0 +1,30 @@
+<h1>Announcements</h1>
+
+<table class="table table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Published at</th>
+      <th scope="col">Announcement type</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @announcements.each do |announcement| %>
+      <tr>
+        <td><%= link_to announcement.name, [:admin, announcement] %></td>
+        <td><%= announcement.published_at %></td>
+        <td><%= announcement.announcement_type %></td>
+        <td>
+          <%= link_to 'Edit', edit_admin_announcement_path(announcement), class: "btn btn-warning btn-sm" %>
+          <%= link_to 'Destroy', [:admin, announcement], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Announcement', new_admin_announcement_path, class: "btn btn-primary" %>

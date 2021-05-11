@@ -33,6 +33,8 @@ def apply_template!
     setup_flipper
     setup_pundit
     setup_ahoy_blazer
+    add_notifications
+    add_announcements
 
     setup_dev_test
     setup_basic_logic
@@ -373,6 +375,23 @@ def setup_ahoy_blazer
 
   copy_file 'migrations/ahoy.rb', ahoy_migration_file, force: true
   copy_file 'migrations/blazer.rb', blazer_migration_file, force: true
+end
+
+def add_notifications
+  generate "noticed:model"
+  copy_file "app/controllers/customer/notifications_controller.rb", force: true
+  copy_file "app/policies/notification_policy.rb", force: true
+  directory 'app/views/customer/notifications', force: true
+end
+
+def add_announcements
+  generate "model Announcement published_at:datetime announcement_type name description:text"
+  copy_file "app/controllers/admin/announcements_controller.rb", force: true
+  copy_file "app/controllers/announcements_controller.rb", force: true
+  copy_file "app/helpers/announcements_helper.rb", force: true
+  copy_file "app/models/announcement.rb", force: true
+  directory 'app/views/admin/announcements', force: true
+  directory 'app/views/announcements', force: true
 end
 
 def setup_rubocop

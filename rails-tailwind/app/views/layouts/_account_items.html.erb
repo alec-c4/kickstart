@@ -1,10 +1,15 @@
 <% if signed_in? %>
+  <%= link_to t("navigation.whats_new"), announcements_path, class: "dropdown-item #{unread_announcements(current_user)}" %>
 
   <%= link_to t('navigation.account'), edit_user_registration_path %>
   <%= link_to t('navigation.profile_edit'), edit_profile_path %>
   <%= link_to t('navigation.profile_view'), profile_path(current_user) %>
   <%= link_to t('navigation.referrals_page'), referrals_path %>  
-  <%= link_to t('navigation.sign_out'), destroy_user_session_path, method: :delete %>
+  <% if user_masquerade? %>
+    <%= link_to "Reverse masquerade", back_masquerade_path(current_user) %>
+  <% else %>
+    <%= link_to t('navigation.sign_out'), destroy_user_session_path, method: :delete %>
+  <% end %>
 
 <% else %>
   <%= link_to t('navigation.sign_up'), new_user_registration_path %>

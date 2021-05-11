@@ -12,6 +12,11 @@ Rails.application.routes.draw do
     resources :referrals, controller: "users/referrals", only: :index
   end
 
+  ### Customer
+  scope :customer, module: "customer" do
+    resources :notifications, only: :index
+  end  
+
   ### Admin
   namespace :admin do
     get "/", to: "dashboard#index", as: :dashboard
@@ -25,6 +30,8 @@ Rails.application.routes.draw do
       post "/ban", to: "bans#create", as: :create_ban
       delete "/ban", to: "bans#destroy", as: :remove_ban
     end
+
+    resources :announcements
   end
 
   authenticate :user, ->(u) { u.is_admin? } do
@@ -36,6 +43,8 @@ Rails.application.routes.draw do
   authenticated :user do
     root to: "customer/dashboard#index", as: :authenticated_root
   end
+
+  resources :announcements, only: [:index]
 
   get "/terms", to: "pages#terms"
   get "/privacy", to: "pages#privacy"

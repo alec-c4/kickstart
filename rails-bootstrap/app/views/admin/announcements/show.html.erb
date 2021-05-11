@@ -1,0 +1,22 @@
+<p>
+  <strong>Published at:</strong>
+  <%= @announcement.published_at %>
+</p>
+
+<p>
+  <strong>Announcement type:</strong>
+  <%= @announcement.announcement_type %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @announcement.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @announcement.description %>
+</p>
+
+<%= link_to 'Edit', edit_admin_announcement_path(@announcement) %> |
+<%= link_to 'Back', admin_announcements_path %>

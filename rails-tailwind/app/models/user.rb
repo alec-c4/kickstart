@@ -3,7 +3,8 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :confirmable, :lockable, :timeoutable, :trackable,
-         :recoverable, :rememberable, :trackable, :validatable, :pwned_password,
+         :recoverable, :rememberable, :trackable, :validatable, 
+         :pwned_password, :masqueradable,
          :omniauthable, omniauth_providers: %i[google]
 
   has_many :identities, dependent: :destroy
@@ -12,6 +13,7 @@ class User < ApplicationRecord
   has_many :referred_users, class_name: "User", foreign_key: :referred_by_id,
                             inverse_of: :referred_by, dependent: :nullify
   has_many :visits, class_name: "Ahoy::Visit", dependent: :destroy
+  has_many :notifications, as: :recipient, dependent: :destroy
 
   rolify
 

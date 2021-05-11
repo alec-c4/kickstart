@@ -4,12 +4,20 @@
 	    Account
 	  </a>
 	  <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDarkDropdownMenuLink">
-		  <li><%= link_to t('navigation.account'), edit_user_registration_path, class: 'dropdown-item' %></li>
+      <li>
+        <%= link_to t("navigation.whats_new"), announcements_path, class: "dropdown-item #{unread_announcements(current_user)}" %>
+      </li>		  
+      <li><hr class="dropdown-divider"></li>			
+			<li><%= link_to t('navigation.account'), edit_user_registration_path, class: 'dropdown-item' %></li>
 		  <li><%= link_to t('navigation.profile_edit'), edit_profile_path, class: 'dropdown-item' %></li>
 		  <li><%= link_to t('navigation.profile_view'), profile_path(current_user), class: 'dropdown-item' %></li>
 		  <li><%= link_to t('navigation.referrals_page'), referrals_path, class: 'dropdown-item' %></li>  
-		  <li><%= link_to t('navigation.sign_out'), destroy_user_session_path, method: :delete, class: 'dropdown-item' %></li>
-	  </ul>
+      <% if user_masquerade? %>
+        <li><%= link_to "Reverse masquerade", back_masquerade_path(current_user), class: 'dropdown-item' %></li>
+      <% else %>
+        <li><%= link_to t('navigation.sign_out'), destroy_user_session_path, method: :delete, class: 'dropdown-item' %></li>
+      <% end %>
+			</ul>
 	</li>
 
 <% else %>

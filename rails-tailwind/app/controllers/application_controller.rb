@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
     before_action :configure_permitted_parameters, if: :devise_controller?
     around_action :configure_time_zone, if: :current_user
     before_action :configure_referral_cookie
+    before_action :masquerade_user!
   
     rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 

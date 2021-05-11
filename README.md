@@ -39,6 +39,8 @@ config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.c
 ## What's inside
 
 - ruby on rails application template 
+- .gitignore file
+- [VSCode](https://code.visualstudio.com/) configuration files
 - postgresql database connector
 - [vite](https://vitejs.dev) as a frontend builder
 - bootstrap or tailwind.css frontend frameworks with scaffold templates 
@@ -47,11 +49,9 @@ config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.c
 - typescript for frontend
 - Procfile to run app, vite and sidekiq
 - [Sidekiq](https://github.com/mperham/sidekiq) for background jobs
-- [VSCode](https://code.visualstudio.com/) configuration files
-- .gitignore file
 - [strong_migrations](https://github.com/ankane/strong_migrations)
 - authentication with [devise](https://github.com/heartcombo/devise) and [devise-pwned_password](https://github.com/michaelbanfield/devise-pwned_password) + google auth
-- [name_of_person](https://github.com/basecamp/name_of_person) to display username in different formats
+- [devise_masquerade](https://github.com/oivoodoo/devise_masquerade)
 - authorization with [pundit](https://github.com/varvet/pundit)
 - role management with [rolify](https://github.com/RolifyCommunity/rolify)
 - ability to ban user account
@@ -69,6 +69,8 @@ config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.c
 - [view_component](https://viewcomponent.org/) as a replacement for partials
 - [flipper](https://github.com/jnunemaker/flipper) with Flipper UI to enable [flag management](https://boringrails.com/articles/feature-flags-simplest-thing-that-could-work/)
 - [ahoy](https://github.com/ankane/ahoy) and [blazer](https://github.com/ankane/blazer) for business intelligence
+- [noticed](https://github.com/excid3/noticed) for notifications
+- announcements (new/fix/update) for all users
 - flash helper
 - referral system
 - landing page
@@ -81,10 +83,8 @@ config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.c
 - add [erb linter](https://github.com/Shopify/erb-lint)
 - add documentation (howto's, best practices, curated list of libraries)
 - add deployments tools
-- add [devise_masquerade](https://github.com/oivoodoo/devise_masquerade)
 - add [hotwire](https://hotwire.dev/)
-- add [notices](https://github.com/excid3/noticed)
 - add [ahoy_email](https://github.com/ankane/ahoy_email) and [mailkick](https://github.com/ankane/mailkick)
+- add [discard](https://github.com/jhawthorn/discard)
 - add monitoring and analytics tools
 - add A11y
-- configure Tailwind.css JIT

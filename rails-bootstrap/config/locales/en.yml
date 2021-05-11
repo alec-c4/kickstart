@@ -24,6 +24,7 @@ en:
     sign_in: Login
     sign_out: Logout
     sign_up: Register
+    whats_new: What's New
   security:
     access_denied: Access denied!
   users:

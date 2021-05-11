@@ -50,6 +50,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
 
       ## Settings
       t.string :time_zone
+      t.datetime :announcements_last_read_at
 
       t.timestamps null: false
     end

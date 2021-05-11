@@ -23,6 +23,7 @@ gem "jbuilder"<%= gemfile_requirement("jbuilder") %>
 
 ### Auth
 gem "devise", github: "heartcombo/devise"
+gem "devise_masquerade"
 gem "devise-pwned_password"
 gem "omniauth"
 gem "omniauth-rails_csrf_protection"
@@ -41,6 +42,7 @@ gem "i18n-tasks"
 gem "devise-i18n"
 
 ### Analytics
+gem "ahoy_email"
 gem "ahoy_matey"
 gem "blazer"
 
@@ -53,6 +55,7 @@ gem "flipper-active_record"
 gem "flipper-ui"
 gem "image_processing"<%= gemfile_requirement("image_processing") %>
 gem "mailgun-ruby"
+gem "noticed"
 gem "pagy"
 
 ### Background Processing
