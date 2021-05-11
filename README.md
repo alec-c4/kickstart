@@ -86,5 +86,6 @@ config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.c
 - add [hotwire](https://hotwire.dev/)
 - add [ahoy_email](https://github.com/ankane/ahoy_email) and [mailkick](https://github.com/ankane/mailkick)
 - add [discard](https://github.com/jhawthorn/discard)
+- add [split](https://github.com/splitrb/split) 
 - add monitoring and analytics tools
 - add A11y

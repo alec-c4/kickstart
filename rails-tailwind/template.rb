@@ -112,16 +112,13 @@ def setup_frontend
   run 'yarn add postcss postcss-import postcss-flexbugs-fixes postcss-preset-env @fullhuman/postcss-purgecss'
   run 'yarn add jstz sass autoprefixer local-time @fortawesome/fontawesome-free'
   run 'yarn add @rails/ujs @rails/activestorage @rails/actioncable'
-  run 'yarn add stimulus stimulus-vite-helpers vite-plugin-full-reload vite-plugin-stimulus-hmr'
+  run 'yarn add stimulus stimulus-vite-helpers'
   run 'yarn add tailwindcss @tailwindcss/aspect-ratio @tailwindcss/forms @tailwindcss/typography'
 
   directory 'app/frontend', force: true
   run 'bundle exec vite install'
   run 'mkdir app/frontend/images'
   run  'touch app/frontend/images/.keep'
-
-  copy_file 'config/vite.json', force: true
-  copy_file 'vite.config.ts', force: true
 end
 
 def setup_procfile

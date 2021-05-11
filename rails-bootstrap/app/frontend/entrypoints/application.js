@@ -4,7 +4,6 @@ import "../channels/index.js";
 import "../controllers/index.js";
 
 import "bootstrap";
-import "vite/dynamic-import-polyfill";
 import "@fortawesome/fontawesome-free/css/all.css";
 
 import * as ActiveStorage from "@rails/activestorage";
