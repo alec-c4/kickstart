@@ -39,6 +39,8 @@ def apply_template!
     setup_dev_test
     setup_basic_logic
 
+    setup_deployment    
+
     setup_rubocop
     run_rubocop
 
@@ -367,12 +369,15 @@ def setup_ahoy_blazer
   generate 'ahoy:install'
   run 'yarn add ahoy.js'
   generate 'blazer:install'
+  generate 'ahoy:messages'
 
   ahoy_migration_file = (Dir['db/migrate/*_create_ahoy_visits_and_events.rb']).first
   blazer_migration_file = (Dir['db/migrate/*_install_blazer.rb']).first
+  ahoy_email_migration_file = (Dir['db/migrate/*_create_ahoy_messages.rb']).first
 
   copy_file 'migrations/ahoy.rb', ahoy_migration_file, force: true
   copy_file 'migrations/blazer.rb', blazer_migration_file, force: true
+  copy_file 'migrations/ahoy_email.rb', ahoy_email_migration_file, force: true
 end
 
 def add_notifications
@@ -390,6 +395,11 @@ def add_announcements
   copy_file "app/models/announcement.rb", force: true
   directory 'app/views/admin/announcements', force: true
   directory 'app/views/announcements', force: true  
+end
+
+def setup_deployment
+  copy_file 'Rakefile', force: true  
+  directory '.do', force: true
 end
 
 def setup_rubocop

@@ -68,7 +68,7 @@ config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.c
 - [active_interaction](https://github.com/AaronLasseigne/active_interaction) to make controllers thin
 - [view_component](https://viewcomponent.org/) as a replacement for partials
 - [flipper](https://github.com/jnunemaker/flipper) with Flipper UI to enable [flag management](https://boringrails.com/articles/feature-flags-simplest-thing-that-could-work/)
-- [ahoy](https://github.com/ankane/ahoy) and [blazer](https://github.com/ankane/blazer) for business intelligence
+- [ahoy](https://github.com/ankane/ahoy), [ahoy_email](https://github.com/ankane/ahoy_email) and [blazer](https://github.com/ankane/blazer) for business intelligence
 - [noticed](https://github.com/excid3/noticed) for notifications
 - announcements (new/fix/update) for all users
 - flash helper
@@ -80,12 +80,13 @@ config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.c
 
 ## Todo
 
+- add [lockbox](https://github.com/ankane/lockbox) and [blind_index](https://github.com/ankane/blind_index) for email encryption
 - add [erb linter](https://github.com/Shopify/erb-lint)
-- add documentation (howto's, best practices, curated list of libraries)
-- add deployments tools
 - add [hotwire](https://hotwire.dev/)
-- add [ahoy_email](https://github.com/ankane/ahoy_email) and [mailkick](https://github.com/ankane/mailkick)
+- add [mailkick](https://github.com/ankane/mailkick)
 - add [discard](https://github.com/jhawthorn/discard)
 - add [split](https://github.com/splitrb/split) 
 - add monitoring and analytics tools
 - add A11y
+- add deployments tools
+- add documentation (howto's, best practices, curated list of libraries)

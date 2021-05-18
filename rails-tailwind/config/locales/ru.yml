@@ -7,6 +7,11 @@ ru:
         last_name: Фамилия
         name: Имя
     errors:
+      models:
+        user:
+          attributes:
+            password:
+              pwned_password: возможно был в одной из утечек    
       messages:
         wrong_name_format: должно быть в формате Имя Фамилия
   devise:
