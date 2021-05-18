@@ -87,6 +87,7 @@ end
 
 group :development do
   gem "amazing_print"
+  gem "annotate"
   gem "letter_opener"
   gem "brakeman", require: false
   gem "bundler-audit"

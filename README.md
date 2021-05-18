@@ -70,6 +70,7 @@ config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.c
 - [flipper](https://github.com/jnunemaker/flipper) with Flipper UI to enable [flag management](https://boringrails.com/articles/feature-flags-simplest-thing-that-could-work/)
 - [ahoy](https://github.com/ankane/ahoy), [ahoy_email](https://github.com/ankane/ahoy_email) and [blazer](https://github.com/ankane/blazer) for business intelligence
 - [noticed](https://github.com/excid3/noticed) for notifications
+- [annotate](https://github.com/ctran/annotate_models) for annotations
 - announcements (new/fix/update) for all users
 - flash helper
 - referral system

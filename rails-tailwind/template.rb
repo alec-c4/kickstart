@@ -239,6 +239,7 @@ end
 
 def setup_gems
   generate 'config:install -s'
+  generate 'annotate:install'
 end
 
 def setup_migrations
