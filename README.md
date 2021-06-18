@@ -71,6 +71,8 @@ config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.c
 - [ahoy](https://github.com/ankane/ahoy), [ahoy_email](https://github.com/ankane/ahoy_email) and [blazer](https://github.com/ankane/blazer) for business intelligence
 - [noticed](https://github.com/excid3/noticed) for notifications
 - [annotate](https://github.com/ctran/annotate_models) for annotations
+- [lockbox](https://github.com/ankane/lockbox) and [blind_index](https://github.com/ankane/blind_index) for email fields encryption
+- [rack-attack](https://github.com/rack/rack-attack) to prevent bruteforce and DDoS attacks 
 - announcements (new/fix/update) for all users
 - flash helper
 - referral system
@@ -81,12 +83,10 @@ config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.c
 
 ## Todo
 
-- add [lockbox](https://github.com/ankane/lockbox) and [blind_index](https://github.com/ankane/blind_index) for email encryption
 - add [erb linter](https://github.com/Shopify/erb-lint)
 - add [hotwire](https://hotwire.dev/)
 - add [mailkick](https://github.com/ankane/mailkick)
 - add [discard](https://github.com/jhawthorn/discard)
-- add [split](https://github.com/splitrb/split) 
 - add monitoring and analytics tools
 - add A11y
 - add deployments tools

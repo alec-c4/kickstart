@@ -7,6 +7,9 @@ class User < ApplicationRecord
          :pwned_password, :masqueradable,
          :omniauthable, omniauth_providers: %i[google]
 
+  encrypts :email, :unconfirmed_email
+  blind_index :email, :unconfirmed_email
+
   has_many :identities, dependent: :destroy
   belongs_to :banned_by, class_name: "User", optional: true
   belongs_to :referred_by, class_name: "User", optional: true

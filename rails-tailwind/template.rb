@@ -33,6 +33,7 @@ def apply_template!
     setup_flipper
     setup_pundit
     setup_ahoy_blazer
+    setup_security
     add_notifications
     add_announcements
 
@@ -379,6 +380,11 @@ def setup_ahoy_blazer
   copy_file 'migrations/ahoy.rb', ahoy_migration_file, force: true
   copy_file 'migrations/blazer.rb', blazer_migration_file, force: true
   copy_file 'migrations/ahoy_email.rb', ahoy_email_migration_file, force: true
+end
+
+def setup_security
+  copy_file 'config/initializers/logstop.rb', force: true  
+  copy_file 'config/initializers/rack_attack.rb', force: true  
 end
 
 def add_notifications
