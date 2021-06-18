@@ -11,11 +11,17 @@
 7. Clone repository localy
 8. Run from console 
 
-```
+``` bash
 $ rails new app_name -m /path/to/template
 $ rails credentials:edit --environment development
 $ rails db:create
 $ rails db:migrate
+```
+
+Fill creadentials file with keys, following example in `creadentials.example` file. Key for LockBox you can create in rails consoole with
+
+``` ruby
+Lockbox.generate_key
 ```
 
 9. Uncomment following line in **config/initializers/devise.rb** file
@@ -26,13 +32,13 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 
 10. Replace following line in app/mailers/application_mailer.rb with your code
 
-```
+``` ruby
 default from: "from@example.com"
 ```
 
 11. Replace following line in config/initializers/devise.rb with your code
 
-```
+``` ruby
 config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 ```
 
