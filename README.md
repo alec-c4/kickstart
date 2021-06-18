@@ -42,6 +42,8 @@ default from: "from@example.com"
 config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 ```
 
+12. Configure rack-attack using following [guide](https://expeditedsecurity.com/blog/ultimate-guide-to-rack-attack/)
+
 ## What's inside
 
 - ruby on rails application template 
