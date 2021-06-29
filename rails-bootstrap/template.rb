@@ -46,6 +46,8 @@ def apply_template!
     setup_rubocop
     run_rubocop
 
+    copy_file 'README.md', force: true  
+
     say
     say "App successfully created!", :green
     say
