@@ -18,7 +18,7 @@ $ rails db:create
 $ rails db:migrate
 ```
 
-Fill credentials file with keys, following example in `credentials.example` file. Key for LockBox you can create in rails consoole with
+Fill credentials file with keys, following example in `credentials.example` file. Key for LockBox you can create in rails console with
 
 ``` ruby
 Lockbox.generate_key

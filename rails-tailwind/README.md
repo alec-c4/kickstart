@@ -24,7 +24,7 @@ using
 $ rails credentials:edit --environment development
 ```
 
-Key for LockBox you can create in rails consoole with
+Key for LockBox you can create in rails console with
 
 ``` ruby
 Lockbox.generate_key
