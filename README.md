@@ -44,6 +44,8 @@ config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.c
 
 12. Configure rack-attack using following [guide](https://expeditedsecurity.com/blog/ultimate-guide-to-rack-attack/)
 
+13. Add [legal documents](https://github.com/ankane/awesome-legal).
+
 ## What's inside
 
 - ruby on rails application template 
@@ -91,6 +93,7 @@ config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.c
 
 ## Todo
 
+- update with rails [production best practices](https://github.com/ankane/production_rails) and [security best practices](https://github.com/ankane/secure_rails)
 - add [erb linter](https://github.com/Shopify/erb-lint)
 - add [hotwire](https://hotwire.dev/)
 - add [mailkick](https://github.com/ankane/mailkick)
@@ -99,3 +102,7 @@ config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.c
 - add A11y
 - add deployments tools
 - add documentation (howto's, best practices, curated list of libraries)
+
+## Known issues
+
+- rolify gem requires database to be created, otherwise it crashes with NoDatabaseError exception

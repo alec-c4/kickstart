@@ -306,8 +306,8 @@ def setup_auth
   copy_file 'app/models/identity.rb', force: true
 
   inject_into_file 'config/initializers/devise.rb', 
-    "# config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id], Rails.application.credentials.google[:client_secret], name: \"google\"\n\n", 
-    before: /# ==> Warden configuration/  
+    "  # config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id], Rails.application.credentials.google[:client_secret], name: \"google\"\n\n", 
+    before: /^\s*# ==> Warden configuration/  
 
   generate "rolify Role User"
   copy_file 'app/models/role.rb', force: true

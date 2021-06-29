@@ -22,7 +22,7 @@ gem "view_component", require: "view_component/engine"
 gem "jbuilder"<%= gemfile_requirement("jbuilder") %>
 
 ### Auth
-gem "devise", github: "heartcombo/devise"
+gem "devise"
 gem "devise_masquerade"
 gem "devise-pwned_password"
 gem "omniauth"
