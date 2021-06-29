@@ -4,6 +4,9 @@
     "kaiwood.endwise",
     "vortizhe.simple-ruby-erb",
     "bung87.rails",
+    "mikestead.dotenv",
+    "castwide.solargraph",
+    "misogi.ruby-rubocop",  
     "ninoseki.vscode-gem-lens",
     "bradlc.vscode-tailwindcss",
     "aaron-bond.better-comments"
