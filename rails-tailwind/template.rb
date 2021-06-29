@@ -39,6 +39,7 @@ def apply_template!
 
     setup_dev_test
     setup_basic_logic
+    setup_mailer
 
     setup_deployment    
 
@@ -306,7 +307,7 @@ def setup_auth
   copy_file 'app/models/identity.rb', force: true
 
   inject_into_file 'config/initializers/devise.rb', 
-    "  # config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id], Rails.application.credentials.google[:client_secret], name: \"google\"\n\n", 
+    "  # config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id], Rails.application.credentials.google[:client_secret], name: \"google\"\n", 
     before: /^\s*# ==> Warden configuration/  
 
   generate "rolify Role User"
@@ -407,6 +408,12 @@ end
 def setup_deployment
   copy_file 'Rakefile', force: true  
   directory '.do', force: true
+end
+
+def setup_mailer
+  copy_file 'config/settings.yml', force: true
+  gsub_file 'config/initializers/devise.rb', /\'please-change-me-at-config-initializers-devise@example\.com\'/, "Settings.mailer.devise_from"
+  gsub_file 'app/mailers/application_mailer.rb', /\'from@example\.com\'/, "Settings.mailer.default_from"
 end
 
 def setup_rubocop

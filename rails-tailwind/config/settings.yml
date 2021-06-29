@@ -1,0 +1,3 @@
+mailer:
+  devise_from: "devise@example.com"
+  default_from: "application@example.com"

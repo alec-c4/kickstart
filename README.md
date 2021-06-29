@@ -30,21 +30,11 @@ Lockbox.generate_key
 config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id], Rails.application.credentials.google[:client_secret], name: "google"
 ```
 
-10. Replace following line in app/mailers/application_mailer.rb with your code
+10. Configure mail sender in `config\setting.yml` file
 
-``` ruby
-default from: "from@example.com"
-```
+11. Configure rack-attack using following [guide](https://expeditedsecurity.com/blog/ultimate-guide-to-rack-attack/)
 
-11. Replace following line in config/initializers/devise.rb with your code
-
-``` ruby
-config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
-```
-
-12. Configure rack-attack using following [guide](https://expeditedsecurity.com/blog/ultimate-guide-to-rack-attack/)
-
-13. Add [legal documents](https://github.com/ankane/awesome-legal).
+12. Add [legal documents](https://github.com/ankane/awesome-legal).
 
 ## What's inside
 
