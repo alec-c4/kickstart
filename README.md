@@ -24,7 +24,7 @@ Fill creadentials file with keys, following example in `creadentials.example` fi
 Lockbox.generate_key
 ```
 
-9. Uncomment following line in **config/initializers/devise.rb** file
+9. Uncomment following line in `config/initializers/devise.rb` file
 
 ``` ruby
 config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id], Rails.application.credentials.google[:client_secret], name: "google"
