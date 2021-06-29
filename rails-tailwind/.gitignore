@@ -30,6 +30,8 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/config/credentials/development.key
+/config/credentials/test.key
 
 # Ignore local settings
 config/settings.local.yml
