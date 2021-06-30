@@ -100,6 +100,7 @@ group :development do
   gem "fasterer"
   gem "pry-rails"
   gem "listen"<%= gemfile_requirement("listen") %>
+  gem "lol_dba"
   gem "solargraph"
   gem "spring"
   gem "spring-watcher-listen"<%= gemfile_requirement("spring-watcher-listen") %>

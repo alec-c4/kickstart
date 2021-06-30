@@ -46,7 +46,8 @@ def apply_template!
     setup_rubocop
     run_rubocop
 
-    copy_file 'README.md', force: true  
+    copy_readme
+
 
     say
     say "App successfully created!", :green
@@ -119,7 +120,7 @@ def setup_frontend
   run 'yarn add jstz sass autoprefixer local-time @fortawesome/fontawesome-free'
   run 'yarn add @rails/ujs @rails/activestorage @rails/actioncable'
   run 'yarn add stimulus stimulus-vite-helpers'
-  run 'yarn add bootstrap@next @popperjs/core'
+  run 'yarn add bootstrap @popperjs/core'
 
   directory 'app/frontend', force: true
   run 'bundle exec vite install'
@@ -428,6 +429,10 @@ end
 
 def run_rubocop
   run 'bundle exec rubocop -a'
+end
+
+def copy_readme
+  copy_file 'README.md', force: true  
 end
 
 run "if uname | grep -q 'Darwin'; then pgrep spring | xargs kill -9; fi"

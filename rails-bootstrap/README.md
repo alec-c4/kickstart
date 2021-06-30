@@ -77,6 +77,7 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 - [ahoy](https://github.com/ankane/ahoy), [ahoy_email](https://github.com/ankane/ahoy_email) and [blazer](https://github.com/ankane/blazer) for business intelligence
 - [noticed](https://github.com/excid3/noticed) for notifications
 - [annotate](https://github.com/ctran/annotate_models) for annotations
+- [lol_dba](https://github.com/plentz/lol_dba) for indexing
 - [lockbox](https://github.com/ankane/lockbox) and [blind_index](https://github.com/ankane/blind_index) for email fields encryption
 - [rack-attack](https://github.com/rack/rack-attack) to prevent bruteforce and DDoS attacks 
 - announcements (new/fix/update) for all users

@@ -46,7 +46,7 @@ def apply_template!
     setup_rubocop
     run_rubocop
 
-    copy_file 'README.md', force: true  
+    copy_readme
 
     say
     say "App successfully created!", :green
@@ -429,6 +429,10 @@ end
 
 def run_rubocop
   run 'bundle exec rubocop -a'
+end
+
+def copy_readme
+  copy_file 'README.md', force: true  
 end
 
 run "if uname | grep -q 'Darwin'; then pgrep spring | xargs kill -9; fi"
