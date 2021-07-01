@@ -80,6 +80,7 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 - [lol_dba](https://github.com/plentz/lol_dba) for indexing
 - [lockbox](https://github.com/ankane/lockbox) and [blind_index](https://github.com/ankane/blind_index) for email fields encryption
 - [rack-attack](https://github.com/rack/rack-attack) to prevent bruteforce and DDoS attacks 
+- [capistrano](http://www.capistranorb.com) with plugins for deployment
 - announcements (new/fix/update) for all users
 - flash helper
 - referral system

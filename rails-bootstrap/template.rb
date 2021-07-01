@@ -410,6 +410,10 @@ end
 def setup_deployment
   copy_file 'Rakefile', force: true  
   directory '.do', force: true
+
+  run "cap install"
+  copy_file 'Capfile', force: true  
+  copy_file 'config/deploy.rb', force: true  
 end
 
 def setup_mailer
@@ -432,7 +436,7 @@ def run_rubocop
 end
 
 def copy_readme
-  copy_file 'README.md', force: true  
+  copy_file 'README.md', force: true
 end
 
 run "if uname | grep -q 'Darwin'; then pgrep spring | xargs kill -9; fi"
