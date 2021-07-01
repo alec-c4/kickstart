@@ -34,7 +34,7 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/syst
 set sidekiq_roles: :app
 set sidekiq_default_hooks: true
 set sidekiq_pid: File.join(shared_path, "tmp", "pids", "sidekiq.pid") # ensure this path exists in production before deploying.
-set sidekiq_env: fetch(:rack_env, fetch(:rails_env, fetch(:stage)))
+set sidekiq_env: fetch(:rack_env) { fetch(:rails_env) { fetch(:stage) } }
 set sidekiq_log: File.join(shared_path, "log", "sidekiq.log")
 
 # sidekiq systemd options

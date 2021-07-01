@@ -43,11 +43,10 @@ def apply_template!
 
     setup_deployment
 
-    setup_rubocop
-    run_rubocop
-
     copy_readme
 
+    setup_rubocop
+    run_rubocop
 
     say
     say "App successfully created!", :green

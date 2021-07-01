@@ -15,6 +15,6 @@ module AnnouncementsHelper
       "new" => "text-success",
       "update" => "text-warning",
       "fix" => "text-danger"
-    }.fetch(type, "text-success")
+    }.fetch(type) { "text-success" }
   end
 end

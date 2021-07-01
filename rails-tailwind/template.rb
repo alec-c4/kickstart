@@ -41,12 +41,12 @@ def apply_template!
     setup_basic_logic
     setup_mailer
 
-    setup_deployment    
+    setup_deployment
+
+    copy_readme
 
     setup_rubocop
     run_rubocop
-
-    copy_readme
 
     say
     say "App successfully created!", :green

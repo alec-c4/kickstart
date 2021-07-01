@@ -49,7 +49,7 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 - [VSCode](https://code.visualstudio.com/) configuration files
 - postgresql database connector
 - [vite](https://vitejs.dev) as a frontend builder
-- bootstrap or tailwind.css frontend frameworks with scaffold templates 
+- tailwind.css frontend frameworks with scaffold templates 
 - [purge.css](https://purgecss.com/) to cleanup stylesheets
 - timezone detection with [jstz](https://github.com/iansinnott/jstz)
 - typescript for frontend
