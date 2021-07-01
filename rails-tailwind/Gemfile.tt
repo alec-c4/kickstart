@@ -105,4 +105,12 @@ group :development do
   gem "spring"
   gem "spring-watcher-listen"<%= gemfile_requirement("spring-watcher-listen") %>
   gem "web-console"<%= gemfile_requirement("web-console") %>
+
+  gem "capistrano", "~> 3.16", require: false
+  gem "capistrano3-puma", github: "seuros/capistrano-puma"
+  gem "capistrano-rails", "~> 1.6", require: false
+  gem "capistrano-rbenv"
+  gem "capistrano-sidekiq"
+  gem "bcrypt_pbkdf"
+  gem "ed25519"    
 end
