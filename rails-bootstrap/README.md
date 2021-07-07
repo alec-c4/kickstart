@@ -48,12 +48,11 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 - .gitignore file
 - [VSCode](https://code.visualstudio.com/) configuration files
 - postgresql database connector
-- [vite](https://vitejs.dev) as a frontend builder
 - bootstrap frontend frameworks with scaffold templates 
 - [purge.css](https://purgecss.com/) to cleanup stylesheets
 - timezone detection with [jstz](https://github.com/iansinnott/jstz)
 - typescript for frontend
-- Procfile to run app, vite and sidekiq
+- Procfile to run app, webpacker and sidekiq
 - [Sidekiq](https://github.com/mperham/sidekiq) for background jobs
 - [strong_migrations](https://github.com/ankane/strong_migrations)
 - authentication with [devise](https://github.com/heartcombo/devise) and [devise-pwned_password](https://github.com/michaelbanfield/devise-pwned_password) + google auth

@@ -15,14 +15,14 @@ gem "puma"<%= gemfile_requirement("puma") %>
 
 ### Frontend
 gem "simple_form"
-gem "vite_rails"
+gem "webpacker", "~> 5.4.0"
 gem "view_component", require: "view_component/engine"
 
 ### JSON / API
 gem "jbuilder"<%= gemfile_requirement("jbuilder") %>
 
 ### Auth
-gem "devise"
+gem "devise", github: "heartcombo/devise"
 gem "devise_masquerade"
 gem "devise-pwned_password"
 gem "omniauth"

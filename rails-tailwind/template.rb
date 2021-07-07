@@ -25,7 +25,6 @@ def apply_template!
     setup_i18n
     setup_simple_form
     copy_scaffold_templates
-    setup_tests
     setup_auth
     setup_active_interaction
     setup_user_tools
@@ -43,6 +42,7 @@ def apply_template!
 
     setup_deployment
 
+    setup_tests
     copy_readme
 
     setup_rubocop
@@ -115,16 +115,15 @@ def setup_generators
 end
 
 def setup_frontend
-  run 'yarn add postcss postcss-import postcss-flexbugs-fixes postcss-preset-env @fullhuman/postcss-purgecss'
-  run 'yarn add jstz sass autoprefixer local-time @fortawesome/fontawesome-free'
-  run 'yarn add @rails/ujs @rails/activestorage @rails/actioncable'
-  run 'yarn add stimulus stimulus-vite-helpers'
-  run 'yarn add tailwindcss @tailwindcss/aspect-ratio @tailwindcss/forms @tailwindcss/typography'
+  rails_command 'webpacker:install:stimulus' 
+  run 'mv app/javascript app/frontend'
+  gsub_file "config/webpacker.yml", /source_path: app\/javascript/, 'source_path: app/frontend'
 
-  directory 'app/frontend', force: true
-  run 'bundle exec vite install'
-  run 'mkdir app/frontend/images'
-  run  'touch app/frontend/images/.keep'
+  run 'yarn add jstz local-time'
+  run 'yarn add @fullhuman/postcss-purgecss @fortawesome/fontawesome-free'
+
+  directory 'app/frontend/packs', force: true  
+  directory 'app/frontend/stylesheets', force: true  
 end
 
 def setup_procfile
@@ -206,6 +205,8 @@ def setup_basic_logic
       <%= render partial: 'layouts/analytics' %>
     LAYOUT
   end
+
+  gsub_file 'app/views/layouts/application.html.erb', /stylesheet_link_tag/, 'stylesheet_pack_tag'
 
   # Pages
   copy_file 'app/controllers/pages_controller.rb', force: true
@@ -292,35 +293,32 @@ end
 
 def setup_auth
   generate 'devise:install'
-  generate 'devise User'
-
-  devise_migration_file = (Dir['db/migrate/*_devise_create_users.rb']).first
-  copy_file 'migrations/create_users.rb', devise_migration_file, force: true
-
-  directory 'app/views/devise', force: true
-  copy_file 'app/models/user.rb', force: true
-
-  generate 'model Identity'
-
-  identity_migration_file = (Dir['db/migrate/*_create_identities.rb']).first
-  copy_file 'migrations/create_identities.rb', identity_migration_file, force: true
-
-
-  copy_file 'app/models/identity.rb', force: true
-
   inject_into_file 'config/initializers/devise.rb', 
     "  # config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id], Rails.application.credentials.google[:client_secret], name: \"google\"\n", 
     before: /^\s*# ==> Warden configuration/  
 
-  generate "rolify Role User"
-  copy_file 'app/models/role.rb', force: true
-  copy_file 'config/initializers/rolify.rb', force: true  
+
+  generate 'migration devise_create_users'
+  generate 'migration create_identities'
+  generate "migration rolify_create_roles"  
+
+  devise_migration_file = (Dir['db/migrate/*_devise_create_users.rb']).first
+  copy_file 'migrations/create_users.rb', devise_migration_file, force: true
+  
+  identity_migration_file = (Dir['db/migrate/*_create_identities.rb']).first
+  copy_file 'migrations/create_identities.rb', identity_migration_file, force: true
 
   rolify_migration_file = (Dir['db/migrate/*_rolify_create_roles.rb']).first
   copy_file 'migrations/rolify.rb', rolify_migration_file, force: true
+  
+  copy_file 'app/models/user.rb', force: true
+  copy_file 'app/models/identity.rb', force: true  
+  copy_file 'app/models/role.rb', force: true
+  copy_file 'config/initializers/rolify.rb', force: true  
 
+  directory 'app/views/devise', force: true
   directory 'app/views/admin/users', force: true
-  end
+end
 
 def setup_pundit
   generate 'pundit:install'
@@ -344,6 +342,12 @@ def setup_user_tools
 end
 
 def setup_tailwind
+  run 'yarn remove @rails/webpacker'
+  run 'yarn add @rails/webpacker@5.4.0 postcss@^8.2.10 postcss-loader@^4.0.3 sass@^1.32.7 autoprefixer@^10.2.6'
+  run 'yarn add tailwindcss @tailwindcss/forms @tailwindcss/typography @tailwindcss/aspect-ratio @tailwindcss/typography @tailwindcss/line-clamp'
+
+  copy_file 'babel.config.js', force: true
+  copy_file 'config/webpack/environment.js', force: true  
   copy_file 'tailwind.config.js', force: true
   copy_file 'postcss.config.js', force: true
 end
