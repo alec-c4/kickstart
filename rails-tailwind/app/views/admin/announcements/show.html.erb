@@ -4,6 +4,11 @@
 </p>
 
 <p>
+  <strong>Published by:</strong>
+  <%= link_to @announcement.publisher, admin_user_path(@announcement.publisher) %>
+</p>
+
+<p>
   <strong>Announcement type:</strong>
   <%= @announcement.announcement_type %>
 </p>

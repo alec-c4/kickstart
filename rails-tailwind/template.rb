@@ -404,6 +404,10 @@ end
 
 def add_announcements
   generate "model Announcement published_at:datetime announcement_type name description:text"
+
+  announcements_migration_file = (Dir['db/migrate/*_create_announcements.rb']).first
+  copy_file 'migrations/announcements.rb', announcements_migration_file, force: true
+    
   copy_file "app/controllers/admin/announcements_controller.rb", force: true
   copy_file "app/controllers/announcements_controller.rb", force: true
   copy_file "app/helpers/announcements_helper.rb", force: true

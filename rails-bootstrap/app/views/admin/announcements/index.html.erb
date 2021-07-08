@@ -5,6 +5,7 @@
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Published at</th>
+      <th scope="col">Published by</th>
       <th scope="col">Announcement type</th>
       <th scope="col"></th>
     </tr>
@@ -15,6 +16,7 @@
       <tr>
         <td><%= link_to announcement.name, [:admin, announcement] %></td>
         <td><%= announcement.published_at %></td>
+        <td><%= announcement.publisher %></td>
         <td><%= announcement.announcement_type %></td>
         <td>
           <%= link_to 'Edit', edit_admin_announcement_path(announcement), class: "btn btn-warning btn-sm" %>

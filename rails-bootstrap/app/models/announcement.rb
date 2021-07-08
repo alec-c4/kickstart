@@ -1,6 +1,8 @@
 class Announcement < ApplicationRecord
   TYPES = %w[new fix update].freeze
 
+  belongs_to :publisher, class_name: "User"
+
   after_initialize :set_defaults
 
   validates :announcement_type, :description, :name, :published_at, presence: true

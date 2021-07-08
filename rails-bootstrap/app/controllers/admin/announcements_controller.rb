@@ -20,6 +20,7 @@ class Admin::AnnouncementsController < AdminController
   # POST /admin/announcements or /admin/announcements.json
   def create
     @announcement = Announcement.new(announcement_params)
+    @announcement.publisher = current_user
 
     respond_to do |format|
       if @announcement.save
