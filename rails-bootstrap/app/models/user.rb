@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :confirmable, :lockable, :timeoutable, :trackable,
          :recoverable, :rememberable, :trackable, :validatable, 
          :pwned_password, :masqueradable,
-         :omniauthable, omniauth_providers: %i[google]
+         :omniauthable, omniauth_providers: OAUTH_PROVIDERS
 
   encrypts :email, :unconfirmed_email
   blind_index :email, :unconfirmed_email

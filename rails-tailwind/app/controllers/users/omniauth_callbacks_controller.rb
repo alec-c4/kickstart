@@ -4,12 +4,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   attr_reader :identity, :user
 
-  def facebook
-    handle_auth "Facebook"
-  end
-
-  def google
-    handle_auth "Google"
+  OAUTH_PROVIDERS.each do |m|
+    define_method m do
+      handle_auth m.capitalize
+    end
   end
 
   private
