@@ -1,5 +1,10 @@
 # Kickstart
 
+<a href="https://gitmoji.dev">
+  <img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square" alt="Gitmoji">
+</a>
+
+
 ## Usage instructions
 
 1. Install rbenv, ruby (2.6+), node.js and yarn.
