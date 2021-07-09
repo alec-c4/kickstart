@@ -43,6 +43,14 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 
 14. Add [legal documents](https://github.com/ankane/awesome-legal).
 
+## Setup for production
+
+0. Install PostgreSQL, Redis, memcached, nginx, rbenv and ruby to your server.
+1. Create [Mailgun](https://mailgun.com) account if you haven't done it before
+2. Create [Appsignal](https://appsignal.com) account, install it to your app
+3. Register keys for Google authentication in [Google API console](https://console.cloud.google.com/apis/)
+4. Fill credentials with `rails credentials:edit` 
+
 ## What's inside
 
 - ruby on rails application template 

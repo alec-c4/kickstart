@@ -1,10 +1,13 @@
 require "rails/all"
+require "fileutils"
+require "shellwords"
 
 RAILS_REQUIREMENT = ">= 6.1.3"
+REPO_LINK = "https://github.com/alec-c4/kickstart.git"
 
 def apply_template!
   assert_minimum_rails_version
-  source_paths
+  add_template_repository_to_source_path
 
   setup_vscode
   setup_git
@@ -73,8 +76,23 @@ def apply_template!
   end
 end
 
-def source_paths
-  [__dir__]
+def add_template_repository_to_source_path
+  if __FILE__.match?(%r{\Ahttps?://})
+    require "tmpdir"
+    source_paths.unshift(tempdir = Dir.mktmpdir("jumpstart-"))
+    at_exit { FileUtils.remove_entry(tempdir) }
+    git clone: [
+      "--quiet",
+      REPO_LINK,
+      tempdir
+    ].map(&:shellescape).join(" ")
+
+    if (branch = __FILE__[%r{kickstart/(.+)/template.rb}, 1])
+      Dir.chdir(tempdir) { git checkout: branch }
+    end
+  else
+    source_paths.unshift(File.dirname(__FILE__))
+  end
 end
 
 def assert_minimum_rails_version
@@ -300,6 +318,7 @@ end
 
 def setup_auth
   generate "devise:install"
+
   inject_into_file "config/initializers/devise.rb",
                    "  # config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id], Rails.application.credentials.google[:client_secret], name: \"google\"\n",
                    before: /^\s*# ==> Warden configuration/
@@ -321,7 +340,6 @@ def setup_auth
   copy_file "app/models/identity.rb", force: true
   copy_file "app/models/role.rb", force: true
   copy_file "config/initializers/rolify.rb", force: true
-  copy_file "config/initializers/oauth.rb", force: true
 
   directory "app/views/devise", force: true
   directory "app/views/admin/users", force: true

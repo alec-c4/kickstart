@@ -4,7 +4,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   attr_reader :identity, :user
 
-  OAUTH_PROVIDERS.each do |m|
+  User::OAUTH_PROVIDERS.each do |m|
     define_method m do
       handle_auth m.capitalize
     end

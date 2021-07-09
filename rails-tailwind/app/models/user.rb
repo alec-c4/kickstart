@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   include PgSearch::Model
 
+  OAUTH_PROVIDERS = %w[google].freeze
+
   devise :database_authenticatable, :registerable,
          :confirmable, :lockable, :timeoutable, :trackable,
          :recoverable, :rememberable, :trackable, :validatable,

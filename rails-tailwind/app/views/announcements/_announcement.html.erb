@@ -1,0 +1,12 @@
+<div class="row m-2">
+  <div class="col">
+    <%= link_to announcements_path(anchor: dom_id(announcement)) do %>
+      <%= announcement.published_at.strftime("%b %d") %>
+    <% end %>
+    -
+    <strong class="<%= announcement_class(announcement.announcement_type) %>"><%= announcement.announcement_type.titleize %>:</strong>
+    <strong><%= announcement.name %></strong>
+
+    <%= simple_format announcement.description %>
+  </div>
+</div>

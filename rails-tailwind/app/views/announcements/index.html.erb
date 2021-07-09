@@ -2,26 +2,15 @@
   <h1 class="mb-3">What's New</h1>
 
   <% @announcements.each do |announcement| %>
-    <div class="row m-2">
-      <div class="col">
-        <%= link_to announcements_path(anchor: dom_id(announcement)) do %>
-          <%= announcement.published_at.strftime("%b %d") %>
-        <% end %>
-        -
-        <strong class="<%= announcement_class(announcement.announcement_type) %>"><%= announcement.announcement_type.titleize %>:</strong>
-        <strong><%= announcement.name %></strong>
-
-        <%= simple_format announcement.description %>
-      </div>
-    </div>
+    <% cache announcement do %>
+      <%= render announcement %>
+    <% end %>
   <% end %>
 
   <% if @announcements.empty? %>
     <div class="m-5">Exciting stuff coming very soon!</div>
   <% end %>
 
-  <%== pagy_bootstrap_nav(@pagy) %>
+  <%== pagy_nav(@pagy) %>
 
 </div>
-
-
