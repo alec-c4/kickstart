@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   ### Customer
   scope :customer, module: "customer" do
     resources :notifications, only: :index
-  end  
+  end
 
   ### Admin
   namespace :admin do
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
       post "/ban", to: "bans#create", as: :create_ban
       delete "/ban", to: "bans#destroy", as: :remove_ban
     end
-    
+
     resources :announcements
   end
 
@@ -51,4 +51,3 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
 end
-  

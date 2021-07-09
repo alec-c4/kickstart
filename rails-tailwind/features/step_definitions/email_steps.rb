@@ -139,15 +139,15 @@ Then(/^(?:I|they) should see the email reply to "([^"]*?)"$/) do |text|
   expect(current_email).to have_reply_to(text)
 end
 
-Then(/^(?:I|they) should see "([^\"]*)" in the email "([^"]*?)" header$/) do |text, name|
+Then(/^(?:I|they) should see "([^"]*)" in the email "([^"]*?)" header$/) do |text, name|
   expect(current_email).to have_header(name, text)
 end
 
-Then %r{^(?:I|they) should see /([^\"]*)/ in the email "([^"]*?)" header$} do |text, name|
+Then %r{^(?:I|they) should see /([^"]*)/ in the email "([^"]*?)" header$} do |text, name|
   expect(current_email).to have_header(name, Regexp.new(text))
 end
 
-Then(/^I should see it is a multi\-part email$/) do
+Then(/^I should see it is a multi-part email$/) do
   expect(current_email).to be_multipart
 end
 

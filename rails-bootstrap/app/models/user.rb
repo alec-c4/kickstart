@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :confirmable, :lockable, :timeoutable, :trackable,
-         :recoverable, :rememberable, :trackable, :validatable, 
+         :recoverable, :rememberable, :trackable, :validatable,
          :pwned_password, :masqueradable,
          :omniauthable, omniauth_providers: OAUTH_PROVIDERS
 
@@ -100,7 +100,7 @@ class User < ApplicationRecord
   end
 
   def check_name_format
-    errors.add(:name, I18n.t("activerecord.errors.messages.wrong_name_format")) unless name.match? /^\S+\s\S+$/
+    errors.add(:name, I18n.t("activerecord.errors.messages.wrong_name_format")) unless name.match?(/^\S+\s\S+$/)
   end
 
   def to_s

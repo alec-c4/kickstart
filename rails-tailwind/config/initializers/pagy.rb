@@ -67,7 +67,7 @@
 # Headers extra: http response headers (and other helpers) useful for API pagination
 # See http://ddnexus.github.io/pagy/extras/headers
 # require 'pagy/extras/headers'
-# Pagy::VARS[:headers] = 
+# Pagy::VARS[:headers] =
 #     { page: 'Current-Page', items: 'Page-Items', count: 'Total-Count', pages: 'Total-Pages' }     # default
 
 # Support extra: Extra support for features like: incremental, infinite, auto-scroll pagination

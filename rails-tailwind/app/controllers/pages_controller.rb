@@ -1,10 +1,7 @@
 class PagesController < ApplicationController
-    def home
-    end
+  def home; end
 
-    def terms      
-    end
+  def terms; end
 
-    def privacy      
-    end    
-  end
+  def privacy; end
+end

@@ -9,12 +9,14 @@
 
 1. Install rbenv, ruby (2.6+), node.js and yarn.
 2. Install latest ruby on rails version.
-3. Install PostgreSQL database and Redis key-value server.
-4. Create [Mailgun](https://mailgun.com) account. We'll use it to send emails.
-5. Install [hivemind](https://github.com/DarthSim/hivemind). We'll use it to start server.
-6. Copy .railsrc file to your home directory
-7. Clone repository localy
-8. Run from console 
+3. Install PostgreSQL database  
+4. Install Redis key-value server
+5. Install memcached
+6. Create [Mailgun](https://mailgun.com) account. We'll use it to send emails.
+7. Install [hivemind](https://github.com/DarthSim/hivemind). We'll use it to start server.
+8. Copy .railsrc file to your home directory
+9. Clone repository localy
+10. Run from console 
 
 ``` bash
 $ rails new app_name -m /path/to/template
@@ -29,17 +31,17 @@ Fill credentials file with keys, following example in `credentials.example` file
 Lockbox.generate_key
 ```
 
-9. Uncomment following line in `config/initializers/devise.rb` file
+11. Uncomment following line in `config/initializers/devise.rb` file
 
 ``` ruby
 config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id], Rails.application.credentials.google[:client_secret], name: "google"
 ```
 
-10. Configure mail sender in `config\setting.yml` file
+12. Configure mail sender in `config\setting.yml` file
 
-11. Configure rack-attack using following [guide](https://expeditedsecurity.com/blog/ultimate-guide-to-rack-attack/)
+13. Configure rack-attack using following [guide](https://expeditedsecurity.com/blog/ultimate-guide-to-rack-attack/)
 
-12. Add [legal documents](https://github.com/ankane/awesome-legal).
+14. Add [legal documents](https://github.com/ankane/awesome-legal).
 
 ## What's inside
 
@@ -79,6 +81,7 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 - [lockbox](https://github.com/ankane/lockbox) and [blind_index](https://github.com/ankane/blind_index) for email fields encryption
 - [rack-attack](https://github.com/rack/rack-attack) to prevent bruteforce and DDoS attacks 
 - [capistrano](http://www.capistranorb.com) with plugins for deployment
+- [dalli](https://github.com/petergoldstein/dalli) for caching
 - announcements (new/fix/update) for all users
 - flash helper
 - referral system
@@ -94,6 +97,9 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 - add [hotwire](https://hotwire.dev/)
 - add [mailkick](https://github.com/ankane/mailkick)
 - add [discard](https://github.com/jhawthorn/discard)
+- add [invisible_captcha](https://github.com/markets/invisible_captcha)
+- add [lograge](https://github.com/roidrage/lograge)
+
 - add monitoring and analytics tools
 - add A11y
 - add deployments tools

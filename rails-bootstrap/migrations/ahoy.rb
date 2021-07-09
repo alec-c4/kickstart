@@ -55,7 +55,7 @@ class CreateAhoyVisitsAndEvents < ActiveRecord::Migration[6.1]
       t.datetime :time
     end
 
-    add_index :ahoy_events, [:name, :time]
+    add_index :ahoy_events, %i[name time]
     add_index :ahoy_events, :properties, using: :gin, opclass: :jsonb_path_ops
   end
 end

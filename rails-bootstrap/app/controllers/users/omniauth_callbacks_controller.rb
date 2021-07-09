@@ -37,22 +37,22 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def set_user
     @user = if signed_in?
-      current_user
-    elsif identity.present?
-      identity.user
-    else
-      User.find_or_create_by(email: auth.info.email) do |u|
-        u.name = auth.info.name
-        u.password = Devise.friendly_token[0, 20]
+              current_user
+            elsif identity.present?
+              identity.user
+            else
+              User.find_or_create_by(email: auth.info.email) do |u|
+                u.name = auth.info.name
+                u.password = Devise.friendly_token[0, 20]
 
-        referrer = User.find_by(referral_code: cookies[:referral_code])
-        u.referred_by = referrer if cookies[:referral_code] && referrer.present?
+                referrer = User.find_by(referral_code: cookies[:referral_code])
+                u.referred_by = referrer if cookies[:referral_code] && referrer.present?
 
-        u.time_zone = browser_time_zone.name
+                u.time_zone = browser_time_zone.name
 
-        u.skip_confirmation!
-      end
-    end
+                u.skip_confirmation!
+              end
+            end
   end
 
   def identity_attrs

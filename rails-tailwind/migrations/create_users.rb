@@ -37,7 +37,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       ## Ban
       t.datetime :banned_at
       t.text :ban_reason, null: false, default: ""
-      t.references :banned_by, foreign_key: {to_table: :users}, type: :uuid
+      t.references :banned_by, foreign_key: { to_table: :users }, type: :uuid
 
       ## Profile
       t.string :first_name

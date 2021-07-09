@@ -25,7 +25,8 @@ Then("should see that my account is confirmed") do
 end
 
 Given("I am a registered user") do
-  @registered_user = FactoryBot.create(:user, name: "Tim Cook", email: "tester@example.com", password: password, confirmed_at: Time.zone.today)
+  @registered_user = FactoryBot.create(:user, name: "Tim Cook", email: "tester@example.com", password: password,
+                                              confirmed_at: Time.zone.today)
 end
 
 When("I fill in the login form") do

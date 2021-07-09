@@ -5,7 +5,7 @@ class CreateAnnouncements < ActiveRecord::Migration[6.1]
       t.string :announcement_type
       t.string :name
       t.text :description
-      t.belongs_to :publisher, null: false, foreign_key: {to_table: :users}, type: :uuid
+      t.belongs_to :publisher, null: false, foreign_key: { to_table: :users }, type: :uuid
 
       t.timestamps
     end

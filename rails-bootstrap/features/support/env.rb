@@ -4,7 +4,7 @@ require "email_spec/cucumber"
 # frozen_string_literal: true
 
 Capybara.register_driver :rack_test do |app|
-  Capybara::RackTest::Driver.new(app, headers: {"HTTP_ACCEPT_LANGUAGE" => "en"})
+  Capybara::RackTest::Driver.new(app, headers: { "HTTP_ACCEPT_LANGUAGE" => "en" })
 end
 
 World(FactoryBot::Syntax::Methods)

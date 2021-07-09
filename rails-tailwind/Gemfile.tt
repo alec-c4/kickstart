@@ -56,6 +56,7 @@ gem "rack-attack"
 gem "active_interaction", "~> 4.0"
 gem "bootsnap"<%= gemfile_requirement("bootsnap") %>, require: false
 gem "config"
+gem "dalli"
 gem "flipper"
 gem "flipper-active_record"
 gem "flipper-ui"
