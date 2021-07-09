@@ -115,4 +115,4 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 
 ## Known issues
 
-- rolify gem requires database to be created, otherwise it crashes with NoDatabaseError exception
+nothing
