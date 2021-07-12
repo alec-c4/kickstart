@@ -265,6 +265,7 @@ end
 def setup_gems
   generate "config:install -s"
   generate "annotate:install"
+  generate "devise:install"
 end
 
 def setup_migrations
@@ -317,8 +318,6 @@ def copy_scaffold_templates
 end
 
 def setup_auth
-  generate "devise:install"
-
   inject_into_file "config/initializers/devise.rb",
                    "  # config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id], Rails.application.credentials.google[:client_secret], name: \"google\"\n",
                    before: /^\s*# ==> Warden configuration/
