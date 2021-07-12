@@ -196,6 +196,17 @@ def setup_dev_test
 end
 
 def setup_basic_logic
+  # Create custom error pages
+
+  generate "controller errors not_found internal_server_error"
+  copy_file "app/controllers/errors_controller.rb", force: true
+
+  inject_into_file "config/application.rb", after: /config\.generators\.system_tests = nil\n/ do
+    <<-'RUBY'
+  config.exceptions_app = self.routes
+    RUBY
+  end  
+    
   copy_file "config/routes.rb", force: true
 
   copy_file "app/controllers/application_controller.rb", force: true

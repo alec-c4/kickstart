@@ -43,6 +43,8 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 
 14. Add [legal documents](https://github.com/ankane/awesome-legal).
 
+15. Update error pages in `app/views/errors/*` with your content 
+
 ## Setup for production
 
 0. Install PostgreSQL, Redis, memcached, nginx, rbenv and ruby to your server.
@@ -94,6 +96,7 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 - flash helper
 - referral system
 - landing page
+- custom error pages
 - profiles controller
 - admin and customer dashboards
 - users administration with search
