@@ -91,7 +91,6 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 - [lockbox](https://github.com/ankane/lockbox) and [blind_index](https://github.com/ankane/blind_index) for email fields encryption
 - [rack-attack](https://github.com/rack/rack-attack) to prevent bruteforce and DDoS attacks 
 - [capistrano](http://www.capistranorb.com) with plugins for deployment
-- [dalli](https://github.com/petergoldstein/dalli) for caching
 - announcements (new/fix/update) for all users
 - flash helper
 - referral system
