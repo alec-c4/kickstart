@@ -98,6 +98,8 @@ group :development do
   gem "letter_opener"
   gem "brakeman", require: false
   gem "bundler-audit"
+  gem "derailed_benchmarks"
+  gem "erb_lint"  
   gem "fasterer"
   gem "pry-rails"
   gem "listen"<%= gemfile_requirement("listen") %>
@@ -105,6 +107,7 @@ group :development do
   gem "solargraph"
   gem "spring"
   gem "spring-watcher-listen"<%= gemfile_requirement("spring-watcher-listen") %>
+  gem "stackprof"
   gem "web-console"<%= gemfile_requirement("web-console") %>
 
   gem "capistrano", "~> 3.16", require: false

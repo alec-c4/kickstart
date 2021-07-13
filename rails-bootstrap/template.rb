@@ -46,8 +46,8 @@ def apply_template!
     setup_tests
     copy_readme
 
-    setup_rubocop
-    run_rubocop
+    setup_linters
+    run_linters
 
     say
     say "App successfully created!", :green
@@ -203,7 +203,7 @@ def setup_basic_logic
     <<-'RUBY'
   config.exceptions_app = self.routes
     RUBY
-  end  
+  end
 
   copy_file "config/routes.rb", force: true
 
@@ -462,7 +462,9 @@ def setup_mailer
   gsub_file "app/mailers/application_mailer.rb", /'from@example\.com'/, "Settings.mailer.default_from"
 end
 
-def setup_rubocop
+def setup_linters
+  copy_file ".erb-lint.yml", force: true
+
   copy_file ".rubocop.yml", force: true
   copy_file ".rubocop_todo.yml", force: true
   copy_file ".rubocop_rails.yml", force: true
@@ -471,7 +473,9 @@ def setup_rubocop
   copy_file ".rubocop_metrics.yml", force: true
 end
 
-def run_rubocop
+def run_linters
+  run "bundle exec erblint --lint-all -a"
+
   run "bundle exec rubocop -a"
 end
 

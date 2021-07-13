@@ -1,0 +1,17 @@
+---
+EnableDefaultLinters: true
+linters:
+  SelfClosingTag:
+    enabled: false
+  ParserErrors:
+    enabled: true
+  SpaceInHtmlTag:
+    enabled: true
+  AllowedScriptType:
+    enabled: true
+    allowed_types:
+      - 'text/javascript'
+      - 'text/x-tmpl'
+      - 'application/ld+json'
+    allow_blank: true
+    disallow_inline_scripts: false

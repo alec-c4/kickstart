@@ -104,12 +104,14 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 ## Todo
 
 - update with rails [production best practices](https://github.com/ankane/production_rails) and [security best practices](https://github.com/ankane/secure_rails)
-- add [erb linter](https://github.com/Shopify/erb-lint)
 - add [hotwire](https://hotwire.dev/)
 - add [mailkick](https://github.com/ankane/mailkick)
 - add [discard](https://github.com/jhawthorn/discard)
 - add [invisible_captcha](https://github.com/markets/invisible_captcha)
 - add [lograge](https://github.com/roidrage/lograge)
+- add [hypershield](https://github.com/ankane/hypershield)
+- add [hairtrigger](https://github.com/jenseng/hair_trigger)
+- add [active_record_union](https://github.com/brianhempel/active_record_union)
 
 - add monitoring and analytics tools
 - add A11y
