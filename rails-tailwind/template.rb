@@ -468,6 +468,7 @@ end
 
 def setup_linters
   copy_file ".erb-lint.yml", force: true
+  copy_file "config/initializers/better_html.rb", force: true  
 
   copy_file ".rubocop.yml", force: true
   copy_file ".rubocop_todo.yml", force: true

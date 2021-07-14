@@ -77,6 +77,7 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 - rspec and cucumber for testing
 - [Mailgun](https://mailgun.com) integration for email notifications
 - [rubocop](https://github.com/rubocop/rubocop/) for code style validations
+- [better_html](https://github.com/Shopify/better-html) and [erb-lint](https://github.com/Shopify/erb-lint) for erb linting
 - [bullet](https://github.com/flyerhzm/bullet) to prevent N+1 problems
 - [brakeman](https://github.com/presidentbeef/brakeman) and [bundler-audit](https://github.com/postmodern/bundler-audit) as security scanners
 - [fasterer](https://github.com/DamirSvrtan/fasterer) for performance optimization

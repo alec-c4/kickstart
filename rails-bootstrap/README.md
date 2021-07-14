@@ -48,7 +48,7 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 - .gitignore file
 - [VSCode](https://code.visualstudio.com/) configuration files
 - postgresql database connector
-- bootstrap frontend frameworks with scaffold templates 
+- bootstrap or tailwind.css frontend frameworks with scaffold templates 
 - [purge.css](https://purgecss.com/) to cleanup stylesheets
 - timezone detection with [jstz](https://github.com/iansinnott/jstz)
 - typescript for frontend
@@ -66,6 +66,7 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 - rspec and cucumber for testing
 - [Mailgun](https://mailgun.com) integration for email notifications
 - [rubocop](https://github.com/rubocop/rubocop/) for code style validations
+- [better_html](https://github.com/Shopify/better-html) and [erb-lint](https://github.com/Shopify/erb-lint) for erb linting
 - [bullet](https://github.com/flyerhzm/bullet) to prevent N+1 problems
 - [brakeman](https://github.com/presidentbeef/brakeman) and [bundler-audit](https://github.com/postmodern/bundler-audit) as security scanners
 - [fasterer](https://github.com/DamirSvrtan/fasterer) for performance optimization
@@ -84,6 +85,7 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 - flash helper
 - referral system
 - landing page
+- custom error pages
 - profiles controller
 - admin and customer dashboards
 - users administration with search
