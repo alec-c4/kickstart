@@ -1,5 +1,6 @@
 class Admin::UsersController < AdminController
-  before_action :set_user, only: %i[show edit update destroy]
+  before_action :set_user, only: %i[show edit update destroy impersonate]
+  skip_before_action :check_admin, only: :stop_impersonating
 
   def index
     if params[:query].blank?
@@ -33,6 +34,16 @@ class Admin::UsersController < AdminController
       format.json { head :no_content }
     end
   end
+
+  def impersonate
+    impersonate_user(@user)
+    redirect_to root_path
+  end
+
+  def stop_impersonating
+    stop_impersonating_user
+    redirect_to root_path
+  end  
 
   private
 

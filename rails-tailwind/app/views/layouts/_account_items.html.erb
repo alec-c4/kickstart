@@ -5,8 +5,8 @@
   <%= link_to t('navigation.profile_edit'), edit_profile_path %>
   <%= link_to t('navigation.profile_view'), profile_path(current_user) %>
   <%= link_to t('navigation.referrals_page'), referrals_path %>  
-  <% if user_masquerade? %>
-    <%= link_to "Reverse masquerade", back_masquerade_path(current_user) %>
+  <% if current_user != true_user %>
+     <li><%= link_to "Back to admin", stop_impersonating_admin_users_path, method: :post %></li>
   <% else %>
     <%= link_to t('navigation.sign_out'), destroy_user_session_path, method: :delete %>
   <% end %>

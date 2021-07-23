@@ -352,6 +352,7 @@ def setup_auth
   copy_file "app/models/identity.rb", force: true
   copy_file "app/models/role.rb", force: true
   copy_file "config/initializers/rolify.rb", force: true
+  copy_file "app/channels/application_cable/connection.rb", force: true
 
   directory "app/views/devise", force: true
   directory "app/views/admin/users", force: true

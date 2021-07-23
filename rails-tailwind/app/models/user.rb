@@ -6,7 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :confirmable, :lockable, :timeoutable, :trackable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :pwned_password, :masqueradable,
+         :pwned_password,
          :omniauthable, omniauth_providers: OAUTH_PROVIDERS
 
   encrypts :email, :unconfirmed_email

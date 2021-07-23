@@ -67,7 +67,7 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 - [Sidekiq](https://github.com/mperham/sidekiq) for background jobs
 - [strong_migrations](https://github.com/ankane/strong_migrations)
 - authentication with [devise](https://github.com/heartcombo/devise) and [devise-pwned_password](https://github.com/michaelbanfield/devise-pwned_password) + google auth
-- [devise_masquerade](https://github.com/oivoodoo/devise_masquerade)
+- [pretender](https://github.com/ankane/pretender)
 - authorization with [pundit](https://github.com/varvet/pundit)
 - role management with [rolify](https://github.com/RolifyCommunity/rolify)
 - ability to ban user account
@@ -117,9 +117,7 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 - add [identity_cache](https://github.com/Shopify/identity_cache)
 - move to [rails-settings-cached](https://github.com/huacnlee/rails-settings-cached)
 - add [searchjoy](https://github.com/ankane/searchjoy)
-- move to [prertender](https://github.com/ankane/pretender)
 - add clicks and registrations stats to referral system
-
 - add monitoring and analytics tools
 - add A11y
 - add deployments tools

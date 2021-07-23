@@ -7,7 +7,7 @@
   <td><%= user.email %></td>
   <td>
     <% unless user == current_user %>
-      <%= link_to "Login As", masquerade_path(user), class: "btn btn-info btn-sm" %>
+      <%= link_to "Login As", impersonate_admin_user_path(user), method: :post, data: {turbo: "false"}, class: "btn btn-info btn-sm" %>
       <%= link_to "Edit", edit_admin_user_path(user), class: "btn btn-warning btn-sm" %>
       <%= link_to "Delete", [:admin, user], data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-sm" %>
     <% end %>

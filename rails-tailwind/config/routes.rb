@@ -29,6 +29,10 @@ Rails.application.routes.draw do
       # bans
       post "/ban", to: "bans#create", as: :create_ban
       delete "/ban", to: "bans#destroy", as: :remove_ban
+
+      # pretending
+      post :impersonate, on: :member
+      post :stop_impersonating, on: :collection      
     end
 
     resources :announcements
