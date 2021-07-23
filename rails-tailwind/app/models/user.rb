@@ -19,6 +19,7 @@ class User < ApplicationRecord
                             inverse_of: :referred_by, dependent: :nullify
   has_many :visits, class_name: "Ahoy::Visit", dependent: :destroy
   has_many :notifications, as: :recipient, dependent: :destroy
+  has_many :login_activities, as: :user, dependent: :destroy
 
   rolify
 

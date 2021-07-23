@@ -334,6 +334,7 @@ def setup_auth
   generate "migration devise_create_users"
   generate "migration create_identities"
   generate "migration rolify_create_roles"
+  generate "authtrail:install --lockbox"
 
   devise_migration_file = (Dir["db/migrate/*_devise_create_users.rb"]).first
   copy_file "migrations/create_users.rb", devise_migration_file, force: true
@@ -343,6 +344,9 @@ def setup_auth
 
   rolify_migration_file = (Dir["db/migrate/*_rolify_create_roles.rb"]).first
   copy_file "migrations/rolify.rb", rolify_migration_file, force: true
+
+  authrail_migration_file = (Dir["db/migrate/*_create_login_activities.rb"]).first
+  copy_file "migrations/authrail.rb", authrail_migration_file, force: true
 
   copy_file "app/models/user.rb", force: true
   copy_file "app/models/identity.rb", force: true

@@ -92,6 +92,7 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 - [lockbox](https://github.com/ankane/lockbox) and [blind_index](https://github.com/ankane/blind_index) for email fields encryption
 - [rack-attack](https://github.com/rack/rack-attack) to prevent bruteforce and DDoS attacks 
 - [capistrano](http://www.capistranorb.com) with plugins for deployment
+- [authrail](https://github.com/ankane/authtrail) to track login attempts
 - announcements (new/fix/update) for all users
 - flash helper
 - referral system
@@ -112,6 +113,12 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 - add [hypershield](https://github.com/ankane/hypershield)
 - add [hairtrigger](https://github.com/jenseng/hair_trigger)
 - add [active_record_union](https://github.com/brianhempel/active_record_union)
+- add [scenic](https://github.com/scenic-views/scenic)
+- add [identity_cache](https://github.com/Shopify/identity_cache)
+- move to [rails-settings-cached](https://github.com/huacnlee/rails-settings-cached)
+- add [searchjoy](https://github.com/ankane/searchjoy)
+- move to [prertender](https://github.com/ankane/pretender)
+- add clicks and registrations stats to referral system
 
 - add monitoring and analytics tools
 - add A11y

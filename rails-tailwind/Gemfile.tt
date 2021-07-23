@@ -47,6 +47,7 @@ gem "ahoy_matey"
 gem "blazer"
 
 ### Encryption and Security
+gem "authtrail"
 gem "blind_index"
 gem "lockbox"
 gem "logstop"
