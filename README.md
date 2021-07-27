@@ -49,7 +49,7 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 
 0. Install PostgreSQL, Redis, memcached, nginx, rbenv and ruby to your server.
 1. Create [Mailgun](https://mailgun.com) account if you haven't done it before
-2. Create [Appsignal](https://appsignal.com) account, install it to your app
+2. Create [Appsignal](https://appsignal.com/r/53a0242a45) account, install it to your app
 3. Register keys for Google authentication in [Google API console](https://console.cloud.google.com/apis/)
 4. Fill credentials with `rails credentials:edit` 
 
@@ -116,6 +116,7 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 - add [scenic](https://github.com/scenic-views/scenic)
 - add [identity_cache](https://github.com/Shopify/identity_cache)
 - move to [rails-settings-cached](https://github.com/huacnlee/rails-settings-cached)
+- move to [turnip](https://github.com/jnicklas/turnip) from cucumber
 - add [searchjoy](https://github.com/ankane/searchjoy)
 - add clicks and registrations stats to referral system
 - add monitoring and analytics tools
