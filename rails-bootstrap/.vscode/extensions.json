@@ -1,14 +1,14 @@
 {
   "recommendations": [
-    "rebornix.Ruby",
-    "kaiwood.endwise",
-    "vortizhe.simple-ruby-erb",
+    "aaron-bond.better-comments",
+    "bradlc.vscode-tailwindcss",
     "bung87.rails",
-    "mikestead.dotenv",  
     "castwide.solargraph",
+    "kaiwood.endwise",
+    "mikestead.dotenv",
     "misogi.ruby-rubocop",
     "ninoseki.vscode-gem-lens",
-    "bradlc.vscode-tailwindcss",
-    "aaron-bond.better-comments"
+    "rebornix.Ruby",
+    "vortizhe.simple-ruby-erb"
   ]
 }

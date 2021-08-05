@@ -105,6 +105,7 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 ## Todo
 
 - update with rails [production best practices](https://github.com/ankane/production_rails) and [security best practices](https://github.com/ankane/secure_rails)
+- add tools from [evil martians tollbox](https://github.com/evilmartians/terraforming-rails)
 - add [hotwire](https://hotwire.dev/)
 - add [mailkick](https://github.com/ankane/mailkick)
 - add [discard](https://github.com/jhawthorn/discard)
@@ -118,6 +119,12 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 - move to [rails-settings-cached](https://github.com/huacnlee/rails-settings-cached)
 - move to [turnip](https://github.com/jnicklas/turnip) from cucumber
 - add [searchjoy](https://github.com/ankane/searchjoy)
+- add [database_consistency](https://github.com/djezzzl/database_consistency)
+- add [database_validations](https://github.com/toptal/database_validations)
+- add [traceroute](https://github.com/amatsuda/traceroute)
+- add [isolator](https://github.com/palkan/isolator)
+- add [lefthook](https://github.com/evilmartians/lefthook)
+- add [pronto](https://github.com/prontolabs/pronto)
 - add clicks and registrations stats to referral system
 - add monitoring and analytics tools
 - add A11y
