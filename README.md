@@ -45,6 +45,15 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 
 15. Update error pages in `app/views/errors/*` with your content 
 
+16. Install [lefthook](https://github.com/evilmartians/lefthook/) and hooks
+
+```bash
+$ gem install lefthook
+$ lefthook install
+$ lefthook run pre-commit
+```
+
+
 ## Setup for production
 
 0. Install PostgreSQL, Redis, memcached, nginx, rbenv and ruby to your server.
@@ -93,6 +102,7 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 - [rack-attack](https://github.com/rack/rack-attack) to prevent bruteforce and DDoS attacks 
 - [capistrano](http://www.capistranorb.com) with plugins for deployment
 - [authrail](https://github.com/ankane/authtrail) to track login attempts
+- [lefthook](https://github.com/evilmartians/lefthook) with pre-commit run of rspec, brakeman, rubocop, erblint, eslint, stylelint
 - announcements (new/fix/update) for all users
 - flash helper
 - referral system
@@ -104,8 +114,13 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 
 ## Todo
 
-- update with rails [production best practices](https://github.com/ankane/production_rails) and [security best practices](https://github.com/ankane/secure_rails)
+- update with rails [production best practices](https://github.com/ankane/production_rails), [security best practices](https://github.com/ankane/secure_rails) and [rails-security-checklist](https://github.com/eliotsykes/rails-security-checklist)
 - add tools from [evil martians tollbox](https://github.com/evilmartians/terraforming-rails)
+- test and add [dawnscanner](https://github.com/thesp0nge/dawnscanner)
+- add [rails_best_practices](https://github.com/flyerhzm/rails_best_practices)
+- add [secure_headers](https://github.com/github/secure_headers)
+- add [ssrf_filter](https://github.com/arkadiyt/ssrf_filter)
+- add [devise-security](https://github.com/devise-security/devise-security)
 - add [hotwire](https://hotwire.dev/)
 - add [mailkick](https://github.com/ankane/mailkick)
 - add [discard](https://github.com/jhawthorn/discard)
@@ -123,9 +138,10 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 - add [database_validations](https://github.com/toptal/database_validations)
 - add [traceroute](https://github.com/amatsuda/traceroute)
 - add [isolator](https://github.com/palkan/isolator)
-- add [lefthook](https://github.com/evilmartians/lefthook)
 - add [pronto](https://github.com/prontolabs/pronto)
+- add [crystalball](https://github.com/toptal/crystalball)
 - add clicks and registrations stats to referral system
+- add feedback
 - add monitoring and analytics tools
 - add A11y
 - add deployments tools
@@ -134,3 +150,15 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 ## Known issues
 
 nothing
+
+## Contributing [![PRs welcome](https://img.shields.io/badge/PRs-welcome-orange.svg?style=flat-square)](https://github.com/alec-c4/kickstart/issues)
+
+For bug fixes, documentation changes, and features:
+
+1. [Fork it](./fork)
+1. Create your feature branch (`git checkout -b my-new-feature`)
+1. Commit your changes (`git commit -am 'Add some feature'`)
+1. Push to the branch (`git push origin my-new-feature`)
+1. Create a new Pull Request
+
+For larger new features: Do everything as above, but first also make contact with the project maintainers to be sure your change fits with the project direction and you won't be wasting effort going in the wrong direction.

@@ -33,7 +33,7 @@ data:
   external:
     - "<%= %x[bundle info devise-i18n --path].chomp %>/rails/locales/%{locale}.yml"
     ## Example (replace %#= with %=):
-    # - "<%#= %x[bundle show vagrant].chomp %>/templates/locales/%{locale}.yml"
+    # - "<%#= %x[bundle info vagrant --path].chomp %>/templates/locales/%{locale}.yml"
 
   ## Specify the router (see Readme for details). Valid values: conservative_router, pattern_router, or a custom class.
   # router: conservative_router
@@ -71,6 +71,7 @@ search:
     - app/assets/images
     - app/assets/fonts
     - app/assets/videos
+    - app/notifications
 
   ## Alternatively, the only files or `File.fnmatch patterns` to search in `paths`:
   ## If specified, this settings takes priority over `exclude`, but `exclude` still applies.
@@ -98,12 +99,13 @@ search:
 # - '{devise,simple_form}.*'
 
 ## Consider these keys used:
-# ignore_unused:
-# - 'activerecord.attributes.*'
-# - '{devise,kaminari,will_paginate}.*'
-# - 'simple_form.{yes,no}'
-# - 'simple_form.{placeholders,hints,labels}.*'
-# - 'simple_form.{error_notification,required}.:'
+ignore_unused:
+  - 'activerecord.attributes.*'
+  - 'activerecord.errors.*'
+  - '{devise,kaminari,will_paginate}.*'
+  - 'simple_form.{yes,no}'
+  - 'simple_form.{placeholders,hints,labels}.*'
+  - 'simple_form.{error_notification,required}.:'
 
 ## Exclude these keys from the `i18n-tasks eq-base' report:
 # ignore_eq_base:

@@ -133,13 +133,16 @@ end
 def setup_frontend
   rails_command "webpacker:install:stimulus"
   run "mv app/javascript app/frontend"
-  gsub_file "config/webpacker.yml", %r{source_path: app/javascript}, "source_path: app/frontend"
+  copy_file "config/webpacker.yml", force: true
 
   run "yarn add jstz local-time"
   run "yarn add @fullhuman/postcss-purgecss @fortawesome/fontawesome-free"
 
   directory "app/frontend/packs", force: true
   directory "app/frontend/stylesheets", force: true
+
+  run "yarn add typescript @babel/preset-typescript"
+  copy_file "tsconfig.json", force: true
 end
 
 def setup_procfile
@@ -160,13 +163,13 @@ def setup_dev_test
     config.action_mailer.default_url_options = {host: "localhost", port: 5000}
     config.action_mailer.delivery_method = :letter_opener
     config.action_mailer.perform_deliveries = true
-    
+
     # config.action_mailer.delivery_method = :mailgun
     # config.action_mailer.mailgun_settings = {
     #   api_key: Rails.application.credentials.mailgun[:api_key],
     #   domain: Rails.application.credentials.mailgun[:domain]
     # }
-  
+
     config.after_initialize do
       Bullet.enable = true
       Bullet.alert = true
@@ -183,7 +186,7 @@ def setup_dev_test
                    after: /config\.action_view\.annotate_rendered_view_with_filenames = true\n/ do
     <<-'RUBY'
     config.action_mailer.default_url_options = {host: "localhost", port: 5000}
-  
+
     config.after_initialize do
       Bullet.enable = true
       Bullet.bullet_logger = true
@@ -468,6 +471,10 @@ def setup_mailer
 end
 
 def setup_linters
+  run "yarn add -D @typescript-eslint/eslint-plugin @typescript-eslint/parser"
+  run "yarn add -D eslint eslint-config-airbnb eslint-config-airbnb-base eslint-config-prettier eslint-plugin-import eslint-plugin-prettier prettier"
+  run "yarn add -D stylelint stylelint-config-prettier stylelint-config-standard stylelint-prettier"
+
   copy_file ".erb-lint.yml", force: true
   copy_file "config/initializers/better_html.rb", force: true
 
@@ -477,6 +484,11 @@ def setup_linters
   copy_file ".rubocop_rspec.yml", force: true
   copy_file ".rubocop_strict.yml", force: true
   copy_file ".rubocop_metrics.yml", force: true
+
+  copy_file "lefthook.yml", force: true
+  copy_file ".eslintrc.js", force: true
+  copy_file ".prettierrc.json", force: true
+  copy_file "stylelint.config.js", force: true
 end
 
 def run_linters
