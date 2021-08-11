@@ -37,7 +37,7 @@ Lockbox.generate_key
 config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id], Rails.application.credentials.google[:client_secret], name: "google"
 ```
 
-12. Configure mail sender in `config\setting.yml` file
+12. Configure mail sender in `config/setting.yml` file
 
 13. Configure rack-attack using following [guide](https://expeditedsecurity.com/blog/ultimate-guide-to-rack-attack/)
 
@@ -68,7 +68,6 @@ $ lefthook run pre-commit
 - .gitignore file
 - [VSCode](https://code.visualstudio.com/) configuration files
 - postgresql database connector
-- bootstrap or tailwind.css frontend frameworks with scaffold templates 
 - [purge.css](https://purgecss.com/) to cleanup stylesheets
 - timezone detection with [jstz](https://github.com/iansinnott/jstz)
 - typescript for frontend

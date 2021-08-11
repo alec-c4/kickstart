@@ -18,7 +18,7 @@ lockbox:
   master_key: ''
 ```
 
-using 
+using
 
 ``` bash
 $ rails credentials:edit --environment development
@@ -44,11 +44,10 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 
 ## What's inside
 
-- ruby on rails application template 
+- ruby on rails application template
 - .gitignore file
 - [VSCode](https://code.visualstudio.com/) configuration files
 - postgresql database connector
-- bootstrap or tailwind.css frontend frameworks with scaffold templates 
 - [purge.css](https://purgecss.com/) to cleanup stylesheets
 - timezone detection with [jstz](https://github.com/iansinnott/jstz)
 - typescript for frontend
@@ -56,7 +55,7 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 - [Sidekiq](https://github.com/mperham/sidekiq) for background jobs
 - [strong_migrations](https://github.com/ankane/strong_migrations)
 - authentication with [devise](https://github.com/heartcombo/devise) and [devise-pwned_password](https://github.com/michaelbanfield/devise-pwned_password) + google auth
-- [devise_masquerade](https://github.com/oivoodoo/devise_masquerade)
+- [pretender](https://github.com/ankane/pretender)
 - authorization with [pundit](https://github.com/varvet/pundit)
 - role management with [rolify](https://github.com/RolifyCommunity/rolify)
 - ability to ban user account
@@ -79,8 +78,10 @@ config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id]
 - [annotate](https://github.com/ctran/annotate_models) for annotations
 - [lol_dba](https://github.com/plentz/lol_dba) for indexing
 - [lockbox](https://github.com/ankane/lockbox) and [blind_index](https://github.com/ankane/blind_index) for email fields encryption
-- [rack-attack](https://github.com/rack/rack-attack) to prevent bruteforce and DDoS attacks 
+- [rack-attack](https://github.com/rack/rack-attack) to prevent bruteforce and DDoS attacks
 - [capistrano](http://www.capistranorb.com) with plugins for deployment
+- [authrail](https://github.com/ankane/authtrail) to track login attempts
+- [lefthook](https://github.com/evilmartians/lefthook) with pre-commit run of rspec, brakeman, rubocop, erblint, eslint, stylelint
 - announcements (new/fix/update) for all users
 - flash helper
 - referral system
