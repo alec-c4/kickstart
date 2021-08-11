@@ -197,6 +197,8 @@ def setup_dev_test
 end
 
 def setup_basic_logic
+  copy_file "config/initializers/lograge.rb", force: true
+
   # Create custom error pages
 
   generate "controller errors not_found internal_server_error"

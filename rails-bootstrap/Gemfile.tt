@@ -50,8 +50,11 @@ gem "blazer"
 gem "authtrail"
 gem "blind_index"
 gem "lockbox"
-gem "logstop"
 gem "rack-attack"
+
+### Logging
+gem "lograge"
+gem "logstop"
 
 ### Tools
 gem "active_interaction", "~> 4.0"
@@ -99,7 +102,7 @@ group :development do
   gem "brakeman", require: false
   gem "bundler-audit"
   gem "derailed_benchmarks"
-  gem "erb_lint"  
+  gem "erb_lint"
   gem "fasterer"
   gem "pry-rails"
   gem "letter_opener"
@@ -117,5 +120,5 @@ group :development do
   gem "capistrano-rbenv"
   gem "capistrano-sidekiq"
   gem "bcrypt_pbkdf"
-  gem "ed25519"  
+  gem "ed25519"
 end

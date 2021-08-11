@@ -102,6 +102,7 @@ $ lefthook run pre-commit
 - [capistrano](http://www.capistranorb.com) with plugins for deployment
 - [authrail](https://github.com/ankane/authtrail) to track login attempts
 - [lefthook](https://github.com/evilmartians/lefthook) with pre-commit run of rspec, brakeman, rubocop, erblint, eslint, stylelint
+- [logstop](https://github.com/ankane/logstop) and [lograge](https://github.com/roidrage/lograge) to avoid sensitive information and noise in the application logs
 - announcements (new/fix/update) for all users
 - flash helper
 - referral system
@@ -124,7 +125,6 @@ $ lefthook run pre-commit
 - add [mailkick](https://github.com/ankane/mailkick)
 - add [discard](https://github.com/jhawthorn/discard)
 - add [invisible_captcha](https://github.com/markets/invisible_captcha)
-- add [lograge](https://github.com/roidrage/lograge)
 - add [hypershield](https://github.com/ankane/hypershield)
 - add [hairtrigger](https://github.com/jenseng/hair_trigger)
 - add [active_record_union](https://github.com/brianhempel/active_record_union)
