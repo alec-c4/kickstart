@@ -35,17 +35,13 @@ class User < ApplicationRecord
 
   ### Search
   pg_search_scope :search,
-                  against: %i[email first_name last_name],
+                  against: %i[first_name last_name],
                   using: {
                     tsearch: { prefix: true },
                     trigram: {}
                   }
 
-  pg_search_scope :search_by_email,
-                  against: %i[email],
-                  using: { tsearch: { any_word: true } }
-
-  multisearchable against: %i[first_name last_name email]
+  multisearchable against: %i[first_name last_name]
 
   # scopes
   default_scope { order(created_at: :asc) }

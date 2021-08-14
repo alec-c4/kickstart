@@ -115,6 +115,7 @@ $ lefthook run pre-commit
 ## Todo
 
 - update with rails [production best practices](https://github.com/ankane/production_rails), [security best practices](https://github.com/ankane/secure_rails) and [rails-security-checklist](https://github.com/eliotsykes/rails-security-checklist)
+- add [active_storage_validations](https://github.com/igorkasyanchuk/active_storage_validations)
 - add tools from [evil martians tollbox](https://github.com/evilmartians/terraforming-rails)
 - test and add [dawnscanner](https://github.com/thesp0nge/dawnscanner)
 - add [rails_best_practices](https://github.com/flyerhzm/rails_best_practices)
@@ -127,8 +128,9 @@ $ lefthook run pre-commit
 - add [invisible_captcha](https://github.com/markets/invisible_captcha)
 - add [hypershield](https://github.com/ankane/hypershield)
 - add [hairtrigger](https://github.com/jenseng/hair_trigger)
-- add [active_record_union](https://github.com/brianhempel/active_record_union)
+- add [ActiveRecordExtended](https://github.com/georgekaraszi/ActiveRecordExtended)
 - add [scenic](https://github.com/scenic-views/scenic)
+- add [hair_trigger](https://github.com/jenseng/hair_trigger)
 - add [identity_cache](https://github.com/Shopify/identity_cache)
 - move to [rails-settings-cached](https://github.com/huacnlee/rails-settings-cached)
 - move to [turnip](https://github.com/jnicklas/turnip) from cucumber
@@ -140,6 +142,7 @@ $ lefthook run pre-commit
 - add [pronto](https://github.com/prontolabs/pronto)
 - add [crystalball](https://github.com/toptal/crystalball)
 - add clicks and registrations stats to referral system
+- add 2FA for admin accounts by default
 - add feedback
 - add monitoring and analytics tools
 - add A11y
