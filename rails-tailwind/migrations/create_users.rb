@@ -49,6 +49,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :referral_code
       t.uuid :referred_by_id
       t.datetime :referral_completed_at
+      t.integer :referral_clicks, null: false, default: 0
+      t.integer :referral_registrations, null: false, default: 0
 
       ## Settings
       t.string :time_zone

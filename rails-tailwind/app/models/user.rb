@@ -78,6 +78,8 @@ class User < ApplicationRecord
   def complete_referral!
     update(referral_completed_at: Time.zone.now)
     # TODO: add credit to referred_by user
+    referrer = User.find_by(id: referred_by)
+    referrer.increment!(:referral_registrations) if referrer.present?   
   end
 
   ### Devise async
@@ -104,6 +106,10 @@ class User < ApplicationRecord
 
   def to_s
     name
+  end
+
+  def conversion_rate
+    referral_clicks.zero? ? 0 : (referral_registrations.fdiv(referral_clicks) * 100).round(2)
   end
 
   def flipper_id

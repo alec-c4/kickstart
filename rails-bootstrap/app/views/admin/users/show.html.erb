@@ -18,6 +18,9 @@
         <p class="card-text">Timezone: <%= @user.time_zone %></p>
         <p class="card-text">Referral code: <%= @user.referral_code %></p>
         <p class="card-text">Referred by: <%= link_to @user.referred_by.to_s, admin_user_url(id: @user.referred_by) if @user.referred_by %></p>
+        <p class="card-text">Referral clicks: <%= @user.referral_clicks %></p>
+        <p class="card-text">Referral registrations: <%= @user.referral_registrations %></p>
+        <p class="card-text">Conversion rate: <%= @user.conversion_rate  %>%</p>        
       </div>
       <% unless @user == current_user %>
         <div class="card-body">

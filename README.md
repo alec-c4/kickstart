@@ -141,7 +141,6 @@ $ lefthook run pre-commit
 - add [isolator](https://github.com/palkan/isolator)
 - add [pronto](https://github.com/prontolabs/pronto)
 - add [crystalball](https://github.com/toptal/crystalball)
-- add clicks and registrations stats to referral system
 - add 2FA for admin accounts by default
 - add feedback
 - add monitoring and analytics tools

@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
   def configure_referral_cookie
     return unless params[:ref]
 
+    User.find_by(referral_code: params[:ref]).increment!(:referral_clicks)
     cookies[:referral_code] = {
       value: params[:ref],
       expires: 30.days.from_now
