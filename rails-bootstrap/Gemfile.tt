@@ -53,8 +53,8 @@ gem "lockbox"
 gem "rack-attack"
 
 ### Logging
-gem "lograge"
 gem "logstop"
+gem "rails_semantic_logger"
 
 ### Tools
 gem "active_interaction", "~> 4.0"

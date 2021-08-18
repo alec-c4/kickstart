@@ -102,7 +102,8 @@ $ lefthook run pre-commit
 - [capistrano](http://www.capistranorb.com) with plugins for deployment
 - [authrail](https://github.com/ankane/authtrail) to track login attempts
 - [lefthook](https://github.com/evilmartians/lefthook) with pre-commit run of rspec, brakeman, rubocop, erblint, eslint, stylelint
-- [logstop](https://github.com/ankane/logstop) and [lograge](https://github.com/roidrage/lograge) to avoid sensitive information and noise in the application logs
+- [logstop](https://github.com/ankane/logstop) to avoid sensitive information and noise in the application logs
+- [semantic_logger](https://github.com/reidmorrison/semantic_logger) as a highly configurable logging system
 - announcements (new/fix/update) for all users
 - flash helper
 - referral system
@@ -141,6 +142,7 @@ $ lefthook run pre-commit
 - add [isolator](https://github.com/palkan/isolator)
 - add [pronto](https://github.com/prontolabs/pronto)
 - add [crystalball](https://github.com/toptal/crystalball)
+- add [reek](https://github.com/troessner/reek)
 - add 2FA for admin accounts by default
 - add feedback
 - add monitoring and analytics tools
