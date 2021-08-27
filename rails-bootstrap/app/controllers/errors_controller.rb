@@ -1,4 +1,6 @@
 class ErrorsController < ApplicationController
+  layout false
+  
   def not_found
     render status: :not_found
   end
