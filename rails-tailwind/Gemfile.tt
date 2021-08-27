@@ -14,6 +14,7 @@ gem "strong_migrations"
 gem "puma"<%= gemfile_requirement("puma") %>
 
 ### Frontend
+gem "better_html"
 gem "simple_form"
 gem "webpacker", "~> 5.4.0"
 gem "view_component", require: "view_component/engine"
@@ -98,7 +99,6 @@ end
 group :development do
   gem "amazing_print"
   gem "annotate"
-  gem "better_html"
   gem "brakeman", require: false
   gem "bundler-audit"
   gem "derailed_benchmarks"

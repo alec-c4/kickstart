@@ -142,7 +142,10 @@ $ lefthook run pre-commit
 - add [isolator](https://github.com/palkan/isolator)
 - add [pronto](https://github.com/prontolabs/pronto)
 - add [crystalball](https://github.com/toptal/crystalball)
-- add [reek](https://github.com/troessner/reek)
+- add [reek](https://github.com/troessner/reek) and [rubycritic](https://github.com/whitesmith/rubycritic)
+- add [simplecov](https://github.com/simplecov-ruby/simplecov)
+- add [danger](https://danger.systems/)
+- add [lit](https://github.com/prograils/lit)
 - add 2FA for admin accounts by default
 - add feedback
 - add monitoring and analytics tools
