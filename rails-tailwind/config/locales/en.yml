@@ -14,10 +14,16 @@ en:
           attributes:
             password:
               pwned_password: was pwned
+  announcements:
+    index:
+      title: What's new?
   customer:
     dashboard:
       index:
         title: Dashboard
+    notifications:
+      index:
+        title: Notifications
   devise:
     failure:
       banned: You've banned
@@ -34,6 +40,13 @@ en:
     sign_out: Logout
     sign_up: Register
     whats_new: What's New
+  pages:
+    home:
+      title: Home
+    privacy:
+      title: Privacy Policy
+    terms:
+      title: Terms of service
   security:
     access_denied: Access denied!
   users:

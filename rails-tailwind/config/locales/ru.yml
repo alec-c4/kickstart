@@ -14,10 +14,16 @@ ru:
           attributes:
             password:
               pwned_password: возможно был в одной из утечек
+  announcements:
+    index:
+      title: Обновления
   customer:
     dashboard:
       index:
         title: Дашборд
+    notifications:
+      index:
+        title: Уведомления
   devise:
     failure:
       banned: Аккаунт заблокирован
@@ -34,6 +40,13 @@ ru:
     sign_out: Выход
     sign_up: Регистрация
     whats_new: Обновления
+  pages:
+    home:
+      title: Заглавная
+    privacy:
+      title: Политика конфиденциальности
+    terms:
+      title: Правила сервиса
   security:
     access_denied: Доступ запрещён!
   users:
