@@ -7,13 +7,17 @@ en:
         last_name: Last name
         name: Full Name
     errors:
+      messages:
+        wrong_name_format: must contain both first and last name
       models:
         user:
           attributes:
             password:
-              pwned_password: was pwned    
-      messages:
-        wrong_name_format: must contain both first and last name
+              pwned_password: was pwned
+  customer:
+    dashboard:
+      index:
+        title: Dashboard
   devise:
     failure:
       banned: You've banned
@@ -49,3 +53,10 @@ en:
     profiles:
       submit_update: Update profile
       update_successful: Profile updated
+    referrals:
+      index:
+        referred_users_list: Referred users list
+        status_complete: Registration complete
+        status_pending: Pending
+        title: Referrals
+        use_link: Use this link to refer your friends

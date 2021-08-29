@@ -7,13 +7,17 @@ ru:
         last_name: Фамилия
         name: Имя
     errors:
+      messages:
+        wrong_name_format: должно быть в формате Имя Фамилия
       models:
         user:
           attributes:
             password:
-              pwned_password: возможно был в одной из утечек    
-      messages:
-        wrong_name_format: должно быть в формате Имя Фамилия
+              pwned_password: возможно был в одной из утечек
+  customer:
+    dashboard:
+      index:
+        title: Дашборд
   devise:
     failure:
       banned: Аккаунт заблокирован
@@ -49,3 +53,10 @@ ru:
     profiles:
       submit_update: Обновить профиль
       update_successful: Профиль обновлён
+    referrals:
+      index:
+        referred_users_list: Приглашённые пользователи
+        status_complete: Пользователь зарегистрировался
+        status_pending: В процессе
+        title: Приглашения
+        use_link: Ссылка для приглашения друзей
