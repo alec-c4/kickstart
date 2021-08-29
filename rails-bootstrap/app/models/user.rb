@@ -79,7 +79,7 @@ class User < ApplicationRecord
     update(referral_completed_at: Time.zone.now)
     # TODO: add credit to referred_by user
     referrer = User.find_by(id: referred_by)
-    referrer.increment!(:referral_registrations) if referrer.present?
+    referrer.increment(:referral_registrations) && referrer.save if referrer.present?
   end
 
   ### Devise async

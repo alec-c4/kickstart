@@ -22,3 +22,15 @@ Metrics/MethodLength:
   Enabled: true
   Exclude:
     - 'app/controllers/users/omniauth_callbacks_controller.rb'
+
+Rails/HasAndBelongsToMany:
+  Exclude:
+    - 'app/models/role.rb'
+
+Style/GuardClause:
+  Exclude:
+    - 'app/controllers/customer_controller.rb'
+
+Rails/I18nLocaleAssignment:
+  Exclude:
+    - 'spec/rails_helper.rb'
