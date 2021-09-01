@@ -22,6 +22,8 @@ Metrics/MethodLength:
   Enabled: true
   Exclude:
     - 'app/controllers/users/omniauth_callbacks_controller.rb'
+    - 'app/controllers/admin/announcements_controller.rb'
+    - 'app/controllers/users/profiles_controller.rb'
 
 Rails/HasAndBelongsToMany:
   Exclude:
