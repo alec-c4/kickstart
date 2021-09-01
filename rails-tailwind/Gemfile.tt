@@ -80,6 +80,7 @@ group :development, :test do
   gem "rubocop-performance"
   gem "rubocop-rails"
   gem "rubocop-rspec"
+  gem "simplecov", require: false  
 
   gem "capybara"
   gem "cucumber-rails", require: false
@@ -100,7 +101,7 @@ group :development do
   gem "amazing_print"
   gem "annotate"
   gem "brakeman", require: false
-  gem "bundler-audit"
+  gem "bundler-audit", ">= 0.9.0"
   gem "derailed_benchmarks"
   gem "erb_lint"
   gem "fasterer"
@@ -114,11 +115,12 @@ group :development do
   gem "stackprof"
   gem "web-console"<%= gemfile_requirement("web-console") %>
 
+  gem "bcrypt_pbkdf"
   gem "capistrano", "~> 3.16", require: false
   gem "capistrano3-puma", github: "seuros/capistrano-puma"
+  gem "capistrano-maintenance", "~> 1.2", require: false
   gem "capistrano-rails", "~> 1.6", require: false
   gem "capistrano-rbenv"
   gem "capistrano-sidekiq"
-  gem "bcrypt_pbkdf"
   gem "ed25519"
 end

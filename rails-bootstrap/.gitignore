@@ -19,19 +19,19 @@
 !/storage/.keep
 
 /public/assets
-.byebug_history
-
 /public/packs
 /public/packs-test
 /node_modules
 /yarn-error.log
 /yarn-debug.log*
 /.yarn-integrity
+/.byebug_history
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 /config/credentials/development.key
 /config/credentials/test.key
+/config/credentials/staging.key
 
 # Ignore local settings
 config/settings.local.yml
@@ -40,3 +40,11 @@ config/environments/*.local.yml
 
 .DS_Store
 .idea
+
+# Vite Ruby
+/public/vite
+/public/vite-dev
+/public/vite-test
+*.local
+
+/coverage

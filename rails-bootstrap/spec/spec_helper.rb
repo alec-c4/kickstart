@@ -3,6 +3,9 @@ require "email_spec"
 require "email_spec/rspec"
 require "capybara/rspec"
 require "pundit/rspec"
+require "simplecov"
+
+SimpleCov.start
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

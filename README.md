@@ -104,6 +104,7 @@ $ lefthook run pre-commit
 - [lefthook](https://github.com/evilmartians/lefthook) with pre-commit run of rspec, brakeman, rubocop, erblint, eslint, stylelint
 - [logstop](https://github.com/ankane/logstop) to avoid sensitive information and noise in the application logs
 - [semantic_logger](https://github.com/reidmorrison/semantic_logger) as a highly configurable logging system
+- [simplecov](https://github.com/simplecov-ruby/simplecov) for test coverage research
 - announcements (new/fix/update) for all users
 - flash helper
 - referral system
@@ -143,7 +144,6 @@ $ lefthook run pre-commit
 - add [pronto](https://github.com/prontolabs/pronto)
 - add [crystalball](https://github.com/toptal/crystalball)
 - add [reek](https://github.com/troessner/reek) and [rubycritic](https://github.com/whitesmith/rubycritic)
-- add [simplecov](https://github.com/simplecov-ruby/simplecov)
 - add [danger](https://danger.systems/)
 - add [lit](https://github.com/prograils/lit)
 - add 2FA for admin accounts by default

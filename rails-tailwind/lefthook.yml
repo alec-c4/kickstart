@@ -6,7 +6,10 @@ pre-commit:
       run: bundle exec rspec --fail-fast
     brakeman:
       tags: backend
-      run: brakeman --no-pager
+      run: bundle exec brakeman --no-pager
+    bundler-audit:
+      tags: backend
+      run: bundle exec bundler-audit
     fasterer:
       tags: backend
       run: fasterer

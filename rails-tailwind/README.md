@@ -6,7 +6,8 @@
 1. Fill credentials file with
 
 ``` yml
-app:
+secret_key_base: ''
+devise:
   secret_key: ''
 google:
   client_id: ''
@@ -16,6 +17,7 @@ mailgun:
   domain: ''
 lockbox:
   master_key: ''
+  
 ```
 
 using

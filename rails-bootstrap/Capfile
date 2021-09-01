@@ -36,6 +36,7 @@ install_plugin Capistrano::SCM::Git
 
 require "capistrano/rails"
 require "capistrano/rbenv"
+require "capistrano/maintenance"
 
 require "capistrano/puma"
 install_plugin Capistrano::Puma # Default puma tasks
