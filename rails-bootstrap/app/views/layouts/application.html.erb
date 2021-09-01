@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= display_meta_tags site: "Application", og: {
+                          title: :title,
+                          site_name: :site,
+                        } %>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application' %>
+  </head>
+
+  <body>
+      <header>
+      <%= render partial: 'layouts/header' %>
+      </header>
+
+      <main class="container">
+        <%= render partial: 'layouts/flash' %>
+        <%= yield %>
+      </main>
+
+      <footer class="footer">
+        <%= render partial: 'layouts/footer' %>
+      </footer>
+      <%= render partial: 'layouts/analytics' %>
+
+  </body>
+</html>

@@ -39,7 +39,7 @@ def apply_template!
     add_notifications
     add_announcements
 
-    setup_dev_test
+    setup_environments
     setup_basic_logic
     setup_mailer
 
@@ -158,7 +158,7 @@ def setup_sidekiq
   copy_file "config/sidekiq.yml", force: true
 end
 
-def setup_dev_test
+def setup_environments
   inject_into_file "config/environments/development.rb",
                    after: /config\.file_watcher = ActiveSupport::EventedFileUpdateChecker\n/ do
     <<-'RUBY'
@@ -196,6 +196,24 @@ def setup_dev_test
     end
     RUBY
   end
+
+  inject_into_file "config/environments/production.rb",
+                   after: /# config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session\n/ do
+    <<-'RUBY'
+    config.action_mailer.delivery_method = :mailgun
+    config.action_mailer.mailgun_settings = {
+      api_key: Rails.application.credentials.mailgun[:api_key],
+      domain: Rails.application.credentials.mailgun[:domain]
+    }
+    config.action_mailer.default_url_options = {
+      host: Settings.mailer.default_url.host,
+      protocol: Settings.mailer.default_url.protocol
+    }
+    config.action_mailer.perform_deliveries = true
+    RUBY
+  end
+
+  run "cp config/environments/production.rb config/environments/staging.rb"
 end
 
 def setup_basic_logic
@@ -222,25 +240,8 @@ def setup_basic_logic
   copy_file "app/views/layouts/_footer.html.erb", force: true
   copy_file "app/views/layouts/_analytics.html.erb", force: true
 
-  gsub_file "app/views/layouts/application.html.erb", /<%= yield %>/ do
-    <<-LAYOUT
-  <header>
-      <%= render partial: 'layouts/header' %>
-      </header>
-
-      <main class="container">
-        <%= render partial: 'layouts/flash' %>
-        <%= yield %>
-      </main>
-
-      <footer class="footer">
-        <%= render partial: 'layouts/footer' %>
-      </footer>#{'    '}
-      <%= render partial: 'layouts/analytics' %>
-    LAYOUT
-  end
-
-  gsub_file "app/views/layouts/application.html.erb", /stylesheet_link_tag/, "stylesheet_pack_tag"
+  copy_file "app/views/layouts/application.html.erb", force: true
+  copy_file "app/views/layouts/admin.html.erb", force: true
 
   # Pages
   copy_file "app/controllers/pages_controller.rb", force: true
@@ -286,11 +287,7 @@ def setup_migrations
   generate "migration EnableUuidPsqlExtension"
   uuid_migration_file = (Dir["db/migrate/*_enable_uuid_psql_extension.rb"]).first
 
-  in_root do
-    inject_into_file uuid_migration_file,
-                     "\nenable_extension \"pgcrypto\"
-        \nenable_extension \"uuid-ossp\"", after: "def change"
-  end
+  copy_file "migrations/uuid.rb", uuid_migration_file, force: true
 end
 
 def setup_active_storage
@@ -469,6 +466,7 @@ end
 
 def setup_mailer
   copy_file "config/settings.yml", force: true
+  directory "config/settings", force: true
   gsub_file "config/initializers/devise.rb", /'please-change-me-at-config-initializers-devise@example\.com'/,
             "Settings.mailer.devise_from"
   gsub_file "app/mailers/application_mailer.rb", /'from@example\.com'/, "Settings.mailer.default_from"
