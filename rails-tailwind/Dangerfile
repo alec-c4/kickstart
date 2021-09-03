@@ -1,0 +1,44 @@
+# Sometimes it's a README fix, or something like that - which isn't relevant for
+# including in a project's CHANGELOG for example
+declared_trivial = github.pr_title.include? "#trivial"
+
+# Make it more obvious that a PR is a work in progress and shouldn't be merged yet
+warn("PR is classed as Work in Progress") if github.pr_title.include? "[WIP]"
+
+# Warn when there is a big PR
+warn("Big PR") if git.lines_of_code > 500
+
+# Don't let testing shortcuts get into master by accident
+fail("fdescribe left in tests") if `grep -r fdescribe spec/ `.length > 1
+fail("fit left in tests") if `grep -r fit spec/ `.length > 1
+
+# Ensure that labels have been used on the PR
+failure "Please add labels to this PR" if github.pr_labels.empty?
+
+# Ensure there is a summary for a PR
+failure "Please provide a summary in the Pull Request description" if github.pr_body.length < 5
+
+# Note when a PR cannot be manually merged, which goes away when you can
+can_merge = github.pr_json["mergeable"]
+warn("This PR cannot be merged yet.", sticky: false) unless can_merge
+
+# Ensure that body of PR is not empty
+failure "Please add text to PR body" if github.pr_body.empty?
+
+# Changelog check
+changelog.check!
+
+# Commit lint check
+commit_lint.check
+
+# Runs rails_best_practices on modified and added files in the PR
+rails_best_practices.lint
+
+# Suggest code changes through inline comments in pull requests.
+suggester.suggest
+
+# README.md has a TOC
+toc.check!
+
+# Runs danger-rubocop linter
+rubocop.lint
