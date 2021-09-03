@@ -67,6 +67,7 @@ $ lefthook run pre-commit
 - ruby on rails application template 
 - .gitignore file
 - [VSCode](https://code.visualstudio.com/) configuration files
+- [Danger](https://danger.systems/ruby/) configuration with auto assign github actions
 - postgresql database connector
 - [purge.css](https://purgecss.com/) to cleanup stylesheets
 - timezone detection with [jstz](https://github.com/iansinnott/jstz)

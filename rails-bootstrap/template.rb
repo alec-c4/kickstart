@@ -16,6 +16,7 @@ def apply_template!
     setup_generators
     setup_frontend
     setup_procfile
+    setup_danger_github
     setup_sidekiq
 
     setup_gems
@@ -120,6 +121,11 @@ end
 
 def setup_gemfile
   template "Gemfile.tt", force: true
+  copy_file "Dangerfile", force: true
+end
+
+def setup_danger_github
+  directory ".github", force: true
 end
 
 def setup_strong_migrations

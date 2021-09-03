@@ -26,8 +26,13 @@ set :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 set :format, :airbrussh
 set :format_options, command_output: true, log_file: "log/capistrano.log", color: :auto, truncate: false
 
-append :linked_files, "config/database.yml", "config/settings.yml",
-       "config/sidekiq.yml", "config/master.key"
+if fetch(:stage) == :staging
+  append :linked_files, "config/database.yml", "config/settings.yml",
+         "config/sidekiq.yml", "config/master.key", "config/credentials/staging.key"
+else
+  append :linked_files, "config/database.yml", "config/settings.yml",
+         "config/sidekiq.yml", "config/master.key"
+end
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/assets", "public/packs", "storage",
        ".bundle", "node_modules"
 
@@ -37,20 +42,33 @@ set :pty, false
 
 set :sidekiq_service_unit_user, :system
 
+set :puma_user, fetch(:deploy_user)
 set :puma_rackup, -> { File.join(current_path, "config.ru") }
 set :puma_state, "#{shared_path}/tmp/pids/puma.state"
 set :puma_pid, "#{shared_path}/tmp/pids/puma.pid"
-set :puma_bind, "unix://#{shared_path}/tmp/sockets/puma.sock"
+set :puma_bind, "unix://#{shared_path}/tmp/sockets/puma.sock"    # accept array for multi-bind
+set :puma_control_app, false
+set :puma_default_control_app, "unix://#{shared_path}/tmp/sockets/pumactl.sock"
 set :puma_conf, "#{shared_path}/puma.rb"
-set :puma_access_log, "#{shared_path}/log/puma_error.log"
-set :puma_error_log, "#{shared_path}/log/puma_access.log"
+set :puma_access_log, "#{shared_path}/log/puma_access.log"
+set :puma_error_log, "#{shared_path}/log/puma_error.log"
 set :puma_role, :app
 set :puma_env, fetch(:rack_env) { fetch(:rails_env) { "production" } }
 set :puma_threads, [0, 16]
-set :puma_workers, 1
+set :puma_workers, 0
 set :puma_worker_timeout, nil
 set :puma_init_active_record, false
-set :puma_preload_app, true
+set :puma_preload_app, false
+set :puma_daemonize, false
+set :puma_plugins, []  # accept array of plugins
+set :puma_tag, fetch(:application)
+set :puma_restart_command, "bundle exec puma"
+set :puma_service_unit_name, "puma_#{fetch(:application)}_#{fetch(:stage)}"
+set :puma_systemctl_user, :system # accepts :user
+set :puma_enable_lingering, fetch(:puma_systemctl_user) != :system # https://wiki.archlinux.org/index.php/systemd/User#Automatic_start-up_of_systemd_user_instances
+set :puma_lingering_user, fetch(:user)
+set :puma_service_unit_env_file, nil
+set :puma_service_unit_env_vars, []
 
 before "deploy:assets:precompile", "deploy:yarn_install"
 namespace :deploy do
@@ -72,10 +90,9 @@ namespace :deploy do
       rsync_host = host.to_s
 
       run_locally do
-        with rails_env: :production do
-          ## Set your env accordingly.
-          execute "bundle exec rails assets:precompile"
-        end
+        ## Set your env accordingly.
+        execute "RAILS_ENV=#{fetch(:stage)} bundle exec rails webpacker:clobber"
+        execute "RAILS_ENV=#{fetch(:stage)} bundle exec rails webpacker:compile"
         execute "rsync -av --delete ./public/assets/ #{fetch(:deploy_user)}@#{rsync_host}:#{shared_path}/public/assets/"
         execute "rsync -av --delete ./public/packs/ #{fetch(:deploy_user)}@#{rsync_host}:#{shared_path}/public/packs/"
         execute "rm -rf public/assets"
@@ -118,6 +135,7 @@ namespace :admin do
   task :setup_configs do
     on roles(:app) do |_host|
       execute "mkdir", "-p #{shared_path}/config" unless test "[ -d #{shared_path}/config ]"
+      execute "mkdir", "-p #{shared_path}/config/credentials" unless test "[ -d #{shared_path}/config/credentials ]"
 
       unless test "[ -f #{shared_path}/config/database.yml ]"
         upload! "config/database.yml", "#{shared_path}/config/database.yml"
@@ -131,6 +149,10 @@ namespace :admin do
         upload! "config/master.key", "#{shared_path}/config/master.key"
       end
 
+      if !test("[ -f #{shared_path}/config/credentials/staging.key ]") && (fetch(:stage) == :staging)
+        upload! "config/credentials/staging.key", "#{shared_path}/config/credentials/staging.key"
+      end
+
       unless test "[ -f #{shared_path}/config/sidekiq.yml ]"
         upload! "config/sidekiq.yml", "#{shared_path}/config/sidekiq.yml"
       end
@@ -140,4 +162,3 @@ namespace :admin do
     end
   end
 end
-
