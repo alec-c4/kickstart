@@ -53,6 +53,14 @@ $ lefthook install
 $ lefthook run pre-commit
 ```
 
+17. Create secret token using 
+
+```
+$ openssl rand -base64 32
+```
+
+and add it to GitHub repo settings (settings/secrets) with name DANGER_GITHUB_API_TOKEN
+
 
 ## Setup for production
 
