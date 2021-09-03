@@ -91,6 +91,7 @@ namespace :deploy do
 
       run_locally do
         ## Set your env accordingly.
+        execute "RAILS_ENV=#{fetch(:stage)} bundle exec rails assets:precompile"
         execute "RAILS_ENV=#{fetch(:stage)} bundle exec rails webpacker:clobber"
         execute "RAILS_ENV=#{fetch(:stage)} bundle exec rails webpacker:compile"
         execute "rsync -av --delete ./public/assets/ #{fetch(:deploy_user)}@#{rsync_host}:#{shared_path}/public/assets/"

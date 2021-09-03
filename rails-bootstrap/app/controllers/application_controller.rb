@@ -37,6 +37,11 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def append_info_to_payload(payload)
+    super
+    payload[:user_id] = signed_in? ? current_user.id : "guest"
+  end
+
   def user_not_authorized
     flash[:alert] = t("security.access_denied")
     redirect_to root_path
