@@ -13,7 +13,9 @@ options.implementation = require('sass')
 function hotfixPostcssLoaderConfig(subloader) {
   const subloaderName = subloader.loader
   if (subloaderName === 'postcss-loader') {
+    // eslint-disable-next-line no-param-reassign
     subloader.options.postcssOptions = subloader.options.config
+    // eslint-disable-next-line no-param-reassign
     delete subloader.options.config
   }
 }
