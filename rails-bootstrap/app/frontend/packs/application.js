@@ -7,12 +7,12 @@ import LocalTime from "local-time";
 import "../channels";
 
 import "bootstrap";
-import "@fortawesome/fontawesome-free/css/all";
+import "@fortawesome/fontawesome-free/css/all.css";
+
+import "../controllers"
 
 Rails.start();
 ActiveStorage.start();
 LocalTime.start();
-
-import "../controllers"
 
 // require.context('../images', true);
