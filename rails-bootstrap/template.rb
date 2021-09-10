@@ -121,11 +121,11 @@ end
 
 def setup_gemfile
   template "Gemfile.tt", force: true
-  copy_file "Dangerfile", force: true
 end
 
 def setup_danger_github
   directory ".github", force: true
+  copy_file "Dangerfile", force: true
 end
 
 def setup_strong_migrations

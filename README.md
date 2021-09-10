@@ -1,10 +1,5 @@
 # Kickstart
 
-<a href="https://gitmoji.dev">
-  <img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square" alt="Gitmoji">
-</a>
-
-
 ## Usage instructions
 
 1. Install rbenv, ruby (2.6+), node.js and yarn.
@@ -92,6 +87,8 @@ and add it to GitHub repo settings (settings/secrets) with name DANGER_GITHUB_AP
 - SEO tools - [meta-tags](https://github.com/kpumuk/meta-tags), [sitemap_generator](http://github.com/kjvarga/sitemap_generator) and [friendly_id](https://github.com/norman/friendly_id)
 - I18n tools - [rails-i18n](http://github.com/svenfuchs/rails-i18n) and [i18n-tasks](https://github.com/glebm/i18n-tasks)
 - rspec and cucumber for testing
+- [rspec-sidekiq](https://github.com/philostler/rspec-sidekiq) plugin
+- [rails_best_practices](https://github.com/flyerhzm/rails_best_practices)
 - [Mailgun](https://mailgun.com) integration for email notifications
 - [rubocop](https://github.com/rubocop/rubocop/) for code style validations
 - [better_html](https://github.com/Shopify/better-html) and [erb-lint](https://github.com/Shopify/erb-lint) for erb linting
@@ -125,11 +122,6 @@ and add it to GitHub repo settings (settings/secrets) with name DANGER_GITHUB_AP
 
 ## Todo
 
-- update with rails [production best practices](https://github.com/ankane/production_rails), [security best practices](https://github.com/ankane/secure_rails) and [rails-security-checklist](https://github.com/eliotsykes/rails-security-checklist)
-- add [active_storage_validations](https://github.com/igorkasyanchuk/active_storage_validations)
-- add tools from [evil martians tollbox](https://github.com/evilmartians/terraforming-rails)
-- test and add [dawnscanner](https://github.com/thesp0nge/dawnscanner)
-- add [rails_best_practices](https://github.com/flyerhzm/rails_best_practices)
 - add [secure_headers](https://github.com/github/secure_headers)
 - add [ssrf_filter](https://github.com/arkadiyt/ssrf_filter)
 - add [devise-security](https://github.com/devise-security/devise-security)
@@ -155,6 +147,10 @@ and add it to GitHub repo settings (settings/secrets) with name DANGER_GITHUB_AP
 - add [reek](https://github.com/troessner/reek) and [rubycritic](https://github.com/whitesmith/rubycritic)
 - add [danger](https://danger.systems/)
 - add [lit](https://github.com/prograils/lit)
+- update with rails [production best practices](https://github.com/ankane/production_rails), [security best practices](https://github.com/ankane/secure_rails) and [rails-security-checklist](https://github.com/eliotsykes/rails-security-checklist)
+- add [active_storage_validations](https://github.com/igorkasyanchuk/active_storage_validations)
+- add tools from [evil martians tollbox](https://github.com/evilmartians/terraforming-rails)
+- test and add [dawnscanner](https://github.com/thesp0nge/dawnscanner)
 - add 2FA for admin accounts by default
 - add feedback
 - add monitoring and analytics tools

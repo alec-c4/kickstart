@@ -3,6 +3,7 @@ require "email_spec"
 require "email_spec/rspec"
 require "capybara/rspec"
 require "pundit/rspec"
+require "sidekiq/testing"
 require "simplecov"
 
 SimpleCov.start

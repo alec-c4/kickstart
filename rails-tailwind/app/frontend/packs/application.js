@@ -8,7 +8,6 @@ import Rails from "@rails/ujs";
 import * as ActiveStorage from "@rails/activestorage";
 import LocalTime from "local-time";
 
-import "bootstrap";
 import "@fortawesome/fontawesome-free/css/all.css";
 
 Rails.start();

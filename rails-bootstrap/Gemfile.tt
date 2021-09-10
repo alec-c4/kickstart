@@ -76,6 +76,7 @@ gem "sidekiq-scheduler"
 group :development, :test do
   gem "bullet"
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
+  gem "rails_best_practices"
   gem "rubocop"
   gem "rubocop-performance"
   gem "rubocop-rails"
@@ -89,6 +90,7 @@ group :development, :test do
   gem "ffaker"
   gem "rails-controller-testing"
   gem "rspec-rails"
+  gem "rspec-sidekiq"
   gem "shoulda-matchers"
 end
 
