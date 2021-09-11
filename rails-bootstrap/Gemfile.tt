@@ -90,13 +90,13 @@ group :development, :test do
   gem "ffaker"
   gem "rails-controller-testing"
   gem "rspec-rails"
-  gem "rspec-sidekiq"
   gem "shoulda-matchers"
 end
 
 group :test do
   gem "database_cleaner"
   gem "database_cleaner-active_record"
+  gem "rspec-sidekiq"  
 end
 
 group :development do
