@@ -401,6 +401,7 @@ def setup_tests
   run "cp $(i18n-tasks gem-path)/templates/rspec/i18n_spec.rb spec/"
   directory "spec", force: true
   directory "features", force: true
+  copy_file "lib/tasks/factory_bot.rake", force: true
 end
 
 def setup_pagy
