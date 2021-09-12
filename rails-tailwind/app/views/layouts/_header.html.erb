@@ -1,18 +1,2 @@
-<% if signed_in? && current_user.is_admin? %>
-  <ul>
-    <li>
-      <%= link_to "Admin dashboard" , admin_dashboard_path %>
-    </li>
-    <li>
-      <a href="/flipper">Flipper console</a>
-    </li>
-    <li>
-      <a href="/sidekiq">Sidekiq console</a>
-    </li>
-    <li>
-      <a href="/blazer">Blazer console</a>
-    </li>
-  </ul>
-  <% end %>
-
-    <%= render partial: 'layouts/account_items' %>
+<%= render partial: 'layouts/admin_items' %>
+<%= render partial: 'layouts/account_items' %>

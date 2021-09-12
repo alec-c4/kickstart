@@ -6,33 +6,8 @@
     </button>
     <div class="collapse navbar-collapse flex-grow-1 text-right" id="navbarNav">
       <ul class="navbar-nav ms-auto flex-nowrap">
-
-        <% if signed_in? && current_user.is_admin? %>
-          <li class="nav-item dropdown">
-            <div class="btn-group">
-              <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Admin tools
-              </button>
-              <ul class="dropdown-menu">
-                <li>
-                  <%= link_to "Admin dashboard" , admin_dashboard_path, class: "dropdown-item" %>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/flipper">Flipper console</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/sidekiq">Sidekiq console</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/blazer">Blazer console</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <% end %>
-
-            <%= render partial: 'layouts/account_items' %>
+        <%= render partial: 'layouts/admin_items' %>
+        <%= render partial: 'layouts/account_items' %>
       </ul>
     </div>
   </div>

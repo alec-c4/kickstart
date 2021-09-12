@@ -240,6 +240,7 @@ def setup_basic_logic
   copy_file "app/views/layouts/_flash.html.erb", force: true
 
   copy_file "app/views/layouts/_account_items.html.erb", force: true
+  copy_file "app/views/layouts/_admin_items.html.erb", force: true
   copy_file "app/views/layouts/_header.html.erb", force: true
   copy_file "app/views/layouts/_footer.html.erb", force: true
   copy_file "app/views/layouts/_analytics.html.erb", force: true
