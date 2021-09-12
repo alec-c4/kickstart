@@ -2,6 +2,8 @@
 
 class DeviseCreateUsers < ActiveRecord::Migration[6.1]
   def change
+    create_enum :genders, %w[male female other not_specified]
+
     create_table :users, id: :uuid do |t|
       ## Database authenticatable
       t.text :email_ciphertext, null: false, default: ""
@@ -42,7 +44,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       ## Profile
       t.string :first_name
       t.string :last_name
-      t.string :gender
+      t.enum :gender, enum_name: :genders
       t.date :birthday
 
       ## Referral
