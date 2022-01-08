@@ -1,0 +1,6 @@
+[submodule "ks-rails-bootstrap"]
+	path = ks-rails-bootstrap
+	url = https://alec-c4@github.com/alec-c4/ks-rails-bootstrap.git
+[submodule "ks-rails-tailwind"]
+	path = ks-rails-tailwind
+	url = https://alec-c4@github.com/alec-c4/ks-rails-tailwind.git
