@@ -1,1 +1,0 @@
-Logstop.guard(Rails.logger)

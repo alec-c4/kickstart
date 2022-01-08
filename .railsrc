@@ -1,4 +1,0 @@
---skip-turbolinks
---skip-test
---database=postgresql
---webpacker

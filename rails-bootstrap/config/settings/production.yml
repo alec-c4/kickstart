@@ -1,6 +1,0 @@
-mailer:
-  default_from: "info@example.com"
-  devise_from: "info@example.com"
-  default_url:
-    host: "example.com"
-    protocol: "https"

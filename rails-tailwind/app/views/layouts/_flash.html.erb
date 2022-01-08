@@ -1,6 +1,0 @@
-<%- flash.each do |key, value| %>
-  <% next unless value.is_a? String %>
-  <div class="<%= flash_class(key) %>">
-    <%= value %>
-  </div>
-<% end %>

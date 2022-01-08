@@ -1,7 +1,0 @@
-<%= form_with(local: false, method: :get, url: { action: 'index' }, class: "row row-cols-lg-auto g-3 align-items-center mb-3") do |form| %>
-    <div class="col input-group">
-      <%= form.text_field :query, value: params[:query].presence && params[:query], class: 'form-control', placeholder: 'Search users' %>
-      <%= form.submit "Search", class: 'btn btn-primary' %>
-    </div>
-<% end %>
-

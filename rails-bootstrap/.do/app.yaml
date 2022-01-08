@@ -1,9 +1,0 @@
-
-name: rails-application
-services:
-- environment_slug: ruby-on-rails
-  github:
-    branch: main
-    deploy_on_push: true
-    repo: your-repo/rails-application
-  name: rails-application
