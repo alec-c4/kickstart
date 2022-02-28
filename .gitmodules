@@ -4,3 +4,6 @@
 [submodule "ks-rails-tailwind"]
 	path = ks-rails-tailwind
 	url = https://alec-c4@github.com/alec-c4/ks-rails-tailwind.git
+[submodule "ks-rails-api"]
+	path = ks-rails-api
+	url = https://alec-c4@github.com/alec-c4/ks-rails-api.git

@@ -19,10 +19,16 @@ rails new APP_NAME --no-skip-hotwire -T -c tailwind -j esbuild -d postgresql -m 
 rails new APP_NAME --no-skip-hotwire -T -c bootstrap -j esbuild -d postgresql -m https://raw.githubusercontent.com/alec-c4/ks-rails-bootstrap/master/template.rb
 ```
 
+### Rails API application
+```bash
+rails new APP_NAME --api -T -d postgresql -m https://raw.githubusercontent.com/alec-c4/ks-rails-api/master/template.rb
+```
+
 ## Available templates
 
 - [Monolith ruby on rails application with tailwindcss frontend](https://github.com/alec-c4/ks-rails-tailwind)
 - [Monolith ruby on rails application with bootstrap frontend](https://github.com/alec-c4/ks-rails-bootstrap)
+- [Rails API application](https://github.com/alec-c4/ks-rails-api)
 
 ## Todo
 
