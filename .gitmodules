@@ -10,3 +10,6 @@
 [submodule "ks-rails-basic"]
 	path = ks-rails-basic
 	url = https://alec-c4@github.com/alec-c4/ks-rails-basic.git
+[submodule "ks-sveltekit-starter"]
+	path = ks-sveltekit-starter
+	url = https://alec-c4@github.com/alec-c4/ks-sveltekit-starter.git

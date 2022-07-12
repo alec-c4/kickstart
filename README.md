@@ -30,12 +30,19 @@ rails new APP_NAME --api -T -d postgresql -m https://raw.githubusercontent.com/a
 rails new APP_NAME -T -d postgresql -m https://raw.githubusercontent.com/alec-c4/ks-rails-basic/master/template.rb
 ```
 
+### SvelteKit basic template
+
+```
+npx degit alec-c4/ks-sveltekit-starter APP_NAME
+```
+
 ## Available templates
 
 - [Monolith ruby on rails application with tailwindcss frontend](https://github.com/alec-c4/ks-rails-tailwind)
 - [Monolith ruby on rails application with bootstrap frontend](https://github.com/alec-c4/ks-rails-bootstrap)
 - [Rails API application](https://github.com/alec-c4/ks-rails-api)
 - [Rails basic/plain application](https://github.com/alec-c4/ks-rails-basic)
+- [SvelteKit basic template](https://github.com/alec-c4/ks-sveltekit-starter)
 
 ## Todo
 
