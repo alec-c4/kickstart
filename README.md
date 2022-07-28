@@ -36,6 +36,12 @@ rails new APP_NAME -T -d postgresql -m https://raw.githubusercontent.com/alec-c4
 npx degit alec-c4/ks-sveltekit-starter APP_NAME
 ```
 
+### Next.js basic template
+
+```
+npx degit alec-c4/ks-nextjs-starter APP_NAME
+```
+
 ## Available templates
 
 - [Monolith ruby on rails application with tailwindcss frontend](https://github.com/alec-c4/ks-rails-tailwind)
@@ -43,12 +49,12 @@ npx degit alec-c4/ks-sveltekit-starter APP_NAME
 - [Rails API application](https://github.com/alec-c4/ks-rails-api)
 - [Rails basic/plain application](https://github.com/alec-c4/ks-rails-basic)
 - [SvelteKit basic template](https://github.com/alec-c4/ks-sveltekit-starter)
+- [Next.js basic template](https://github.com/alec-c4/ks-nextjs-starter)
 
 ## Todo
 
 - Add monolith ruby on rails template with [inertia.js](https://inertiajs.com) frontend
 - Add Nest.js template
-- Add Svelte/SvelteKit templates
 - Add ansible templates for rails and js applications
 - Add terraform templates for DigitalOcean, Linode and AWS
 
