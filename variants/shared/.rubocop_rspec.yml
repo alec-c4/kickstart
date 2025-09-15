@@ -1,0 +1,12 @@
+RSpec/ImplicitExpect:
+  Enabled: false
+RSpec/ContextWording:
+  Enabled: false
+RSpec/ExampleWording:
+  Enabled: false
+RSpec/NestedGroups:
+  AllowedGroups: [get, post, patch, delete, path, response]
+RSpec/ExampleLength:
+  Max: 20
+RSpec/MultipleExpectations:
+  Max: 5

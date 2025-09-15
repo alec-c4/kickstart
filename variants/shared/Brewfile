@@ -1,0 +1,16 @@
+# frozen_string_literal: true
+
+brew "act"
+brew "gh"
+brew "imagemagick"
+brew "jq"
+brew "lefthook"
+brew "mise"
+brew "neovim"
+brew "pgcli"
+brew "vips"
+brew "xh"
+brew "zellij"
+
+cask "ghostty"
+cask "postgres-unofficial"

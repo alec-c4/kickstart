@@ -1,0 +1,8 @@
+Rails/LexicallyScopedActionFilter:
+  Enabled: false # we use BaseController
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - development
+    - test
+    - staging

@@ -1,0 +1,7 @@
+.DS_Store
+
+# IDE specific files
+.idea
+.ruby-lsp
+*.swp
+.vscode/settings.json

@@ -1,0 +1,57 @@
+[tools]
+ruby = "latest"
+node = "latest"
+
+[env]
+COREPACK_ENABLE_STRICT = "0"
+
+[tasks.update]
+description = "Update packages"
+run = [
+  "bundle update",
+  "bundle leak update",
+  "yarn up",
+  "touch tmp/restart.txt",
+]
+
+[tasks.install]
+description = "Install packages"
+run = ["corepack enable", "bundle install", "yarn install"]
+
+[tasks.lint]
+description = "Run linters"
+run = [
+  "bundle exec rubocop -A",
+  "bundle exec i18n-tasks normalize",
+  "bundle exec erb_lint --lint-all --autocorrect",
+  "bundle leak",
+]
+
+[tasks.test]
+description = "Run tests"
+run = ["bundle exec rspec"]
+
+[tasks.dev]
+description = "Run development server"
+run = ["./bin/dev"]
+
+[tasks.debug]
+description = "Run debug server"
+run = ["rdbg -n --open=vscode -c -- bin/rails s "]
+
+[tasks.audit]
+description = "Run security audit"
+run = ["bundle audit", "yarn audit"]
+
+[tasks.prepare]
+description = "Prepare development environment"
+run = [
+  "bundle exec rails db:create",
+  "bundle exec rails db:migrate",
+  "bundle exec rails db:prepare",
+  "bundle exec rails db:seed",
+]
+
+[tasks.restart]
+description = "Restart server"
+run = "touch tmp/restart.txt"

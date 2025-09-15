@@ -1,0 +1,35 @@
+require:
+  - standard
+
+plugins:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-performance
+  - rubocop-thread_safety
+  - rubocop-capybara
+
+inherit_from:
+  - .rubocop_todo.yml
+  - .rubocop_strict.yml
+  - .rubocop_rspec.yml
+  - .rubocop_rails.yml
+
+inherit_gem:
+  standard: config/base.yml
+
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+  Exclude:
+    - node_modules/**/*
+    - public/**/*
+    - vendor/**/*
+    - bin/**/*
+    - db/schema.rb
+
+Rails:
+  Enabled: true
+RSpec:
+  Enabled: true
+Performance:
+  Enabled: true

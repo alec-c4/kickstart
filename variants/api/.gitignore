@@ -1,0 +1,39 @@
+# Ignore bundler config.
+/.bundle
+
+# Ignore all environment files.
+/.env*
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore pidfiles, but keep the directory.
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+
+# Ignore storage (uploaded files in development and any SQLite databases).
+/storage/*
+!/storage/.keep
+/tmp/storage/*
+!/tmp/storage/
+!/tmp/storage/.keep
+
+/public/assets
+
+# Ignore keys for decrypting credentials and more.
+/config/master.key
+/config/credentials/development.key
+/config/credentials/test.key
+
+.DS_Store
+
+# IDE specific files
+.idea
+.ruby-lsp
+*.swp
+.vscode/settings.json
+.vscode/rdbg_autoattach.json

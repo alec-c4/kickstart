@@ -1,0 +1,53 @@
+source "https://rubygems.org"
+
+### Application
+gem "rails", "~> <%= Rails.version %>"
+gem "puma"<%= gemfile_requirement("puma") %>
+
+### Database
+gem "pg"<%= gemfile_requirement("pg") %>
+
+### Solid Stack
+gem "solid_cache"
+gem "solid_queue"
+gem "solid_cable"
+
+### Deployment
+gem "kamal", require: false
+gem "thruster", require: false
+
+### I18n
+gem "i18n-tasks"
+gem "rails-i18n"
+
+### Tools
+gem "tzinfo-data", platforms: %i[ windows jruby ]
+gem "bootsnap", require: false
+gem "jbuilder"
+gem "rack-cors"
+
+group :development, :test do
+  gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
+
+  # security
+  gem "brakeman", require: false
+  gem "bundler-audit"
+
+  # linters
+  gem "standard", require: false, github: "standardrb/standard"
+  gem "rubocop-rails", require: false
+  gem "rubocop-rspec", require: false
+  gem "rubocop-performance", require: false
+  gem "rubocop-thread_safety", require: false
+
+  # testing
+  gem "rspec-rails"
+  gem "ffaker"
+  gem "database_cleaner-active_record"
+end
+
+group :development do
+  ## dev tools
+  gem "amazing_print"
+  gem "bundler-leak"
+end
