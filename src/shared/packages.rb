@@ -1,3 +1,1 @@
-def setup_packages
-  template "Gemfile.tt", force: true
-end
+template "Gemfile.tt", force: true

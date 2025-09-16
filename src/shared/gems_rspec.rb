@@ -1,6 +1,4 @@
-def setup_rspec_gem
-  generate "rspec:install"
+generate "rspec:install"
 
-  directory "spec", force: true
-  copy_file ".rspec", force: true
-end
+directory "spec", force: true
+copy_file ".rspec", force: true

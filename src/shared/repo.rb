@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
-REPO_LINK = "https://github.com/alec-c4/kickstart"
+REPO_LINK = "https://github.com/alec-c4/kickstart.git"
 AVAILABLE_TEMPLATE_NAMES = %w[api minimal esbuild_tailwind].freeze
 
 def add_template_repository_to_source_path
-  template_root = File.expand_path("../..", __dir__)
-
   if __FILE__.match?(%r{\Ahttps?://})
     require "tmpdir"
     source_paths.unshift(tempdir = Dir.mktmpdir("kickstart-tmp"))
@@ -16,18 +14,21 @@ def add_template_repository_to_source_path
       tempdir
     ].map(&:shellescape).join(" ")
 
-    template_pattern = AVAILABLE_TEMPLATE_NAMES.join("|")
-    if (branch = __FILE__[%r{kickstart/(.+)/(?:#{template_pattern})\.rb}, 1])
+    # Check for specific branch in URL path (e.g., /kickstart/branch_name/template.rb)
+    template_pattern = "(?:#{AVAILABLE_TEMPLATE_NAMES.join('|')})"
+    if (branch = __FILE__[%r{kickstart/(.+)/#{template_pattern}\.rb}, 1])
       Dir.chdir(tempdir) { git checkout: branch }
     end
   else
-    # Add template root directory to source paths
+    # For local files, add the template root directory (go up from src/shared)
+    template_root = File.expand_path("../..", File.dirname(__FILE__))
     source_paths.unshift(template_root)
   end
 end
 
 def set_variant_source_path(variant_name = nil)
-  template_root = File.expand_path("../..", __dir__)
+  # Find template root - go up from src/shared to the main directory
+  template_root = File.expand_path("../..", File.dirname(__FILE__))
 
   if variant_name
     variant_path = File.join(template_root, "variants", variant_name)

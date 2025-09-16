@@ -1,4 +1,3 @@
-def add_db_cli
   initializer "database_cli.rb", <<-CODE
     Rails.application.configure do
       if Rails.env.local?
@@ -6,4 +5,3 @@ def add_db_cli
       end
     end
   CODE
-end

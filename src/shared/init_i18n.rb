@@ -1,9 +1,7 @@
-def add_i18n_initializer
-  initializer "i18n.rb", <<-CODE
-    I18n.load_path += Rails.root.glob("config/locales/**/*.{rb,yml}")
-    I18n.default_locale = :en
-    I18n.available_locales = %i[en ru]
-  CODE
+initializer "i18n.rb", <<-CODE
+  I18n.load_path += Rails.root.glob("config/locales/**/*.{rb,yml}")
+  I18n.default_locale = :en
+  I18n.available_locales = %i[en ru]
+CODE
 
-  directory "config/locales", force: true
-end
+directory "config/locales", force: true
