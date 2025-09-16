@@ -1,15 +1,26 @@
 # frozen_string_literal: true
 
+#==============================================================================
+# CONSTANTS - Template configuration and shared values
+#==============================================================================
+
+REPO_LINK = "https://github.com/alec-c4/kickstart.git"
+AVAILABLE_TEMPLATE_NAMES = %w[api minimal esbuild_tailwind].freeze
 TEMPLATE_NAME = "esbuild_tailwind".freeze
-
-#==============================================================================
-# SHARED CODE (embedded to avoid require_relative issues with remote loading)
-#==============================================================================
-
-# From src/shared/rails_version.rb
-require "rails/all"
-
 RAILS_REQUIREMENT = ">= 8.1.0.beta.1"
+
+TEMPLATE_METADATA = {
+  name: "esbuild_tailwind",
+  description: "Rails app with ESBuild and Tailwind CSS for modern frontend development",
+  features: %w[postgresql devcontainer rspec rubocop uuid i18n tailwind esbuild turbo stimulus kamal solid_queue solid_cache solid_cable],
+  rails_version: RAILS_REQUIREMENT
+}.freeze
+
+#==============================================================================
+# SHARED CODE - Embedded functions (auto-generated, do not edit manually)
+#==============================================================================
+
+require "rails/all"
 
 def assert_minimum_rails_version
   requirement = Gem::Requirement.new(RAILS_REQUIREMENT)
@@ -21,16 +32,11 @@ def assert_minimum_rails_version
   exit 1 if no?(prompt)
 end
 
-# From src/shared/gemfile_requirement.rb
 def gemfile_requirement(name)
   @original_gemfile ||= IO.read("Gemfile")
   req = @original_gemfile[/gem\s+['"]#{name}['"]\s*(,[><~= \t\d.\w'"]*)?.*$/, 1]
   req && req.tr("'", %(")).strip.sub(/^,\s*"/, ', "')
 end
-
-# From src/shared/repo.rb
-REPO_LINK = "https://github.com/alec-c4/kickstart.git"
-AVAILABLE_TEMPLATE_NAMES = %w[api minimal esbuild_tailwind].freeze
 
 def add_template_repository_to_source_path
   if __FILE__.match?(%r{\Ahttps?://})
@@ -56,7 +62,6 @@ def add_template_repository_to_source_path
 end
 
 def set_variant_source_path(variant_name = nil)
-  # Find template root - current directory when running remotely, or same directory when local
   template_root = __FILE__.match?(%r{\Ahttps?://}) ?
     source_paths.first : File.dirname(__FILE__)
 
@@ -65,12 +70,10 @@ def set_variant_source_path(variant_name = nil)
     source_paths.unshift(variant_path) if File.directory?(variant_path)
   end
 
-  # Always add shared variant path
   shared_path = File.join(template_root, "variants", "shared")
   source_paths.unshift(shared_path) if File.directory?(shared_path)
 end
 
-# From src/esbuild_tailwind/post_install_message.rb
 def show_post_install_message
   say "\n
   #########################################################################################
@@ -87,7 +90,7 @@ def show_post_install_message
 end
 
 #==============================================================================
-# TEMPLATE LOGIC (variants and specific configuration)
+# TEMPLATE LOGIC - Template-specific configuration and workflow
 #==============================================================================
 
 assert_minimum_rails_version
