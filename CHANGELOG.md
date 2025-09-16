@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - [better_html](https://github.com/Shopify/better-html) gem with spec
+- [erb_lint](https://github.com/Shopify/erb_lint) gem
 
 ## [1.0.1]
 

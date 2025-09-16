@@ -47,6 +47,7 @@ group :development, :test do
   gem "rubocop-performance", require: false
   gem "rubocop-thread_safety", require: false
   gem "rubocop-capybara", require: false
+  gem "erb_lint", require: false
 
   # testing
   gem "rspec-rails"

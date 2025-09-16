@@ -111,6 +111,7 @@ after_bundle do
   apply "src/shared/gems_rspec.rb"
   apply "src/shared/gems_i18n_tasks.rb"
   apply "src/shared/gems_better_html.rb"
+  apply "src/shared/gems_erblint.rb"
 
   apply "src/shared/run_rubocop.rb"
   apply "src/shared/git_init.rb"
