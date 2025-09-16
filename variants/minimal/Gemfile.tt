@@ -51,6 +51,8 @@ group :development, :test do
 
   # testing
   gem "rspec-rails"
+  gem "capybara"
+  gem "email_spec"
   gem "ffaker"
   gem "database_cleaner-active_record"
 end

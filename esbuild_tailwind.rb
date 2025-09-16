@@ -104,6 +104,7 @@ after_bundle do
   apply "src/shared/init_generators.rb"
   apply "src/shared/init_db_cli.rb"
   apply "src/shared/init_i18n.rb"
+  apply "src/shared/devcontainer.rb"
 
   apply "src/shared/env_rubocop.rb"
   apply "src/shared/migrations_uuid.rb"
