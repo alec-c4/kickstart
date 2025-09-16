@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+[Unreleased]: https://github.com/alec-c4/kickstart/compare/v1.0.1...HEAD
+
+## [1.0.1]
+
+### Added
+
+- Template management system
+
+### Fixed
+
+- Remote template execution issue
+
+[1.0.1]: https://github.com/alec-c4/kickstart/compare/v1.0.0...v1.0.1
+
+## [1.0.0]
+
 ### Added
 
 - Initial project setup
@@ -15,4 +31,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Esbuild/Tailwind template
 - Shell-script to create rails app with pre-configured options
 
-[Unreleased]: https://github.com/alec-c4/kickstart/compare/v0.0.0...HEAD
+[1.0.0]: https://github.com/alec-c4/kickstart/releases/tag/v1.0.0
