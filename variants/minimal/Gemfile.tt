@@ -18,6 +18,7 @@ gem "importmap-rails"
 gem "tailwindcss-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
+gem "better_html"
 
 ### Deployment
 gem "kamal", require: false

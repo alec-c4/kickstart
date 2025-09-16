@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [Unreleased]: https://github.com/alec-c4/kickstart/compare/v1.0.1...HEAD
 
+### Added
+
+- [better_html](https://github.com/Shopify/better-html) gem with spec
+
 ## [1.0.1]
 
 ### Added
