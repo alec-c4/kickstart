@@ -29,155 +29,48 @@ The installer will:
 - Create the Rails application with the chosen template
 - Set up the development environment
 
-### Manual Usage
+## Templates
 
-If you prefer to use Rails templates directly:
+### esbuild_tailwind
 
-```bash
-# Using the ESBuild + Tailwind template
-rails new myapp -m https://raw.githubusercontent.com/alec-c4/kickstart/master/esbuild_tailwind.rb --no-rc
+- ESBuild + Tailwind CSS + PostgreSQL
+- RSpec, Rubocop, Brakeman
+- Kamal deployment ready
 
-# Using the API template
-rails new myapp -m https://raw.githubusercontent.com/alec-c4/kickstart/master/api.rb --no-rc
+### minimal
 
-# Using the minimal template
-rails new myapp -m https://raw.githubusercontent.com/alec-c4/kickstart/master/minimal.rb --no-rc
+- Importmap + Tailwind CSS + PostgreSQL
+- RSpec, Rubocop, Brakeman
+- Kamal deployment ready
 
-# For local development/testing
-rails new myapp -m /path/to/kickstart/esbuild_tailwind.rb --no-rc
-```
+### api
 
-### Available Templates
+- Rails API-only + PostgreSQL
+- CORS, RSpec, Rubocop, Brakeman
+- Kamal deployment ready
 
-#### esbuild_tailwind
-
-Modern Rails application with ESBuild and Tailwind CSS setup.
-
-**Features:**
-
-- **Frontend:** ESBuild (jsbundling-rails) + Tailwind CSS (cssbundling-rails)
-- **Asset Pipeline:** Propshaft
-- **JavaScript Framework:** Turbo + Stimulus
-- **Database:** PostgreSQL
-- **Solid Stack:** Solid Cache, Solid Queue, Solid Cable
-- **Deployment:** Kamal + Thruster ready
-- **Testing:** RSpec with Faker and Database Cleaner
-- **Code Quality:** Standard (Ruby), Rubocop, Brakeman security scanner
-- **Development Tools:** Web Console, Letter Opener Web, Amazing Print
-- **I18n:** Rails I18n with i18n-tasks
-- **Devcontainer:** Pre-configured development environment
-
-**Generated with:**
+## Manual Usage
 
 ```bash
-rails new myapp --skip-test --skip-system-test --database=postgresql --devcontainer --css=tailwind --javascript=esbuild
+# ESBuild + Tailwind template
+rails new myapp -m https://raw.githubusercontent.com/alec-c4/kickstart/master/esbuild_tailwind.rb --no-rc --skip-test --skip-system-test --database=postgresql --devcontainer --css=tailwind --javascript=esbuild
+
+# Minimal template
+rails new myapp -m https://raw.githubusercontent.com/alec-c4/kickstart/master/minimal.rb --no-rc --skip-test --skip-system-test --database=postgresql --devcontainer --css=tailwind
+
+# API template
+rails new myapp -m https://raw.githubusercontent.com/alec-c4/kickstart/master/api.rb --no-rc --skip-test --skip-system-test --database=postgresql --devcontainer --api
 ```
 
-#### minimal
-
-Streamlined Rails application with essential configuration and modern defaults.
-
-**Features:**
-
-- **Frontend:** Importmap + Tailwind CSS (tailwindcss-rails)
-- **JavaScript Framework:** Turbo + Stimulus
-- **Database:** PostgreSQL
-- **Solid Stack:** Solid Cache, Solid Queue, Solid Cable
-- **Deployment:** Kamal + Thruster ready
-- **Testing:** RSpec with Faker and Database Cleaner
-- **Code Quality:** Standard (Ruby), Rubocop, Brakeman security scanner
-- **Development Tools:** Web Console, Letter Opener Web, Amazing Print
-- **I18n:** Rails I18n with i18n-tasks
-- **Devcontainer:** Pre-configured development environment
-
-**Generated with:**
+## Setup
 
 ```bash
-rails new myapp --skip-test --skip-system-test --database=postgresql --devcontainer --css=tailwind
+cd myapp
+bundle install
+yarn install  # for esbuild_tailwind only
+rails db:create db:migrate
+bin/dev      # or rails server
 ```
-
-#### api
-
-Rails API-only application optimized for backend services and microservices.
-
-**Features:**
-
-- **API Mode:** Rails API-only configuration
-- **Database:** PostgreSQL
-- **CORS:** Rack-CORS for cross-origin requests
-- **Solid Stack:** Solid Cache, Solid Queue, Solid Cable
-- **Deployment:** Kamal + Thruster ready
-- **Testing:** RSpec with Faker and Database Cleaner
-- **Code Quality:** Standard (Ruby), Rubocop, Brakeman security scanner
-- **Development Tools:** Amazing Print for debugging
-- **I18n:** Rails I18n with i18n-tasks
-- **JSON Builder:** JBuilder for API responses
-
-**Generated with:**
-
-```bash
-rails new myapp --skip-test --skip-system-test --database=postgresql --devcontainer --api
-```
-
-### Prerequisites
-
-Before using any template, ensure you have:
-
-- **Ruby** (version 3.1.0 or higher recommended)
-- **Rails** (version 8.1 or higher)
-- **PostgreSQL** (for database)
-- **Node.js** and **npm** (for JavaScript dependencies)
-- **Git** (for version control)
-
-Check your environment:
-
-```bash
-ruby --version
-rails --version
-psql --version
-node --version
-npm --version
-```
-
-### Post-Installation Steps
-
-After creating your application:
-
-1. **Navigate to your app directory:**
-
-   ```bash
-   cd myapp
-   ```
-
-2. **Install dependencies:**
-
-   ```bash
-   bundle install
-   npm install  # (for esbuild_tailwind template)
-   ```
-
-3. **Set up the database:**
-
-   ```bash
-   rails db:create
-   rails db:migrate
-   ```
-
-4. **Start the development server:**
-   ```bash
-   rails server
-   # or for esbuild_tailwind:
-   bin/dev  # starts both Rails and asset compilation
-   ```
-
-### Customization
-
-Each template includes sensible defaults but can be customized:
-
-- Modify `config/application.rb` for application-wide settings
-- Update `Gemfile` to add/remove gems
-- Customize Tailwind configuration in `tailwind.config.js` (esbuild_tailwind)
-- Adjust ESBuild settings in `esbuild.config.js` (esbuild_tailwind)
 
 ## TODO
 
