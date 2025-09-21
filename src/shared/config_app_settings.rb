@@ -8,3 +8,8 @@ inject_into_file "config/application.rb", after: /config\.generators\.system_tes
     config.settings = config_for(:settings)
   CODE
 end
+
+
+gsub_file "app/mailers/application_mailer.rb",
+          /default from: ".*"/,
+          'default from: Rails.configuration.settings.mailer[:email_from]'
