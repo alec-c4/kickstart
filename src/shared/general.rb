@@ -9,3 +9,7 @@ copy_file ".rubocop_rails.yml", force: true
 copy_file ".rubocop_rspec.yml", force: true
 copy_file ".rubocop_strict.yml", force: true
 copy_file ".rubocop_todo.yml", force: true
+
+gsub_file "app/views/layouts/application.html.erb",
+          /<html>/,
+          '<html lang="<%= I18n.locale.to_s %>">'

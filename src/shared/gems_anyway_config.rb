@@ -13,3 +13,9 @@ gsub_file "config/mailer.yml",
 gsub_file "app/mailers/application_mailer.rb",
           /default from: ".*"/,
           'default from: MailerConfig.email_from'
+
+inject_into_file "app/views/layouts/application.html.erb", after: /<head>\n/ do
+  <<-CODE
+    <base href="<%= MainConfig.base_url %>" />
+  CODE
+end
