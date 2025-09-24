@@ -14,8 +14,9 @@ gsub_file "app/mailers/application_mailer.rb",
           /default from: ".*"/,
           'default from: MailerConfig.email_from'
 
-if File.exist?("app/views/layouts/application.html.erb")
-  inject_into_file "app/views/layouts/application.html.erb", after: /<head>\n/ do
+layout_file = "app/views/layouts/application.html.erb"
+if File.exist?(layout_file)
+  inject_into_file layout_file, after: /<head>\n/ do
     <<-CODE
     <base href="<%= MainConfig.base_url %>" />
     CODE

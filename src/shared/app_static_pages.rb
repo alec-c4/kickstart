@@ -1,8 +1,11 @@
 generate :controller, "Pages", "home", "about", "terms", "privacy"
 
-gsub_file "app/views/layouts/application.html.erb",
-          "<%#= tag.link rel: \"manifest\", href: pwa_manifest_path(format: :json) %>",
-          "<%= tag.link rel: \"manifest\", href: pwa_manifest_path(format: :json) %>"
+layout_file = "app/views/layouts/application.html.erb"
+if File.exist?(layout_file)
+  gsub_file layout_file,
+            "<%#= tag.link rel: \"manifest\", href: pwa_manifest_path(format: :json) %>",
+            "<%= tag.link rel: \"manifest\", href: pwa_manifest_path(format: :json) %>"
+end
 
 copy_file "config/routes.rb", force: true
 copy_file "spec/requests/pages_spec.rb", force: true
