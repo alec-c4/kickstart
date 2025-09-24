@@ -29,7 +29,7 @@ run = [
 
 [tasks.test]
 description = "Run tests"
-run = ["bundle exec rspec"]
+run = ["bundle exec rspec", "osv-scanner scan source -r ."]
 
 [tasks.dev]
 description = "Run development server"
@@ -41,7 +41,7 @@ run = ["rdbg -n --open=vscode -c -- bin/rails s "]
 
 [tasks.audit]
 description = "Run security audit"
-run = ["bundle audit", "yarn audit"]
+run = ["bundle audit", "yarn audit", "osv-scanner scan source -r ."]
 
 [tasks.prepare]
 description = "Prepare development environment"
