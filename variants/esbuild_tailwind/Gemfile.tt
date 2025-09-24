@@ -29,6 +29,11 @@ gem "thruster", require: false
 gem "i18n-tasks"
 gem "rails-i18n"
 
+### Code structure
+gem "anyway_config", "~> 2.0"
+gem "active_interaction", "~> 5.5"
+gem "madmin"
+
 ### Tools
 gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ windows jruby ]

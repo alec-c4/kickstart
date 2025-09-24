@@ -14,6 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [better_html](https://github.com/Shopify/better-html) gem with spec
 - [erb_lint](https://github.com/Shopify/erb_lint) gem
 - [mission_control-jobs](https://github.com/rails/mission_control-jobs/) gem
+- [active_interaction](https://github.com/AaronLasseigne/active_interaction) gem
+- [anyway_config](https://github.com/palkan/anyway_config) gem
+- [madmin](https://github.com/excid3/madmin/) gem
 - custom settings file - `config/settings.yml`
 - static pages - home, about, terms and privacy
 
