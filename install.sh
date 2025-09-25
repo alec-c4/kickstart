@@ -14,10 +14,10 @@ set -euo pipefail
 readonly REPO_URL="https://raw.githubusercontent.com/alec-c4/kickstart/master"
 
 # Template configuration (parallel arrays - compatible with bash 3.0+)
-readonly AVAILABLE_TEMPLATES=("minimal" "esbuild_tailwind" "api")
+readonly AVAILABLE_TEMPLATES=("importmap_tailwind" "esbuild_tailwind" "api")
 
 readonly TEMPLATE_DESCRIPTIONS=(
-    "Minimal Rails app with basic configuration"
+    "Rails app with Importmap and Tailwind CSS"
     "Rails app with ESBuild and Tailwind CSS"
     "Rails API-only application"
 )

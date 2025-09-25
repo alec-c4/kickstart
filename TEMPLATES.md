@@ -23,7 +23,7 @@ Each template follows a consistent structure:
 #==============================================================================
 
 REPO_LINK = "https://github.com/alec-c4/kickstart.git"
-AVAILABLE_TEMPLATE_NAMES = %w[api minimal esbuild_tailwind].freeze
+AVAILABLE_TEMPLATE_NAMES = %w[api importmap_tailwind esbuild_tailwind].freeze
 TEMPLATE_NAME = "template_name".freeze
 RAILS_REQUIREMENT = ">= 8.1.0.beta.1"
 
@@ -50,16 +50,19 @@ TEMPLATE_METADATA = {
 ## Available Templates
 
 ### API Template (`api.rb`)
+
 - **Description**: Rails API-only application with essential setup
 - **Features**: postgresql, devcontainer, rspec, rubocop, uuid, i18n, kamal, solid_queue, solid_cache, solid_cable
 - **Use case**: Backend APIs and microservices
 
-### Minimal Template (`minimal.rb`)
-- **Description**: Minimal Rails app with basic configuration and Tailwind CSS
+### Importmap + Tailwind Template (`importmap_tailwind.rb`)
+
+- **Description**: Rails app with Importmap and Tailwind CSS for modern frontend development
 - **Features**: postgresql, devcontainer, rspec, rubocop, uuid, i18n, tailwind, importmap, turbo, stimulus, kamal, solid_queue, solid_cache, solid_cable
 - **Use case**: Simple web applications with modern CSS framework
 
 ### ESBuild + Tailwind Template (`esbuild_tailwind.rb`)
+
 - **Description**: Rails app with ESBuild and Tailwind CSS for modern frontend development
 - **Features**: postgresql, devcontainer, rspec, rubocop, uuid, i18n, tailwind, esbuild, turbo, stimulus, kamal, solid_queue, solid_cache, solid_cable
 - **Use case**: Modern web applications with advanced JavaScript bundling
@@ -67,6 +70,7 @@ TEMPLATE_METADATA = {
 ## Rake Tasks
 
 ### `rake templates:validate`
+
 Validates that all templates are consistent and properly formatted.
 
 ```bash
@@ -76,12 +80,14 @@ $ rake templates:validate
 ```
 
 **Checks performed:**
+
 - All required constants are present
 - All required functions are defined
 - Shared code sections are identical across templates
 - Template files exist and are readable
 
 ### `rake templates:info`
+
 Displays detailed information about all templates.
 
 ```bash
@@ -89,22 +95,23 @@ $ rake templates:info
 📊 Kickstart Rails Templates Information
 ==================================================
 
-🚀 Template: MINIMAL
-   File: minimal.rb
+🚀 Template: IMPORTMAP_TAILWIND
+   File: importmap_tailwind.rb
    Lines: 118
-   Description: Minimal Rails app with basic configuration and Tailwind CSS
+   Description: Rails app with Importmap, Tailwind CSS and basic configuration
    Features: postgresql, devcontainer, rspec, rubocop, uuid, i18n, tailwind, importmap, turbo, stimulus, kamal, solid_queue, solid_cache, solid_cable
    Apply statements: 11
 ```
 
 ### `rake templates:sync`
+
 Synchronizes shared code across all templates to ensure consistency.
 
 ```bash
 $ rake templates:sync
 🔄 Syncing shared code across all templates...
    ✅ Updated api.rb
-   ✅ Updated minimal.rb
+   ✅ Updated importmap_tailwind.rb
    ✅ Updated esbuild_tailwind.rb
 🎉 Shared code synchronization complete!
 ```
@@ -112,10 +119,11 @@ $ rake templates:sync
 **⚠️ Important**: This task auto-generates the shared code section. Do not edit the shared code manually.
 
 ### `rake templates:create[name,source]`
+
 Creates a new template based on an existing one.
 
 ```bash
-$ rake templates:create[mobile,minimal]
+$ rake templates:create[mobile,importmap_tailwind]
 ✅ Created new template: mobile.rb
 ✅ Created directories: src/mobile/, variants/mobile/
 💡 Don't forget to update AVAILABLE_TEMPLATES constant!
@@ -124,9 +132,10 @@ $ rake templates:create[mobile,minimal]
 ## Usage Examples
 
 ### Local Development
+
 ```bash
 # Use a template locally
-rails new myapp -m /path/to/kickstart/minimal.rb --database=postgresql --devcontainer --css=tailwind
+rails new myapp -m /path/to/kickstart/importmap_tailwind.rb --database=postgresql --devcontainer --css=tailwind
 
 # Validate templates before committing
 rake templates:validate
@@ -136,16 +145,17 @@ rake templates:info
 ```
 
 ### Remote Installation
+
 ```bash
 # Install via curl (most common usage)
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/alec-c4/kickstart/master/install.sh)" -- myapp minimal
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/alec-c4/kickstart/master/install.sh)" -- myapp importmap_tailwind
 ```
 
 ## Maintenance Workflow
 
 ### Adding New Shared Functions
 
-1. **Add the function to one template** (preferably `minimal.rb`)
+1. **Add the function to one template** (preferably `importmap_tailwind.rb`)
 2. **Run sync task** to propagate to all templates:
    ```bash
    rake templates:sync
@@ -159,7 +169,7 @@ rake templates:info
 
 1. **Create from existing template**:
    ```bash
-   rake templates:create[new_template,minimal]
+   rake templates:create[new_template,importmap_tailwind]
    ```
 2. **Update constants** in `Rakefile` and new template
 3. **Customize template-specific logic**
@@ -180,18 +190,21 @@ rake templates:info
 ## Architecture Benefits
 
 ### Self-Contained Templates
+
 - ✅ Work with remote URLs (curl installation)
 - ✅ No external dependencies
 - ✅ Easy to debug - everything in one file
 - ✅ Fast loading
 
 ### Automated Management
+
 - ✅ Consistent shared code across templates
 - ✅ Validation prevents configuration drift
 - ✅ Easy to add new templates
 - ✅ Clear separation of concerns
 
 ### Rich Metadata
+
 - ✅ Self-documenting templates
 - ✅ Feature tracking
 - ✅ Version compatibility information
@@ -210,21 +223,27 @@ When contributing to templates:
 ## Troubleshooting
 
 ### Template Validation Fails
+
 ```bash
 ❌ Shared code sections are not identical across templates
 ```
+
 **Solution**: Run `rake templates:sync` to synchronize shared code.
 
 ### Missing Constants/Functions
+
 ```bash
 ❌ Missing constant TEMPLATE_METADATA in api.rb
 ```
+
 **Solution**: Add the missing constant following the standard structure.
 
 ### Template Creation Issues
+
 ```bash
 ❌ Template 'mobile' already exists!
 ```
+
 **Solution**: Use a different name or remove the existing template first.
 
 ---

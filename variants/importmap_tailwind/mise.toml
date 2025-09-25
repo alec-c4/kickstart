@@ -29,7 +29,7 @@ run = [
 
 [tasks.test]
 description = "Run tests"
-run = ["bundle exec rspec", "osv-scanner scan source -r ."]
+run = ["bundle exec rspec"]
 
 [tasks.dev]
 description = "Run development server"

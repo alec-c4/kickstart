@@ -5,7 +5,7 @@ require 'fileutils'
 require 'digest'
 
 # Template management tasks for Kickstart Rails Templates
-AVAILABLE_TEMPLATES = %w[api minimal esbuild_tailwind].freeze
+AVAILABLE_TEMPLATES = %w[api importmap_tailwind esbuild_tailwind].freeze
 REPO_LINK = "https://github.com/alec-c4/kickstart.git"
 RAILS_REQUIREMENT = ">= 8.1.0.beta.1"
 
@@ -141,7 +141,7 @@ namespace :templates do
   desc "Create a new template from existing one"
   task :create, [:name, :source] do |t, args|
     template_name = args[:name]
-    source_template = args[:source] || 'minimal'
+    source_template = args[:source] || 'importmap_tailwind'
 
     if template_name.nil?
       puts "❌ Usage: rake templates:create[template_name,source_template]"

@@ -37,7 +37,7 @@ The installer will:
 - RSpec, Rubocop, Brakeman
 - Kamal deployment ready
 
-### minimal
+### importmap_tailwind
 
 - Importmap + Tailwind CSS + PostgreSQL
 - RSpec, Rubocop, Brakeman
@@ -55,8 +55,8 @@ The installer will:
 # ESBuild + Tailwind template
 rails new myapp -m https://raw.githubusercontent.com/alec-c4/kickstart/master/esbuild_tailwind.rb --no-rc --skip-test --skip-system-test --database=postgresql --devcontainer --css=tailwind --javascript=esbuild
 
-# Minimal template
-rails new myapp -m https://raw.githubusercontent.com/alec-c4/kickstart/master/minimal.rb --no-rc --skip-test --skip-system-test --database=postgresql --devcontainer --css=tailwind
+# Importmap + Tailwind template
+rails new myapp -m https://raw.githubusercontent.com/alec-c4/kickstart/master/importmap_tailwind.rb --no-rc --skip-test --skip-system-test --database=postgresql --devcontainer --css=tailwind
 
 # API template
 rails new myapp -m https://raw.githubusercontent.com/alec-c4/kickstart/master/api.rb --no-rc --skip-test --skip-system-test --database=postgresql --devcontainer --api

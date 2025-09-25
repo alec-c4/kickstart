@@ -5,7 +5,7 @@
 #==============================================================================
 
 REPO_LINK = "https://github.com/alec-c4/kickstart.git"
-AVAILABLE_TEMPLATE_NAMES = %w[api minimal esbuild_tailwind].freeze
+AVAILABLE_TEMPLATE_NAMES = %w[api importmap_tailwind esbuild_tailwind].freeze
 TEMPLATE_NAME = "esbuild_tailwind".freeze
 RAILS_REQUIREMENT = ">= 8.1.0.beta.1"
 

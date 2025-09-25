@@ -5,13 +5,13 @@
 #==============================================================================
 
 REPO_LINK = "https://github.com/alec-c4/kickstart.git"
-AVAILABLE_TEMPLATE_NAMES = %w[api minimal esbuild_tailwind].freeze
-TEMPLATE_NAME = "minimal".freeze
+AVAILABLE_TEMPLATE_NAMES = %w[api importmap_tailwind esbuild_tailwind].freeze
+TEMPLATE_NAME = "importmap_tailwind".freeze
 RAILS_REQUIREMENT = ">= 8.1.0.beta.1"
 
 TEMPLATE_METADATA = {
-  name: "minimal",
-  description: "Minimal Rails app with basic configuration and Tailwind CSS",
+  name: "importmap_tailwind",
+  description: "Rails app with Importmap and Tailwind CSS for modern frontend development",
   features: %w[postgresql devcontainer rspec rubocop uuid i18n tailwind importmap turbo stimulus kamal solid_queue solid_cache solid_cable],
   rails_version: RAILS_REQUIREMENT
 }.freeze

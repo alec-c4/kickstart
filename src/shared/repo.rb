@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 REPO_LINK = "https://github.com/alec-c4/kickstart.git"
-AVAILABLE_TEMPLATE_NAMES = %w[api minimal esbuild_tailwind].freeze
+AVAILABLE_TEMPLATE_NAMES = %w[api importmap_tailwind esbuild_tailwind].freeze
 
 def add_template_repository_to_source_path
   if __FILE__.match?(%r{\Ahttps?://})
