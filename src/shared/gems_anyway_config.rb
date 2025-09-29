@@ -18,7 +18,7 @@ layout_file = "app/views/layouts/application.html.erb"
 if File.exist?(layout_file)
   inject_into_file layout_file, after: /<head>\n/ do
     <<-CODE
-    <base href="<%= MainConfig.base_url %>" />
+    <base href="<%= MainConfig.base_url %>">
     CODE
   end
 end
