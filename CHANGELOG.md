@@ -7,9 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-[Unreleased]: https://github.com/alec-c4/kickstart/compare/v1.0.2...HEAD
-
-## [1.0.2]
+## [1.0.2] - 2025-01-15
 
 ### Added
 
@@ -33,9 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `anyway_config` rubocop warning for `@instance ||= new` pattern
 
-[1.0.2]: https://github.com/alec-c4/kickstart/compare/v1.0.1...v1.0.2
-
-## [1.0.1]
+## [1.0.1] - 2024-09-15
 
 ### Added
 
@@ -45,9 +41,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Remote template execution issue
 
-[1.0.1]: https://github.com/alec-c4/kickstart/compare/v1.0.0...v1.0.1
-
-## [1.0.0]
+## [1.0.0] - 2024-09-01
 
 ### Added
 
@@ -57,4 +51,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Esbuild/Tailwind template
 - Shell-script to create rails app with pre-configured options
 
+[Unreleased]: https://github.com/alec-c4/kickstart/compare/v1.0.2...master
+[1.0.2]: https://github.com/alec-c4/kickstart/releases/tag/v1.0.2
+[1.0.1]: https://github.com/alec-c4/kickstart/releases/tag/v1.0.1
 [1.0.0]: https://github.com/alec-c4/kickstart/releases/tag/v1.0.0
