@@ -1,0 +1,14 @@
+default: &default
+  access_key_id: "000"
+  secret_access_key: "000"
+  s3_region: "local"
+  s3_bucket: "uploads"
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default

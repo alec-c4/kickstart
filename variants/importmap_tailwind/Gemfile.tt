@@ -21,6 +21,12 @@ gem "turbo-rails"
 gem "stimulus-rails"
 gem "better_html"
 gem "inline_svg"
+gem "lookbook"
+gem "view_component"
+
+### Encryption and Security
+gem "blind_index"
+gem "lockbox"
 
 ### Deployment
 gem "kamal", require: false
@@ -29,6 +35,15 @@ gem "thruster", require: false
 ### I18n
 gem "i18n-tasks"
 gem "rails-i18n"
+
+### File uploads
+gem "shrine", "~> 3.0"
+gem "aws-sdk-s3"
+
+### Image processing
+gem "image_processing", "~> 1.2"
+gem "fastimage"
+gem "marcel", "~> 1.0", ">= 1.0.2"
 
 ### Code structure
 gem "anyway_config", "~> 2.0"
