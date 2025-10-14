@@ -33,6 +33,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `anyway_config` rubocop warning for `@instance ||= new` pattern
 
+[1.0.2]: https://github.com/alec-c4/kickstart/compare/v1.0.1...v1.0.2
+
 ## [1.0.1]
 
 ### Added
