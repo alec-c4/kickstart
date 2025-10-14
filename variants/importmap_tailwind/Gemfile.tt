@@ -20,6 +20,7 @@ gem "tailwindcss-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
 gem "better_html"
+gem "inline_svg"
 
 ### Deployment
 gem "kamal", require: false
@@ -32,7 +33,9 @@ gem "rails-i18n"
 ### Code structure
 gem "anyway_config", "~> 2.0"
 gem "active_interaction", "~> 5.5"
+gem "active_decorator"
 gem "madmin"
+gem "pagy", "~> 9.0"
 
 ### Tools
 gem "jbuilder"
@@ -57,6 +60,7 @@ group :development, :test do
 
   # testing
   gem "rspec-rails"
+  gem "parallel_tests"
   gem "capybara"
   gem "email_spec"
   gem "ffaker"

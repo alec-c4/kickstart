@@ -46,6 +46,7 @@ group :development, :test do
 
   # testing
   gem "rspec-rails"
+  gem "parallel_tests"
   gem "ffaker"
   gem "database_cleaner-active_record"
   gem "factory_bot_rails"

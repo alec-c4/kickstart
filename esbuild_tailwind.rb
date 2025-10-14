@@ -84,6 +84,7 @@ def show_post_install_message
   $ cd #{app_name}
   $ bundle install
   $ rails db:create db:migrate
+  $ rails parallel:create  # Creates parallel test databases (ignore 'already exists' message)
   $ bin/dev
 
   #########################################################################################\n", :green
@@ -98,6 +99,7 @@ add_template_repository_to_source_path
 set_variant_source_path(TEMPLATE_NAME)
 
 apply "src/shared/general.rb"
+apply "src/esbuild_tailwind/yarnconfig.rb"
 apply "src/shared/packages.rb"
 
 after_bundle do
@@ -112,7 +114,9 @@ after_bundle do
   apply "src/shared/migrations_uuid.rb"
 
   apply "src/shared/gems_anyway_config.rb"
+  apply "src/shared/gems_pagy.rb"
   apply "src/shared/gems_active_interaction.rb"
+  apply "src/shared/gems_active_decorator.rb"
   apply "src/shared/gems_rspec.rb"
   apply "src/shared/gems_i18n_tasks.rb"
   apply "src/shared/gems_better_html.rb"

@@ -1,6 +1,14 @@
 generate "anyway:install --configs-path=config/settings", force: true
-generate "anyway:config main base_url --yml", force: true
+generate "anyway:config main app_name base_url --yml", force: true
 generate "anyway:config mailer email_from --yml", force: true
+
+gsub_file "config/settings/application_config.rb",
+          /(@instance \|\|= new)/,
+          '\1 # rubocop:disable ThreadSafety/ClassInstanceVariable'
+
+gsub_file "config/main.yml",
+          /#  app_name: ".*"/,
+          "  app_name: \"#{app_name}\""
 
 gsub_file "config/main.yml",
           /#  base_url: ".*"/,

@@ -28,8 +28,16 @@ run = [
 ]
 
 [tasks.test]
-description = "Run tests"
-run = ["bundle exec rspec"]
+description = "Run tests in parallel (fast)"
+run = [
+  "bundle exec parallel_rspec spec/", 
+  ]
+
+[tasks."test:serial"]
+description = "Run tests serially (for debugging)"
+run = [
+  "bundle exec rspec", 
+  ]
 
 [tasks.dev]
 description = "Run development server"

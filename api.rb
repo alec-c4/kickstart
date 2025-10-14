@@ -84,6 +84,7 @@ def show_post_install_message
   $ cd #{app_name}
   $ bundle install
   $ rails db:create db:migrate
+  $ rails parallel:create  # Creates parallel test databases (ignore 'already exists' message)
   $ bin/dev
 
   #########################################################################################\n", :green
@@ -109,6 +110,7 @@ after_bundle do
   apply "src/shared/migrations_uuid.rb"
 
   apply "src/shared/gems_anyway_config.rb"
+  apply "src/shared/gems_pagy.rb"
   apply "src/shared/gems_active_interaction.rb"
   apply "src/shared/gems_rspec.rb"
   apply "src/shared/gems_i18n_tasks.rb"
