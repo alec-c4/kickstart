@@ -17,8 +17,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [active_interaction](https://github.com/AaronLasseigne/active_interaction) gem
 - [anyway_config](https://github.com/palkan/anyway_config) gem
 - [madmin](https://github.com/excid3/madmin/) gem
+- [pagy](https://github.com/ddnexus/pagy) gem with official initializer
+- [active_decorator](https://github.com/amatsuda/active_decorator) gem
+- [shrine](https://github.com/shrinerb/shrine) gem for file uploads
+- [lockbox](https://github.com/ankane/lockbox) and [blind_index](https://github.com/ankane/blind_index) for encryption
+- [view_component](https://github.com/ViewComponent/view_component) gem with Lookbook for frontend templates
+- [parallel_tests](https://github.com/grosser/parallel_tests)
 - custom settings file - `config/settings.yml`
 - static pages - home, about, terms and privacy
+- application helpers for common view patterns
+
+### Fixed
+
+- `anyway_config` rubocop warning for `@instance ||= new` pattern
 
 ## [1.0.1]
 

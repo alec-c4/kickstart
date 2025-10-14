@@ -33,21 +33,66 @@ The installer will:
 
 ### esbuild_tailwind
 
-- ESBuild + Tailwind CSS + PostgreSQL
-- RSpec, Rubocop, Brakeman
+Modern Rails application with ESBuild bundling and Tailwind CSS.
+
+**Frontend:**
+- ESBuild + Tailwind CSS
+- Turbo & Stimulus
+- ViewComponent with Lookbook
+- Better HTML & ERB Lint
+
+**Backend:**
+- PostgreSQL with UUID support
+- Anyway Config for settings
+- Active Interaction for service objects
+- Active Decorator for presenters
+- Pagy for pagination
+- Shrine for file uploads
+- Lockbox & Blind Index for encryption
+
+**Development:**
+- RSpec with parallel_tests support
+- Rubocop, Brakeman
+- Devcontainer ready
+- I18n with i18n-tasks
+
+**Deployment:**
 - Kamal deployment ready
+- Solid Queue, Cache, Cable
 
 ### importmap_tailwind
 
-- Importmap + Tailwind CSS + PostgreSQL
-- RSpec, Rubocop, Brakeman
-- Kamal deployment ready
+Rails application with Import Maps and Tailwind CSS.
+
+**Frontend:**
+- Import Maps + Tailwind CSS
+- Turbo & Stimulus
+- ViewComponent with Lookbook
+- Better HTML & ERB Lint
+
+**Backend & Deployment:**
+- Same as esbuild_tailwind (see above)
 
 ### api
 
-- Rails API-only + PostgreSQL
-- CORS, RSpec, Rubocop, Brakeman
+Rails API-only application for backend services.
+
+**Backend:**
+- PostgreSQL with UUID support
+- Anyway Config for settings
+- Active Interaction for service objects
+- Pagy for pagination
+- Shrine for file uploads
+- Lockbox & Blind Index for encryption
+
+**Development:**
+- RSpec with parallel_tests support
+- Rubocop, Brakeman
+- I18n with i18n-tasks
+
+**Deployment:**
 - Kamal deployment ready
+- Solid Queue, Cache, Cable
 
 ## Manual Usage
 
@@ -69,6 +114,7 @@ cd myapp
 bundle install
 yarn install  # for esbuild_tailwind only
 rails db:create db:migrate
+rails parallel:create  # Creates parallel test databases (ignore 'already exists' message)
 bin/dev      # or rails server
 ```
 
