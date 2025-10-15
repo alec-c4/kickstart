@@ -51,13 +51,21 @@ run = ["rdbg -n --open=vscode -c -- bin/rails s "]
 description = "Run security audit"
 run = ["bundle audit", "yarn audit", "osv-scanner scan source -r ."]
 
-[tasks.prepare]
-description = "Prepare development environment"
+[tasks.db-create]
+description = "Prepare development database"
 run = [
   "bundle exec rails db:create",
   "bundle exec rails db:migrate",
   "bundle exec rails db:prepare",
   "bundle exec rails db:seed",
+  "rails parallel:create"
+]
+
+[tasks.db-drop]
+description = "Destroy development database"
+run = [
+  "bundle exec rails db:drop",
+  "rails parallel:drop"
 ]
 
 [tasks.restart]

@@ -1,0 +1,10 @@
+<div id="flash">
+  <% unless @flash.empty? %>
+    <% @flash.each do |key, value| %>
+      <% next unless value.is_a? String %>
+      <div class="p-4 mb-4 text-sm rounded-lg <%= @flash_class[key.to_sym] %>" role="alert">
+        <span class="font-medium"><%= sanitize(value) %></span>
+      </div>
+    <% end %>
+  <% end %>
+</div>
