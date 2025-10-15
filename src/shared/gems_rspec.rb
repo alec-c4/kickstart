@@ -1,8 +1,13 @@
 generate "rspec:install"
 
-directory "spec", force: true
+# Copy only common spec files (not spec/components and spec/requests)
 copy_file ".rspec", force: true
-
+copy_file "spec/rails_helper.rb", force: true
+copy_file "spec/spec_helper.rb", force: true
+copy_file "spec/support/database_cleaner.rb", force: true
+copy_file "spec/support/factory_bot.rb", force: true
+copy_file "spec/support/shoulda.rb", force: true
+copy_file "spec/support/time_helpers.rb", force: true
 copy_file "spec/requests/health_spec.rb", force: true
 copy_file "lib/tasks/factory_bot.rake", force: true
 

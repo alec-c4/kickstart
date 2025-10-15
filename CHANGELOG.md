@@ -11,6 +11,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Custom error pages (404, 422, 406, 500) for esbuild_tailwind and importmap_tailwind templates
 - Rake task `dev:errors` to toggle custom error pages in development
+- UI::AlertComponent for flash messages in application layout
+- Inflections initializer with "UI" acronym support for view components
+- Landing and plain layouts with MainConfig integration
+- Pages controller (terms, privacy) and Landing controller (home, about)
+- View component support files (view_component.rb, capybara.rb) for RSpec
+
+### Changed
+
+- Application layouts now use `MainConfig.app_name` and `MainConfig.base_url` from anyway_config
+- Layout files are now copied from variant-specific directories instead of being modified via gsub
+- RSpec setup now copies only common spec files, avoiding unnecessary files in API template
+- Separated view-specific spec support files to gems_view_component.rb
+- PWA manifest is now enabled by default in application layout
+
+### Removed
+
+- Unused `src/shared/repo.rb` file (functionality moved to template files)
+
+### Fixed
+
+- Spec/components and view component support files no longer copied to API projects
+- Routes files are now variant-specific (esbuild/importmap) instead of shared
 
 ## [1.0.2] - 2025-01-15
 

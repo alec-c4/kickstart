@@ -10,9 +10,8 @@ copy_file ".rubocop_rspec.yml", force: true
 copy_file ".rubocop_strict.yml", force: true
 copy_file ".rubocop_todo.yml", force: true
 
-layout_file = "app/views/layouts/application.html.erb"
-if File.exist?(layout_file)
-  gsub_file layout_file,
-            /<html>/,
-            '<html lang="<%= I18n.locale.to_s %>">'
+if File.exist?("app/views/layouts/application.html.erb")
+  copy_file "app/views/layouts/application.html.erb", force: true
+  copy_file "app/views/layouts/landing.html.erb", force: true
+  copy_file "app/views/layouts/plain.html.erb", force: true
 end

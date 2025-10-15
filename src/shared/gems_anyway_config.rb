@@ -21,16 +21,3 @@ gsub_file "config/mailer.yml",
 gsub_file "app/mailers/application_mailer.rb",
           /default from: ".*"/,
           'default from: MailerConfig.email_from'
-
-layout_file = "app/views/layouts/application.html.erb"
-if File.exist?(layout_file)
-  inject_into_file layout_file, after: /<head>\n/ do
-    <<-CODE
-    <base href="<%= MainConfig.base_url %>">
-    CODE
-  end
-
-  gsub_file layout_file,
-            /<title><%= content_for\(:title\) \|\| ".*" %><\/title>/,
-            '<title><%= content_for(:title) || MainConfig.app_name %></title>'
-end

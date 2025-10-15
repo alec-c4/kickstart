@@ -1,3 +1,2 @@
-get "pages/about"
-get "pages/terms"
-get "pages/privacy"
+get "/terms", to: "pages#terms"
+get "/privacy", to: "pages#privacy"

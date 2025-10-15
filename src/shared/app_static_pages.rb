@@ -1,12 +1,9 @@
-generate :controller, "Pages", "home", "about", "terms", "privacy"
-
-layout_file = "app/views/layouts/application.html.erb"
-if File.exist?(layout_file)
-  gsub_file layout_file,
-            "<%#= tag.link rel: \"manifest\", href: pwa_manifest_path(format: :json) %>",
-            "<%= tag.link rel: \"manifest\", href: pwa_manifest_path(format: :json) %>"
-end
+copy_file "app/controllers/pages_controller.rb", force: true
+copy_file "app/controllers/landing_controller.rb", force: true
 
 copy_file "config/routes/pages.rb", force: true
+copy_file "config/routes/landing.rb", force: true
 copy_file "spec/requests/pages_spec.rb", force: true
+copy_file "spec/requests/landing_spec.rb", force: true
 directory "app/views/pages", force: true
+directory "app/views/landing", force: true

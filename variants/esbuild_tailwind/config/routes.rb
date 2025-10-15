@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   draw :pages
+  draw :landing
   draw :errors
   draw :dev
   draw :support
 
-  root "pages#home"
+  root "landing#home"
 end
