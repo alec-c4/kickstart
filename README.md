@@ -55,6 +55,7 @@ Modern Rails application with ESBuild bundling and Tailwind CSS.
 - Rubocop, Brakeman
 - Devcontainer ready
 - I18n with i18n-tasks
+- Custom error pages (404, 422, 406, 500)
 
 **Deployment:**
 - Kamal deployment ready
@@ -116,6 +117,31 @@ yarn install  # for esbuild_tailwind only
 rails db:create db:migrate
 rails parallel:create  # Creates parallel test databases (ignore 'already exists' message)
 bin/dev      # or rails server
+```
+
+## Features
+
+### Custom Error Pages
+
+The esbuild_tailwind and importmap_tailwind templates include custom error pages styled with Tailwind CSS for:
+- 404 - Page not found
+- 422 - Unprocessable entity
+- 406 - Not acceptable
+- 500 - Internal server error
+
+**Testing in Development:**
+
+By default, Rails shows detailed error pages in development. To test custom error pages locally:
+
+```bash
+# Enable custom error pages
+rails dev:errors
+
+# Restart your server
+bin/dev
+
+# Disable custom error pages (back to default)
+rails dev:errors
 ```
 
 ## TODO

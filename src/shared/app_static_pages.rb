@@ -7,7 +7,6 @@ if File.exist?(layout_file)
             "<%= tag.link rel: \"manifest\", href: pwa_manifest_path(format: :json) %>"
 end
 
-copy_file "config/routes.rb", force: true
+copy_file "config/routes/pages.rb", force: true
 copy_file "spec/requests/pages_spec.rb", force: true
-directory "config/routes", force: true
 directory "app/views/pages", force: true

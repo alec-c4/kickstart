@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Custom error pages (404, 422, 406, 500) for esbuild_tailwind and importmap_tailwind templates
+- Rake task `dev:errors` to toggle custom error pages in development
+
 ## [1.0.2] - 2025-01-15
 
 ### Added
@@ -23,7 +28,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [lockbox](https://github.com/ankane/lockbox) and [blind_index](https://github.com/ankane/blind_index) for encryption
 - [view_component](https://github.com/ViewComponent/view_component) gem with Lookbook for frontend templates
 - [parallel_tests](https://github.com/grosser/parallel_tests)
-- custom settings file - `config/settings.yml`
 - static pages - home, about, terms and privacy
 - application helpers for common view patterns
 

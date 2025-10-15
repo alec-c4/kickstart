@@ -107,8 +107,10 @@ after_bundle do
   apply "src/shared/init_i18n.rb"
   apply "src/shared/devcontainer.rb"
 
+  apply "src/shared/routes.rb"
   apply "src/shared/app_static_pages.rb"
-  
+  apply "src/shared/custom_error_pages.rb"
+
   apply "src/shared/env_rubocop.rb"
   apply "src/shared/migrations_uuid.rb"
 
