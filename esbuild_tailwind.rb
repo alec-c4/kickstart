@@ -128,6 +128,7 @@ after_bundle do
   apply "src/shared/gems_view_component.rb"
   apply "src/shared/helpers.rb"
 
+  apply "src/shared/staging_env.rb"
   apply "src/shared/run_rubocop.rb"
   apply "src/shared/git_init.rb"
 
