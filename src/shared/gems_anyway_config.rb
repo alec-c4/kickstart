@@ -29,4 +29,8 @@ if File.exist?(layout_file)
     <base href="<%= MainConfig.base_url %>">
     CODE
   end
+
+  gsub_file layout_file,
+            /<title><%= content_for\(:title\) \|\| ".*" %><\/title>/,
+            '<title><%= content_for(:title) || MainConfig.app_name %></title>'
 end
