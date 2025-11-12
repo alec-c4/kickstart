@@ -55,17 +55,25 @@ run = ["bundle audit", "yarn audit", "osv-scanner scan source -r ."]
 description = "Prepare development database"
 run = [
   "bundle exec rails db:create",
-  "bundle exec rails db:migrate",
   "bundle exec rails db:prepare",
-  "bundle exec rails db:seed",
-  "rails parallel:create"
+  "bin/rails db:schema:load:cache",
+  "bin/rails db:schema:load:queue",
+  "bin/rails db:schema:load:cable",
+  "bundle exec rails parallel:create"
 ]
 
 [tasks.db-drop]
 description = "Destroy development database"
 run = [
   "bundle exec rails db:drop",
-  "rails parallel:drop"
+  "bundle exec rails parallel:drop"
+]
+
+[tasks.db-reset]
+description = "Reset development database"
+run = [
+  "mise run db-drop",
+  "mise run db-create"
 ]
 
 [tasks.restart]

@@ -6,13 +6,14 @@
 
 REPO_LINK = "https://github.com/alec-c4/kickstart.git"
 AVAILABLE_TEMPLATE_NAMES = %w[api importmap_tailwind esbuild_tailwind].freeze
-TEMPLATE_NAME = "esbuild_tailwind".freeze
-RAILS_REQUIREMENT = ">= 8.1.0.beta.1"
+TEMPLATE_NAME = "esbuild_tailwind"
+RAILS_REQUIREMENT = ">= 8.1.0"
 
 TEMPLATE_METADATA = {
   name: "esbuild_tailwind",
   description: "Rails app with ESBuild and Tailwind CSS for modern frontend development",
-  features: %w[postgresql devcontainer rspec rubocop uuid i18n tailwind esbuild turbo stimulus kamal solid_queue solid_cache solid_cable],
+  features: %w[postgresql devcontainer rspec rubocop uuid i18n tailwind esbuild turbo stimulus kamal solid_queue
+               solid_cache solid_cable],
   rails_version: RAILS_REQUIREMENT
 }.freeze
 
@@ -62,8 +63,11 @@ def add_template_repository_to_source_path
 end
 
 def set_variant_source_path(variant_name = nil)
-  template_root = __FILE__.match?(%r{\Ahttps?://}) ?
-    source_paths.first : File.dirname(__FILE__)
+  template_root = if __FILE__.match?(%r{\Ahttps?://})
+                    source_paths.first
+                  else
+                    File.dirname(__FILE__)
+                  end
 
   if variant_name
     variant_path = File.join(template_root, "variants", variant_name)
@@ -105,6 +109,7 @@ apply "src/shared/packages.rb"
 after_bundle do
   apply "src/shared/init_generators.rb"
   apply "src/shared/init_db_cli.rb"
+  apply "src/shared/solid_queue_setup.rb"
   apply "src/shared/init_i18n.rb"
   apply "src/shared/devcontainer.rb"
 
