@@ -7,8 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.3] - 2025-11-12
+
 ### Added
 
+- Solid Queue multi-database setup for all templates (api, esbuild_tailwind, importmap_tailwind)
+- Database configuration template (database.yml.tt) with separate databases for primary, cache, queue, and cable
+- Automatic Solid Queue configuration in development environment
+- Jobs process (`jobs: bin/jobs start`) in Procfile.dev
+- New `db-reset` mise task for convenient database reset workflow
 - Custom error pages (404, 422, 406, 500) for esbuild_tailwind and importmap_tailwind templates
 - Rake task `dev:errors` to toggle custom error pages in development
 - UI::AlertComponent for flash messages in application layout
@@ -19,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Database setup tasks now use `db:prepare` and load schemas for cache/queue/cable databases
 - Application layouts now use `MainConfig.app_name` and `MainConfig.base_url` from anyway_config
 - Layout files are now copied from variant-specific directories instead of being modified via gsub
 - RSpec setup now copies only common spec files, avoiding unnecessary files in API template
@@ -77,7 +85,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Esbuild/Tailwind template
 - Shell-script to create rails app with pre-configured options
 
-[Unreleased]: https://github.com/alec-c4/kickstart/compare/v1.0.2...master
+[Unreleased]: https://github.com/alec-c4/kickstart/compare/v1.0.3...master
+[1.0.3]: https://github.com/alec-c4/kickstart/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/alec-c4/kickstart/releases/tag/v1.0.2
 [1.0.1]: https://github.com/alec-c4/kickstart/releases/tag/v1.0.1
 [1.0.0]: https://github.com/alec-c4/kickstart/releases/tag/v1.0.0
