@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= MainConfig.app_name %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+    <%= vite_stylesheet_tag "application" %>
+    <%= vite_client_tag %>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>

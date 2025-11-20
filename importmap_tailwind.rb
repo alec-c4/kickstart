@@ -5,7 +5,7 @@
 #==============================================================================
 
 REPO_LINK = "https://github.com/alec-c4/kickstart.git"
-AVAILABLE_TEMPLATE_NAMES = %w[api importmap_tailwind esbuild_tailwind].freeze
+AVAILABLE_TEMPLATE_NAMES = %w[api importmap_tailwind esbuild_tailwind inertia_svelte inertia_react inertia_vue].freeze
 TEMPLATE_NAME = "importmap_tailwind"
 RAILS_REQUIREMENT = ">= 8.1.0"
 
@@ -131,7 +131,10 @@ after_bundle do
   apply "src/shared/gems_shrine.rb"
   apply "src/shared/gems_view_component.rb"
   apply "src/shared/helpers.rb"
-
+  
+  apply "src/shared/ci.rb"
+  
+  apply "src/shared/docs.rb"  
   apply "src/shared/staging_env.rb"
   apply "src/shared/run_rubocop.rb"
   apply "src/shared/git_init.rb"

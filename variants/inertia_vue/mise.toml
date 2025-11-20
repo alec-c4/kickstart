@@ -1,0 +1,80 @@
+[tools]
+ruby = "latest"
+node = "latest"
+
+[env]
+COREPACK_ENABLE_STRICT = "0"
+
+[tasks.update]
+description = "Update packages"
+run = [
+  "bundle update",
+  "bundle leak update",
+  "yarn up",
+  "touch tmp/restart.txt",
+]
+
+[tasks.install]
+description = "Install packages"
+run = ["corepack enable", "bundle install", "yarn install"]
+
+[tasks.lint]
+description = "Run linters"
+run = [
+  "bundle exec rubocop -A",
+  "bundle exec i18n-tasks normalize",
+  "bundle leak",
+]
+
+[tasks.test]
+description = "Run tests in parallel (fast)"
+run = [
+  "bundle exec parallel_rspec spec/", 
+  ]
+
+[tasks."test:serial"]
+description = "Run tests serially (for debugging)"
+run = [
+  "bundle exec rspec", 
+  ]
+
+[tasks.dev]
+description = "Run development server"
+run = ["./bin/dev"]
+
+[tasks.debug]
+description = "Run debug server"
+run = ["rdbg -n --open=vscode -c -- bin/rails s "]
+
+[tasks.audit]
+description = "Run security audit"
+run = ["bundle audit", "yarn audit", "osv-scanner scan source -r ."]
+
+[tasks.db-create]
+description = "Prepare development database"
+run = [
+  "bundle exec rails db:create",
+  "bundle exec rails db:prepare",
+  "bin/rails db:schema:load:cache",
+  "bin/rails db:schema:load:queue",
+  "bin/rails db:schema:load:cable",
+  "bundle exec rails parallel:create"
+]
+
+[tasks.db-drop]
+description = "Destroy development database"
+run = [
+  "bundle exec rails db:drop",
+  "bundle exec rails parallel:drop"
+]
+
+[tasks.db-reset]
+description = "Reset development database"
+run = [
+  "mise run db-drop",
+  "mise run db-create"
+]
+
+[tasks.restart]
+description = "Restart server"
+run = "touch tmp/restart.txt"

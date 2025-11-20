@@ -1,0 +1,25 @@
+pre-push:
+  parallel: true
+  commands:
+    gems-audit:
+      tags: backend security
+      run: bundle-audit check --update
+    node-audit:
+      tags: frontend security
+      run: yarn npm audit
+
+pre-commit:
+  parallel: true
+  commands:
+    rspec:
+      tags: backend frontend test
+      run: bundle exec rspec
+    rubocop:
+      tags: backend codestyle
+      run: bundle exec rubocop -A
+    brakeman:
+      tags: backend security
+      run: bundle exec brakeman --no-pager
+    zeitwerk:
+      tags: backend
+      run: bundle exec rails zeitwerk:check

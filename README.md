@@ -36,12 +36,14 @@ The installer will:
 Modern Rails application with ESBuild bundling and Tailwind CSS.
 
 **Frontend:**
+
 - ESBuild + Tailwind CSS
 - Turbo & Stimulus
 - ViewComponent with Lookbook
 - Better HTML & ERB Lint
 
 **Backend:**
+
 - PostgreSQL with UUID support
 - Anyway Config for settings
 - Active Interaction for service objects
@@ -51,6 +53,7 @@ Modern Rails application with ESBuild bundling and Tailwind CSS.
 - Lockbox & Blind Index for encryption
 
 **Development:**
+
 - RSpec with parallel_tests support
 - Rubocop, Brakeman
 - Devcontainer ready
@@ -58,6 +61,7 @@ Modern Rails application with ESBuild bundling and Tailwind CSS.
 - Custom error pages (404, 422, 406, 500)
 
 **Deployment:**
+
 - Kamal deployment ready
 - Solid Queue, Cache, Cable
 
@@ -66,19 +70,86 @@ Modern Rails application with ESBuild bundling and Tailwind CSS.
 Rails application with Import Maps and Tailwind CSS.
 
 **Frontend:**
+
 - Import Maps + Tailwind CSS
 - Turbo & Stimulus
 - ViewComponent with Lookbook
 - Better HTML & ERB Lint
 
 **Backend & Deployment:**
+
 - Same as esbuild_tailwind (see above)
+
+### inertia_svelte
+
+Modern SPA with Inertia.js and Svelte 5 for reactive interfaces.
+
+**Frontend:**
+
+- Vite + Tailwind CSS
+- Inertia.js for SPA architecture
+- Svelte 5 with runes and reactivity
+- No Turbo/Stimulus (full SPA approach)
+
+**Backend:**
+
+- PostgreSQL with UUID support
+- Anyway Config for settings
+- Active Interaction for service objects
+- Active Decorator for presenters
+- Pagy for pagination
+- Shrine for file uploads
+- Lockbox & Blind Index for encryption
+
+**Development:**
+
+- RSpec with parallel_tests support
+- Rubocop, Brakeman
+- Devcontainer ready
+- I18n with i18n-tasks
+- Generators configured for Inertia (no JS/asset generation)
+
+**Deployment:**
+
+- Kamal deployment ready
+- Solid Queue, Cache, Cable
+
+### inertia_react
+
+Modern SPA with Inertia.js and React for component-based UIs.
+
+**Frontend:**
+
+- Vite + Tailwind CSS
+- Inertia.js for SPA architecture
+- React with hooks and TypeScript
+- No Turbo/Stimulus (full SPA approach)
+
+**Backend & Development:**
+
+- Same as inertia_svelte (see above)
+
+### inertia_vue
+
+Modern SPA with Inertia.js and Vue 3 for progressive interfaces.
+
+**Frontend:**
+
+- Vite + Tailwind CSS
+- Inertia.js for SPA architecture
+- Vue 3 Composition API with TypeScript
+- No Turbo/Stimulus (full SPA approach)
+
+**Backend & Development:**
+
+- Same as inertia_svelte (see above)
 
 ### api
 
 Rails API-only application for backend services.
 
 **Backend:**
+
 - PostgreSQL with UUID support
 - Anyway Config for settings
 - Active Interaction for service objects
@@ -87,11 +158,13 @@ Rails API-only application for backend services.
 - Lockbox & Blind Index for encryption
 
 **Development:**
+
 - RSpec with parallel_tests support
 - Rubocop, Brakeman
 - I18n with i18n-tasks
 
 **Deployment:**
+
 - Kamal deployment ready
 - Solid Queue, Cache, Cable
 
@@ -104,6 +177,15 @@ rails new myapp -m https://raw.githubusercontent.com/alec-c4/kickstart/master/es
 # Importmap + Tailwind template
 rails new myapp -m https://raw.githubusercontent.com/alec-c4/kickstart/master/importmap_tailwind.rb --no-rc --skip-test --skip-system-test --database=postgresql --devcontainer --css=tailwind
 
+# Inertia + Svelte template
+rails new myapp -m https://raw.githubusercontent.com/alec-c4/kickstart/master/inertia_svelte.rb --no-rc --skip-test --skip-system-test --database=postgresql --devcontainer --skip-javascript
+
+# Inertia + React template
+rails new myapp -m https://raw.githubusercontent.com/alec-c4/kickstart/master/inertia_react.rb --no-rc --skip-test --skip-system-test --database=postgresql --devcontainer --skip-javascript
+
+# Inertia + Vue template
+rails new myapp -m https://raw.githubusercontent.com/alec-c4/kickstart/master/inertia_vue.rb --no-rc --skip-test --skip-system-test --database=postgresql --devcontainer --skip-javascript
+
 # API template
 rails new myapp -m https://raw.githubusercontent.com/alec-c4/kickstart/master/api.rb --no-rc --skip-test --skip-system-test --database=postgresql --devcontainer --api
 ```
@@ -113,17 +195,25 @@ rails new myapp -m https://raw.githubusercontent.com/alec-c4/kickstart/master/ap
 ```bash
 cd myapp
 bundle install
-yarn install  # for esbuild_tailwind only
+yarn install  # for esbuild_tailwind, inertia_svelte, and inertia_react templates
 rails db:create db:migrate
 rails parallel:create  # Creates parallel test databases (ignore 'already exists' message)
 bin/dev      # or rails server
 ```
+
+**Note for Inertia templates:** The setup will automatically:
+
+- Install Vite Rails for frontend bundling
+- Configure Inertia.js with your chosen framework (Svelte 5 or React)
+- Set up Tailwind CSS
+- Create example controller and page component
 
 ## Features
 
 ### Custom Error Pages
 
 The esbuild_tailwind and importmap_tailwind templates include custom error pages styled with Tailwind CSS for:
+
 - 404 - Page not found
 - 422 - Unprocessable entity
 - 406 - Not acceptable
@@ -149,8 +239,6 @@ rails dev:errors
 Add new templates
 
 - GraphQL API
-- Inertia.js + Svelte
-- Inertia.js + React
 
 ## Known issues
 

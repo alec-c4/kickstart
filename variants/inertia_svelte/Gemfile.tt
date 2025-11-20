@@ -1,0 +1,87 @@
+source "https://rubygems.org"
+
+### Application
+gem "rails", "~> <%= Rails.version %>"
+gem "puma"<%= gemfile_requirement("puma") %>
+
+### Database
+gem "pg"<%= gemfile_requirement("pg") %>
+
+### Solid Stack
+gem "solid_cache"
+gem "solid_queue"
+gem "solid_cable"
+gem "mission_control-jobs"
+
+### Frontend
+gem "propshaft"
+gem "inertia_rails", "~> 3.0"
+
+### Encryption and Security
+gem "blind_index"
+gem "lockbox"
+
+### Deployment
+gem "kamal", require: false
+gem "thruster", require: false
+
+### I18n
+gem "i18n-tasks"
+gem "rails-i18n"
+
+### File uploads
+gem "shrine", "~> 3.0"
+gem "aws-sdk-s3"
+
+### Image processing
+gem "image_processing", "~> 1.2"
+gem "fastimage"
+gem "marcel", "~> 1.0", ">= 1.0.2"
+
+### Code structure
+gem "anyway_config", "~> 2.0"
+gem "active_interaction", "~> 5.5"
+gem "active_decorator"
+gem "madmin"
+gem "pagy", "~> 9.0"
+
+### Tools
+gem "jbuilder"
+gem "tzinfo-data", platforms: %i[ windows jruby ]
+gem "bootsnap", require: false
+
+group :development, :test do
+  gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
+
+  # security
+  gem "brakeman", require: false
+  gem "bundler-audit"
+
+  # linters
+  gem "standard", require: false, github: "standardrb/standard"
+  gem "rubocop-rails", require: false
+  gem "rubocop-rspec", require: false
+  gem "rubocop-performance", require: false
+  gem "rubocop-thread_safety", require: false
+  gem "rubocop-capybara", require: false
+
+  # testing
+  gem "rspec-rails"
+  gem "parallel_tests"
+  gem "capybara"
+  gem "email_spec"
+  gem "ffaker"
+  gem "database_cleaner-active_record"
+  gem "factory_bot_rails"
+  gem "shoulda-context", "~> 3.0.0.rc1"
+  gem "shoulda-matchers", "~> 6.5.0"  
+end
+
+group :development do
+  ## dev tools
+  gem "web-console"
+  gem "amazing_print"
+  gem "letter_opener_web", "~> 3.0"
+  gem "bundler-leak"
+  gem "rails-erd"
+end
