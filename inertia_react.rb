@@ -132,8 +132,9 @@ after_bundle do
   apply "src/shared/gems_lockbox.rb"
   apply "src/shared/gems_shrine.rb"
 
-  apply "src/inertia_react/inertia_setup.rb"
-  
+  apply "src/inertia_shared/gems_inertia.rb"
+  apply "src/inertia_shared/custom_error_pages.rb"
+
   apply "src/shared/ci.rb"
   
   apply "src/shared/docs.rb"  

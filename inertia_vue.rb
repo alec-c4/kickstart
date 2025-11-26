@@ -5,7 +5,7 @@
 #==============================================================================
 
 REPO_LINK = "https://github.com/alec-c4/kickstart.git"
-AVAILABLE_TEMPLATE_NAMES = %w[api importmap_tailwind esbuild_tailwind inertia_svelte inertia_vue].freeze
+AVAILABLE_TEMPLATE_NAMES = %w[api importmap_tailwind esbuild_tailwind inertia_svelte inertia_react inertia_vue].freeze
 TEMPLATE_NAME = "inertia_vue"
 RAILS_REQUIREMENT = ">= 8.1.0"
 
@@ -132,8 +132,9 @@ after_bundle do
   apply "src/shared/gems_lockbox.rb"
   apply "src/shared/gems_shrine.rb"
 
-  apply "src/inertia_vue/inertia_setup.rb"
-  
+  apply "src/inertia_shared/gems_inertia.rb"
+  apply "src/inertia_shared/custom_error_pages.rb"
+
   apply "src/shared/ci.rb"
   
   apply "src/shared/docs.rb"  

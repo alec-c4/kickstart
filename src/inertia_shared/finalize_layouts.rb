@@ -6,8 +6,4 @@ say "Finalizing Inertia layouts..."
 # Copy our final application layout (with proper Inertia and Vite tags)
 copy_file "app/views/layouts/application.html.erb", force: true
 
-# Copy other layouts
-copy_file "app/views/layouts/landing.html.erb", force: true
-copy_file "app/views/layouts/plain.html.erb", force: true
-
 say "Layouts finalized with Inertia and Vite configuration"
