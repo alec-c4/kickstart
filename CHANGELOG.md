@@ -7,26 +7,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.1] - 2025-11-26
+
 ### Changed
 
-- **Code Organization**: Renamed `src/shared` to `src/classic_shared` to better distinguish classic Rails templates (esbuild_tailwind, importmap_tailwind) from Inertia templates
-- **Code Organization**: Renamed `variants/shared` to `variants/classic_shared` for classic Rails variant files
-- **Code Organization**: Created `src/inertia_shared` directory for shared Inertia.js template functionality
-- **Code Organization**: Created `variants/inertia_shared` directory for shared Inertia.js variant files
-- Updated all template files (esbuild_tailwind.rb, importmap_tailwind.rb, inertia_react.rb, inertia_svelte.rb, inertia_vue.rb) to use new directory structure
-- Moved ViewComponent-related files (AlertComponent, helpers, routes, specs) to `classic_shared` as they are specific to classic Rails templates
-- Moved Better HTML and ERB Lint configuration to `classic_shared` as they are specific to ERB templates
+- Renamed `src/shared` to `src/classic_shared` and `variants/shared` to `variants/classic_shared` to distinguish classic Rails from Inertia templates
+- Consolidated three duplicate `inertia_setup.rb` files into single `src/inertia_shared/gems_inertia.rb` with automatic framework detection
+- Reorganized README Quick Reference to show interactive installer first
+- Updated Custom Error Pages documentation to include all templates
+- All template files now use new directory structure (esbuild_tailwind.rb, importmap_tailwind.rb, inertia_react.rb, inertia_svelte.rb, inertia_vue.rb)
+
+### Fixed
+
+- Vite helpers now available in RSpec tests for Inertia templates
+- InertiaRails deprecation warning resolved with dedicated initializer
+- Custom error pages working correctly for Inertia templates
+- Route files (`dev.rb`, `errors.rb`) copying correctly from `inertia_shared`
+- Removed incorrect layouts causing blank pages in Inertia applications
 
 ### Added
 
-- RSpec configuration for Inertia templates (`src/inertia_shared/rspec_inertia.rb`)
-- Shared request specs for Inertia home page (`variants/inertia_shared/spec/requests/home_spec.rb`)
-- Route files for classic templates (dev, landing, pages, support routes)
+- `src/inertia_shared` and `variants/inertia_shared` directories for shared Inertia functionality
+- Complete error handling setup (controller, views, routes) for Inertia templates
+- Frontend pages (About, Terms, Privacy) for React, Vue, and Svelte
+- RSpec configuration for Inertia templates with test coverage (14 tests passing)
+- Route files for classic templates (dev, landing, pages, support)
 - Application helper for classic templates
 
 ### Removed
 
-- Removed unnecessary `.keep` files from Inertia template spec directories (components/previews)
+- Duplicate `src/inertia_{react,vue,svelte}/inertia_setup.rb` files
+- Incorrect layout files (`landing.html.erb`, `plain.html.erb`) from Inertia variants
+- Unnecessary `.keep` files from Inertia template spec directories
 
 ## [1.1.0] - 2025-11-20
 
@@ -139,7 +151,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Esbuild/Tailwind template
 - Shell-script to create rails app with pre-configured options
 
-[Unreleased]: https://github.com/alec-c4/kickstart/compare/v1.0.3...master
+[Unreleased]: https://github.com/alec-c4/kickstart/compare/v1.1.1...master
+[1.1.1]: https://github.com/alec-c4/kickstart/compare/v1.1.0...v1.1.1
+[1.1.0]: https://github.com/alec-c4/kickstart/compare/v1.0.3...v1.1.0
 [1.0.3]: https://github.com/alec-c4/kickstart/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/alec-c4/kickstart/releases/tag/v1.0.2
 [1.0.1]: https://github.com/alec-c4/kickstart/releases/tag/v1.0.1
