@@ -69,13 +69,19 @@ def set_variant_source_path(variant_name = nil)
                     File.dirname(__FILE__)
                   end
 
+  # 1. Universal shared (lowest priority)
+  shared_path = File.join(template_root, "variants", "shared")
+  source_paths.unshift(shared_path) if File.directory?(shared_path)
+
+  # 2. Inertia shared (medium priority)
+  inertia_shared_path = File.join(template_root, "variants", "inertia_shared")
+  source_paths.unshift(inertia_shared_path) if File.directory?(inertia_shared_path)
+
+  # 3. Variant-specific (highest priority)
   if variant_name
     variant_path = File.join(template_root, "variants", variant_name)
     source_paths.unshift(variant_path) if File.directory?(variant_path)
   end
-
-  shared_path = File.join(template_root, "variants", "shared")
-  source_paths.unshift(shared_path) if File.directory?(shared_path)
 end
 
 def show_post_install_message
@@ -121,6 +127,7 @@ after_bundle do
   apply "src/shared/gems_active_interaction.rb"
   apply "src/shared/gems_active_decorator.rb"
   apply "src/shared/gems_rspec.rb"
+  apply "src/inertia_shared/rspec_inertia.rb"
   apply "src/shared/gems_i18n_tasks.rb"
   apply "src/shared/gems_lockbox.rb"
   apply "src/shared/gems_shrine.rb"

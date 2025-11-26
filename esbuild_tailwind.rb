@@ -69,13 +69,19 @@ def set_variant_source_path(variant_name = nil)
                     File.dirname(__FILE__)
                   end
 
+  # 1. Universal shared (lowest priority)
+  shared_path = File.join(template_root, "variants", "shared")
+  source_paths.unshift(shared_path) if File.directory?(shared_path)
+
+  # 2. Classic shared (medium priority)
+  classic_shared_path = File.join(template_root, "variants", "classic_shared")
+  source_paths.unshift(classic_shared_path) if File.directory?(classic_shared_path)
+
+  # 3. Variant-specific (highest priority)
   if variant_name
     variant_path = File.join(template_root, "variants", variant_name)
     source_paths.unshift(variant_path) if File.directory?(variant_path)
   end
-
-  shared_path = File.join(template_root, "variants", "shared")
-  source_paths.unshift(shared_path) if File.directory?(shared_path)
 end
 
 def show_post_install_message
@@ -113,9 +119,9 @@ after_bundle do
   apply "src/shared/init_i18n.rb"
   apply "src/shared/devcontainer.rb"
 
-  apply "src/shared/routes.rb"
-  apply "src/shared/app_static_pages.rb"
-  apply "src/shared/custom_error_pages.rb"
+  apply "src/classic_shared/routes.rb"
+  apply "src/classic_shared/app_static_pages.rb"
+  apply "src/classic_shared/custom_error_pages.rb"
 
   apply "src/shared/env_rubocop.rb"
   apply "src/shared/migrations_uuid.rb"
@@ -126,16 +132,16 @@ after_bundle do
   apply "src/shared/gems_active_decorator.rb"
   apply "src/shared/gems_rspec.rb"
   apply "src/shared/gems_i18n_tasks.rb"
-  apply "src/shared/gems_better_html.rb"
-  apply "src/shared/gems_erblint.rb"
+  apply "src/classic_shared/gems_better_html.rb"
+  apply "src/classic_shared/gems_erblint.rb"
   apply "src/shared/gems_lockbox.rb"
   apply "src/shared/gems_shrine.rb"
-  apply "src/shared/gems_view_component.rb"
-  apply "src/shared/helpers.rb"
-  
+  apply "src/classic_shared/gems_view_component.rb"
+  apply "src/classic_shared/helpers.rb"
+
   apply "src/shared/ci.rb"
 
-  apply "src/shared/docs.rb"  
+  apply "src/shared/docs.rb"
   apply "src/shared/staging_env.rb"
   apply "src/shared/run_rubocop.rb"
   apply "src/shared/git_init.rb"

@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- **Code Organization**: Renamed `src/shared` to `src/classic_shared` to better distinguish classic Rails templates (esbuild_tailwind, importmap_tailwind) from Inertia templates
+- **Code Organization**: Renamed `variants/shared` to `variants/classic_shared` for classic Rails variant files
+- **Code Organization**: Created `src/inertia_shared` directory for shared Inertia.js template functionality
+- **Code Organization**: Created `variants/inertia_shared` directory for shared Inertia.js variant files
+- Updated all template files (esbuild_tailwind.rb, importmap_tailwind.rb, inertia_react.rb, inertia_svelte.rb, inertia_vue.rb) to use new directory structure
+- Moved ViewComponent-related files (AlertComponent, helpers, routes, specs) to `classic_shared` as they are specific to classic Rails templates
+- Moved Better HTML and ERB Lint configuration to `classic_shared` as they are specific to ERB templates
+
+### Added
+
+- RSpec configuration for Inertia templates (`src/inertia_shared/rspec_inertia.rb`)
+- Shared request specs for Inertia home page (`variants/inertia_shared/spec/requests/home_spec.rb`)
+- Route files for classic templates (dev, landing, pages, support routes)
+- Application helper for classic templates
+
+### Removed
+
+- Removed unnecessary `.keep` files from Inertia template spec directories (components/previews)
+
 ## [1.1.0] - 2025-11-20
 
 ### Added
