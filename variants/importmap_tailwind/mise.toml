@@ -10,13 +10,12 @@ description = "Update packages"
 run = [
   "bundle update",
   "bundle leak update",
-  "yarn up",
   "touch tmp/restart.txt",
 ]
 
 [tasks.install]
 description = "Install packages"
-run = ["corepack enable", "bundle install", "yarn install"]
+run = ["bundle install"]
 
 [tasks.lint]
 description = "Run linters"
@@ -49,7 +48,7 @@ run = ["rdbg -n --open=vscode -c -- bin/rails s "]
 
 [tasks.audit]
 description = "Run security audit"
-run = ["bundle audit", "yarn audit", "osv-scanner scan source -r ."]
+run = ["bundle audit", "osv-scanner scan source -r ."]
 
 [tasks.db-create]
 description = "Prepare development database"

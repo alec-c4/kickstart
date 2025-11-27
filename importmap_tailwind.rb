@@ -116,7 +116,6 @@ after_bundle do
   apply "src/shared/init_db_cli.rb"
   apply "src/shared/solid_queue_setup.rb"
   apply "src/shared/init_i18n.rb"
-  apply "src/shared/devcontainer.rb"
 
   apply "src/classic_shared/routes.rb"
   apply "src/classic_shared/app_static_pages.rb"

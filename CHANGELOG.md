@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Consolidated Yarn/corepack configuration into single `src/shared/yarnconfig.rb` file
+- Merged devcontainer Yarn configuration into `yarnconfig.rb` for better organization
+- Removed yarn-related tasks from `importmap_tailwind` mise.toml (doesn't use Yarn)
+
+### Added
+
+- Explicit `bundle exec vite install` call before Inertia generator to ensure vite.json generation
+
+### Removed
+
+- `src/esbuild_tailwind/yarnconfig.rb` (consolidated to shared)
+- `src/shared/devcontainer.rb` (merged into yarnconfig.rb)
+- `src/shared/devcontainer_yarn.rb` (merged into yarnconfig.rb)
+
 ## [1.1.1] - 2025-11-26
 
 ### Changed

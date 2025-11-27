@@ -16,6 +16,7 @@ gem "mission_control-jobs"
 ### Frontend
 gem "propshaft"
 gem "inertia_rails", "~> 3.0"
+gem "vite_rails", "~> 3.0"
 
 ### Encryption and Security
 gem "blind_index"

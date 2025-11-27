@@ -110,14 +110,16 @@ add_template_repository_to_source_path
 set_variant_source_path(TEMPLATE_NAME)
 
 apply "src/inertia_shared/general.rb"
+apply "src/shared/yarnconfig.rb"
 apply "src/shared/packages.rb"
 
 after_bundle do
+  apply "src/inertia_shared/gems_inertia.rb"
+
   apply "src/inertia_shared/init_generators.rb"
   apply "src/shared/init_db_cli.rb"
   apply "src/shared/solid_queue_setup.rb"
   apply "src/shared/init_i18n.rb"
-  apply "src/shared/devcontainer.rb"
 
   apply "src/shared/env_rubocop.rb"
   apply "src/shared/migrations_uuid.rb"
@@ -126,13 +128,13 @@ after_bundle do
   apply "src/shared/gems_pagy.rb"
   apply "src/shared/gems_active_interaction.rb"
   apply "src/shared/gems_active_decorator.rb"
+
   apply "src/shared/gems_rspec.rb"
   apply "src/inertia_shared/rspec_inertia.rb"
   apply "src/shared/gems_i18n_tasks.rb"
   apply "src/shared/gems_lockbox.rb"
   apply "src/shared/gems_shrine.rb"
 
-  apply "src/inertia_shared/gems_inertia.rb"
   apply "src/inertia_shared/custom_error_pages.rb"
 
   apply "src/shared/ci.rb"
