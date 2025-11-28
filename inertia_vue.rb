@@ -115,6 +115,7 @@ apply "src/shared/packages.rb"
 
 after_bundle do
   apply "src/inertia_shared/gems_inertia.rb"
+  apply "src/inertia_shared/cleanup.rb"
 
   apply "src/inertia_shared/init_generators.rb"
   apply "src/shared/init_db_cli.rb"

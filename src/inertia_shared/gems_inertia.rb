@@ -32,7 +32,7 @@ module InertiaShare
           notice: flash[:notice],
           alert: flash[:alert],
           error: flash[:error]
-        }
+        }.compact
       }
     end
   end
