@@ -90,6 +90,5 @@ group :development do
   gem "web-console"
   gem "amazing_print"
   gem "letter_opener_web", "~> 3.0"
-  gem "bundler-leak"
   gem "rails-erd"
 end

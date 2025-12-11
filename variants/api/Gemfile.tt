@@ -70,6 +70,5 @@ end
 group :development do
   ## dev tools
   gem "amazing_print"
-  gem "bundler-leak"
   gem "rails-erd"
 end

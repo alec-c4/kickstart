@@ -7,11 +7,7 @@ COREPACK_ENABLE_STRICT = "0"
 
 [tasks.update]
 description = "Update packages"
-run = [
-  "bundle update",
-  "bundle leak update",
-  "touch tmp/restart.txt",
-]
+run = ["bundle update", "touch tmp/restart.txt"]
 
 [tasks.install]
 description = "Install packages"
@@ -23,20 +19,15 @@ run = [
   "bundle exec rubocop -A",
   "bundle exec i18n-tasks normalize",
   "bundle exec erb_lint --lint-all --autocorrect",
-  "bundle leak",
 ]
 
 [tasks.test]
 description = "Run tests in parallel (fast)"
-run = [
-  "bundle exec parallel_rspec spec/", 
-  ]
+run = ["bundle exec parallel_rspec spec/"]
 
 [tasks."test:serial"]
 description = "Run tests serially (for debugging)"
-run = [
-  "bundle exec rspec", 
-  ]
+run = ["bundle exec rspec"]
 
 [tasks.dev]
 description = "Run development server"
@@ -58,22 +49,16 @@ run = [
   "bin/rails db:schema:load:cache",
   "bin/rails db:schema:load:queue",
   "bin/rails db:schema:load:cable",
-  "bundle exec rails parallel:create"
+  "bundle exec rails parallel:create",
 ]
 
 [tasks.db-drop]
 description = "Destroy development database"
-run = [
-  "bundle exec rails db:drop",
-  "bundle exec rails parallel:drop"
-]
+run = ["bundle exec rails db:drop", "bundle exec rails parallel:drop"]
 
 [tasks.db-reset]
 description = "Reset development database"
-run = [
-  "mise run db-drop",
-  "mise run db-create"
-]
+run = ["mise run db-drop", "mise run db-create"]
 
 [tasks.restart]
 description = "Restart server"

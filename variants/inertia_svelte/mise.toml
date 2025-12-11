@@ -9,7 +9,6 @@ COREPACK_ENABLE_STRICT = "0"
 description = "Update packages"
 run = [
   "bundle update",
-  "bundle leak update",
   "yarn up",
   "touch tmp/restart.txt",
 ]
@@ -23,8 +22,8 @@ description = "Run linters"
 run = [
   "bundle exec rubocop -A",
   "bundle exec i18n-tasks normalize",
-  "bundle leak",
-]
+  "yarn run check"
+  ]
 
 [tasks.test]
 description = "Run tests in parallel (fast)"
@@ -48,7 +47,11 @@ run = ["rdbg -n --open=vscode -c -- bin/rails s "]
 
 [tasks.audit]
 description = "Run security audit"
-run = ["bundle audit", "yarn audit", "osv-scanner scan source -r ."]
+run = [
+  "bundle audit", 
+  "yarn audit", 
+  "osv-scanner scan source -r ."
+  ]
 
 [tasks.db-create]
 description = "Prepare development database"

@@ -9,7 +9,6 @@ COREPACK_ENABLE_STRICT = "0"
 description = "Update packages"
 run = [
   "bundle update",
-  "bundle leak update",
   "yarn up",
   "touch tmp/restart.txt",
 ]
@@ -23,7 +22,7 @@ description = "Run linters"
 run = [
   "bundle exec rubocop -A",
   "bundle exec i18n-tasks normalize",
-  "bundle leak",
+  "yarn run check"
 ]
 
 [tasks.test]
