@@ -7,6 +7,7 @@ interface PageProps {
     alert?: string;
     error?: string;
   };
+  [key: string]: any;
 }
 
 export default function Flash() {

@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout';
 
 interface PageProps {
   app_name: string;
+  [key: string]: any;
 }
 
 export default function Home() {

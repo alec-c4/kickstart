@@ -41,4 +41,16 @@ if Dir.exist?(stylesheets_dir)
   end
 end
 
+# Fix tsconfig.node.json to reference vite.config.mts instead of vite.config.ts
+# The inertia:install generator creates tsconfig.node.json with "vite.config.ts"
+# but the actual file created is "vite.config.mts"
+tsconfig_node_path = "tsconfig.node.json"
+if File.exist?(tsconfig_node_path)
+  tsconfig_content = File.read(tsconfig_node_path)
+  if tsconfig_content.include?('"include": ["vite.config.ts"]')
+    gsub_file tsconfig_node_path, '"include": ["vite.config.ts"]', '"include": ["vite.config.mts"]'
+    say "  ✓ Fixed #{tsconfig_node_path} to reference vite.config.mts", :green
+  end
+end
+
 say "Cleanup complete!", :green

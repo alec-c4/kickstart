@@ -1,7 +1,13 @@
 <script lang="ts">
   import { page } from '@inertiajs/svelte';
 
-  let flash = $derived($page.props.flash);
+  interface Flash {
+    notice?: string;
+    alert?: string;
+    error?: string;
+  }
+
+  let flash = $derived($page.props.flash as Flash);
   let visible = $state(false);
 
   $effect(() => {
