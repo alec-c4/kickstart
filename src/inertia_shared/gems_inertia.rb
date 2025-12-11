@@ -19,6 +19,10 @@ framework = case TEMPLATE_NAME
 # --force - Force overwrite bin/dev and other files
 rails_command "generate inertia:install --framework=#{framework} --typescript --no-interactive --tailwind --vite --no-example-page --force"
 
+# Fix bin/vite creation - vite_ruby's install command uses deprecated bundler --path flag
+# Create the binstub manually using modern bundler syntax
+run "bundle binstub vite_ruby"
+
 # Create Inertia controller concern for shared data
 create_file "app/controllers/concerns/inertia_share.rb", <<-RUBY
 module InertiaShare
@@ -44,9 +48,9 @@ inject_into_file "app/controllers/application_controller.rb", after: "class Appl
   "  include InertiaShare\n"
 end
 
-# Copy base layouts and components
+# Copy base layouts, lib (with components), and pages
 directory "app/frontend/layouts", "app/frontend/layouts"
-directory "app/frontend/components", "app/frontend/components"
+directory "app/frontend/lib", "app/frontend/lib"
 directory "app/frontend/pages", "app/frontend/pages"
 
 # Create landing controller and route for home page

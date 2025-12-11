@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Flash from '../components/Flash.svelte';
+  import Flash from '$lib/components/Flash.svelte';
 
   interface Props {
     children: any;
