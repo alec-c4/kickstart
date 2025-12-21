@@ -125,7 +125,7 @@ after_bundle do
   apply "src/shared/env_rubocop.rb"
   apply "src/shared/migrations_uuid.rb"
 
-  apply "src/shared/gems_anyway_config.rb"
+  apply "src/inertia_shared/gems_anyway_config.rb"
   apply "src/shared/gems_pagy.rb"
   apply "src/shared/gems_active_interaction.rb"
   apply "src/shared/gems_active_decorator.rb"

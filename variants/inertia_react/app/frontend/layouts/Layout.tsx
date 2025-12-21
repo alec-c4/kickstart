@@ -1,4 +1,4 @@
-import Flash from '$lib/components/Flash';
+import Flash from '@/lib/components/Flash';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (

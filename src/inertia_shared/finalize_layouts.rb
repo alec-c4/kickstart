@@ -6,7 +6,7 @@ say "Finalizing Inertia layouts..."
 # Copy our final application layout (with proper Inertia and Vite tags)
 copy_file "app/views/layouts/application.html.erb", force: true
 
-# Update tsconfig to add $lib/* path mapping
+# Update tsconfig to add @/* path mapping
 # React/Vue use tsconfig.app.json, Svelte uses tsconfig.json
 tsconfig_file = if File.exist?("tsconfig.app.json")
                   "tsconfig.app.json"
@@ -16,11 +16,11 @@ tsconfig_file = if File.exist?("tsconfig.app.json")
 
 if tsconfig_file
   inject_into_file tsconfig_file, after: '"paths": {' do
-    "\n      \"$lib/*\": [\"app/frontend/lib/*\"],"
+    "\n      \"@/*\": [\"app/frontend/*\"],"
   end
-  say "✓ Added $lib/* path mapping to #{tsconfig_file}", :green
+  say "✓ Added @/* path mapping to #{tsconfig_file}", :green
 else
-  say "⚠ Warning: tsconfig file not found, skipping $lib/* path mapping", :yellow
+  say "⚠ Warning: tsconfig file not found, skipping @/* path mapping", :yellow
 end
 
 # Install @types/node for TypeScript support in vite.config
@@ -102,8 +102,6 @@ if vite_config
       resolve: {
         alias: {
           "@": path.resolve(__dirname, "./app/frontend"),
-          "~": path.resolve(__dirname, "./app/frontend"),
-          "$lib": path.resolve(__dirname, "./app/frontend/lib"),
         },
       },
     JS
