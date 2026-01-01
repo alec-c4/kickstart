@@ -7,21 +7,46 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-01-01
+
+### Added
+
+- i18n support for Inertia templates (React, Vue, Svelte) with `i18n-tasks` gem
+- Theme toggle component for all Inertia templates (light/dark mode with system preference detection)
+- Language switcher component for all Inertia templates (English/Russian)
+- i18n configuration files (`i18n-tasks.yml`) and locale files (en.yml, ru.yml)
+- Tailwind dark mode support with class-based strategy
+- Frontend i18n implementation for React, Vue, and Svelte with locale files
+- `finalize_layouts.rb` script for post-processing Inertia layouts
+- `setup_components.rb` script for installing i18n and theme components
+- `update_application_css.rb` script for Tailwind dark mode configuration
+- Cleanup script for removing unnecessary generated files in Inertia templates
+- Explicit `vite.json` configuration for Inertia templates
+
 ### Changed
 
 - Consolidated Yarn/corepack configuration into single `src/shared/yarnconfig.rb` file
 - Merged devcontainer Yarn configuration into `yarnconfig.rb` for better organization
-- Removed yarn-related tasks from `importmap_tailwind` mise.toml (doesn't use Yarn)
-
-### Added
-
-- Explicit `bundle exec vite install` call before Inertia generator to ensure vite.json generation
+- Updated layouts meta tags across all templates for better SEO
+- Moved Flash component to `lib/components` directory in Inertia templates
+- Reorganized Inertia component structure for better maintainability
+- Streamlined mise.toml tasks across all templates
+- Updated all Inertia pages to use i18n translations
 
 ### Removed
 
 - `src/esbuild_tailwind/yarnconfig.rb` (consolidated to shared)
 - `src/shared/devcontainer.rb` (merged into yarnconfig.rb)
 - `src/shared/devcontainer_yarn.rb` (merged into yarnconfig.rb)
+- yarn-related tasks from `importmap_tailwind` mise.toml (doesn't use Yarn)
+- `bundler-leak` gem (reached end of life)
+
+### Fixed
+
+- TypeScript type definitions in React Inertia templates
+- Layout configuration and rendering in Inertia templates
+- Component import paths in Inertia templates
+- Vite.json generation timing for Inertia templates
 
 ## [1.1.1] - 2025-11-26
 
@@ -167,7 +192,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Esbuild/Tailwind template
 - Shell-script to create rails app with pre-configured options
 
-[Unreleased]: https://github.com/alec-c4/kickstart/compare/v1.1.1...master
+[Unreleased]: https://github.com/alec-c4/kickstart/compare/v1.2.0...master
+[1.2.0]: https://github.com/alec-c4/kickstart/compare/v1.1.1...v1.2.0
 [1.1.1]: https://github.com/alec-c4/kickstart/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/alec-c4/kickstart/compare/v1.0.3...v1.1.0
 [1.0.3]: https://github.com/alec-c4/kickstart/compare/v1.0.2...v1.0.3
