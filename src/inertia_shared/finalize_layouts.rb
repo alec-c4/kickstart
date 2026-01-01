@@ -6,6 +6,29 @@ say "Finalizing Inertia layouts..."
 # Copy our final application layout (with proper Inertia and Vite tags)
 copy_file "app/views/layouts/application.html.erb", force: true
 
+# Copy Tailwind config with dark mode support
+copy_file "tailwind.config.js", force: true
+say "✓ Copied Tailwind config with dark mode support", :green
+
+# Copy backend locale files
+copy_file "config/locales/en.yml", force: true
+copy_file "config/locales/ru.yml", force: true
+say "✓ Copied backend locale files (en.yml, ru.yml)", :green
+
+# Copy i18n-tasks configuration
+copy_file "config/i18n-tasks.yml", force: true
+say "✓ Copied i18n-tasks configuration", :green
+
+# Copy inertia entrypoint with i18n setup
+framework_extension = case TEMPLATE_NAME
+                      when "inertia_react" then "tsx"
+                      when "inertia_vue", "inertia_svelte" then "ts"
+                      else "ts"
+                      end
+
+copy_file "app/frontend/entrypoints/inertia.#{framework_extension}", force: true
+say "✓ Copied Inertia entrypoint with i18n setup", :green
+
 # Update tsconfig to add @/* path mapping
 # React/Vue use tsconfig.app.json, Svelte uses tsconfig.json
 tsconfig_file = if File.exist?("tsconfig.app.json")
@@ -110,5 +133,8 @@ if vite_config
 else
   say "⚠ Warning: vite.config not found, skipping alias setup", :yellow
 end
+
+# Update application.css to support dark mode
+apply "#{__dir__}/update_application_css.rb"
 
 say "Layouts finalized with Inertia and Vite configuration"

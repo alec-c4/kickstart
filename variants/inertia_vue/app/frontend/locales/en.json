@@ -1,0 +1,21 @@
+{
+  "language": {
+    "label": "Language",
+    "toggle": "Toggle language",
+    "english": "English",
+    "russian": "Русский"
+  },
+  "theme": {
+    "label": "Theme",
+    "toggle": "Toggle theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy"
+  }
+}

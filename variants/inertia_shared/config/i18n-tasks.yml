@@ -1,0 +1,26 @@
+# i18n-tasks finds and manages missing and unused translations: https://github.com/glebm/i18n-tasks
+
+# The "main" locale.
+base_locale: en
+
+# Read and write translations.
+data:
+  yaml:
+    write:
+      # do not wrap lines at 80 characters
+      line_width: -1
+
+# Find translate calls
+search:
+  exclude:
+    - app/assets/images
+    - app/assets/fonts
+    - app/assets/videos
+    - app/assets/builds
+    - app/frontend
+
+## Consider these keys used (they are used in frontend JavaScript/TypeScript files):
+ignore_unused:
+  - 'language.*'
+  - 'theme.*'
+  - 'navigation.*'

@@ -1,5 +1,5 @@
 import { usePage, Head } from '@inertiajs/react';
-import Layout from '../layouts/Layout';
+import Layout from '@/layouts/Layout';
 
 interface PageProps {
   app_name: string;
@@ -14,10 +14,10 @@ export default function About() {
       <Head title="About" />
       <div className="flex min-h-screen items-center justify-center">
         <div className="max-w-2xl text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
             About {app_name}
           </h1>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
             This is a modern web application built with Rails, Inertia.js, and React.
             It combines the power of server-side rendering with the flexibility of a
             single-page application.

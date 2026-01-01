@@ -139,6 +139,8 @@ after_bundle do
   apply "src/inertia_shared/custom_error_pages.rb"
 
   apply "src/shared/ci.rb"
+
+  apply "src/inertia_shared/setup_components.rb"
   
   apply "src/shared/docs.rb"  
   apply "src/shared/staging_env.rb"
