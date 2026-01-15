@@ -123,6 +123,7 @@ after_bundle do
   apply "src/shared/gems_shrine.rb"
   
   apply "src/shared/ci.rb"
+  apply "src/shared/github.rb"
 
   apply "src/shared/docs.rb"
   apply "src/shared/staging_env.rb"

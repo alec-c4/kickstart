@@ -139,6 +139,7 @@ after_bundle do
   apply "src/classic_shared/helpers.rb"
 
   apply "src/shared/ci.rb"
+  apply "src/shared/github.rb"
 
   apply "src/shared/docs.rb"
   apply "src/shared/staging_env.rb"
