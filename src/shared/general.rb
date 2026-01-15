@@ -3,6 +3,7 @@ template "README.md", force: true
 copy_file ".gitignore", force: true
 copy_file "mise.toml", force: true
 copy_file "lefthook.yml", force: true
+copy_file "Brewfile", force: true
 
 copy_file ".rubocop.yml", force: true
 copy_file ".rubocop_rails.yml", force: true
