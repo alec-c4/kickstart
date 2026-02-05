@@ -8,7 +8,7 @@ COREPACK_ENABLE_STRICT = "0"
 [tasks.update]
 description = "Update packages"
 run = [
-  "bundle update",
+  "bundle update -all",
   "yarn up",
   "touch tmp/restart.txt",
 ]
