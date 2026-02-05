@@ -61,7 +61,6 @@ group :development, :test do
   gem "rspec-rails"
   gem "parallel_tests"
   gem "ffaker"
-  gem "database_cleaner-active_record"
   gem "factory_bot_rails"
   gem "shoulda-context", "~> 3.0.0.rc1"
   gem "shoulda-matchers", "~> 6.5.0"  

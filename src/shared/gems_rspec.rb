@@ -4,7 +4,6 @@ generate "rspec:install"
 copy_file ".rspec", force: true
 copy_file "spec/rails_helper.rb", force: true
 copy_file "spec/spec_helper.rb", force: true
-copy_file "spec/support/database_cleaner.rb", force: true
 copy_file "spec/support/factory_bot.rb", force: true
 copy_file "spec/support/shoulda.rb", force: true
 copy_file "spec/support/time_helpers.rb", force: true

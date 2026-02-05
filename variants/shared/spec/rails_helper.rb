@@ -15,6 +15,7 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 RSpec.configure do |config|
+  config.use_transactional_examples = true
   config.filter_run_excluding skip: true # filter pending specs output
   config.filter_rails_from_backtrace!
 end
