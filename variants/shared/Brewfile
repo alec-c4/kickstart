@@ -13,5 +13,5 @@ brew "vips"
 brew "xh"
 brew "zellij"
 
-cask "wezterm"
+cask "ghostty"
 cask "postgres-unofficial"
