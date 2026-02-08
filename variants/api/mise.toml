@@ -3,7 +3,7 @@ ruby = "latest"
 
 [tasks.update]
 description = "Update packages"
-run = ["bundle update -all", "touch tmp/restart.txt"]
+run = ["bundle update --all", "touch tmp/restart.txt"]
 
 [tasks.install]
 description = "Install packages"
