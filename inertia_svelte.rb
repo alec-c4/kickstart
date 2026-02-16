@@ -13,7 +13,7 @@ TEMPLATE_METADATA = {
   name: "inertia_svelte",
   description: "Rails app with Inertia.js and Svelte 5 for modern SPA development",
   features: %w[postgresql devcontainer rspec rubocop uuid i18n tailwind vite inertia svelte5 kamal solid_queue
-               solid_cache solid_cable],
+               solid_cache solid_cable llm],
   rails_version: RAILS_REQUIREMENT
 }.freeze
 
@@ -112,6 +112,7 @@ set_variant_source_path(TEMPLATE_NAME)
 apply "src/inertia_shared/general.rb"
 apply "src/shared/yarnconfig.rb"
 apply "src/shared/packages.rb"
+apply "src/shared/llm.rb"
 
 after_bundle do
   apply "src/inertia_shared/gems_inertia.rb"

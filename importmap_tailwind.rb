@@ -13,7 +13,7 @@ TEMPLATE_METADATA = {
   name: "importmap_tailwind",
   description: "Rails app with Importmap and Tailwind CSS for modern frontend development",
   features: %w[postgresql devcontainer rspec rubocop uuid i18n tailwind importmap turbo stimulus kamal solid_queue
-               solid_cache solid_cable],
+               solid_cache solid_cable llm],
   rails_version: RAILS_REQUIREMENT
 }.freeze
 
@@ -97,7 +97,14 @@ def show_post_install_message
   $ rails parallel:create  # Creates parallel test databases (ignore 'already exists' message)
   $ bin/dev
 
-  #########################################################################################\n", :green
+  #########################################################################################
+  
+  💡 AI-Powered Development Tip:
+  To enable full Rails-aware features for AI assistants, install Rails MCP server:
+  $ gem install rails-mcp-server
+  
+  #########################################################################################
+", :green
 end
 
 #==============================================================================
@@ -110,6 +117,7 @@ set_variant_source_path(TEMPLATE_NAME)
 
 apply "src/shared/general.rb"
 apply "src/shared/packages.rb"
+apply "src/shared/llm.rb"
 
 after_bundle do
   apply "src/shared/init_generators.rb"

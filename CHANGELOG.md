@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-02-16
+
+### Added
+
+- Integrated universal LLM (AI) configuration across all templates (`src/shared/llm.rb`)
+- Automated generation of AI assistant configuration files: `.claude.json`, `opencode.json`, `CLAUDE.md` and `AGENTS.md`
+- Built-in support for Model Context Protocol (MCP) servers: `rails-mcp-server`, `postgres`, `github`, `context7`, and optional `chrome-devtools`/`playwright`
+- Standardized AI development guidelines based on established project philosophy and TDD practices
+
+### Changed
+
+- Enhanced `mise.toml` to automatically load both `.env` and `.env.local` environment files
+- Refined `.gitignore` and `.dockerignore` to specifically protect `.env.local` and secret files
+
 ## [1.2.0] - 2026-01-01
 
 ### Added
@@ -192,7 +206,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Esbuild/Tailwind template
 - Shell-script to create rails app with pre-configured options
 
-[Unreleased]: https://github.com/alec-c4/kickstart/compare/v1.2.0...master
+[Unreleased]: https://github.com/alec-c4/kickstart/compare/v1.3.0...master
+[1.3.0]: https://github.com/alec-c4/kickstart/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/alec-c4/kickstart/compare/v1.1.1...v1.2.0
 [1.1.1]: https://github.com/alec-c4/kickstart/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/alec-c4/kickstart/compare/v1.0.3...v1.1.0

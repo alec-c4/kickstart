@@ -71,6 +71,16 @@ rails parallel:create  # Creates parallel test databases
 bin/dev
 ```
 
+### AI-Assisted Development (Highly Recommended)
+
+All templates are pre-configured for AI coding assistants (**OpenCode**, **Claude Code**, **Gemini**, **Cursor**, **Windsurf**). To enable full Rails-aware features, install the [Rails MCP server](https://github.com/maquina-app/rails-mcp-server) globally:
+
+```bash
+gem install rails-mcp-server
+```
+
+This enables your AI agent to understand your Rails routes, models, and database schema directly.
+
 ## Usage
 
 See [Quick Reference](#quick-reference---create-new-app) above for creating new applications.
