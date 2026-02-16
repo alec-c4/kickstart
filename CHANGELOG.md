@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Integrated universal LLM (AI) configuration across all templates (`src/shared/llm.rb`)
+- Integrated `e2e` gem for blazingly fast Playwright-powered testing in all UI templates
+- Integrated `inertia_i18n` gem for modern, unified i18n management in all Inertia-based templates
 - Automated generation of AI assistant configuration files: `.claude.json`, `opencode.json`, `CLAUDE.md` and `AGENTS.md`
 - Built-in support for Model Context Protocol (MCP) servers: `rails-mcp-server`, `postgres`, `github`, `context7`, and optional `chrome-devtools`/`playwright`
 - Standardized AI development guidelines based on established project philosophy and TDD practices

@@ -29,6 +29,7 @@ gem "thruster", require: false
 ### I18n
 gem "i18n-tasks"
 gem "rails-i18n"
+gem "inertia_i18n"
 
 ### File uploads
 gem "shrine", "~> 3.0"
@@ -74,7 +75,8 @@ group :development, :test do
   gem "ffaker"
   gem "factory_bot_rails"
   gem "shoulda-context", "~> 3.0.0.rc1"
-  gem "shoulda-matchers", "~> 6.5.0"  
+  gem "shoulda-matchers", "~> 6.5.0"
+  gem "e2e"
 end
 
 group :development do

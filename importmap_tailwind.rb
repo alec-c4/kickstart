@@ -142,6 +142,7 @@ after_bundle do
   apply "src/classic_shared/gems_erblint.rb"
   apply "src/shared/gems_lockbox.rb"
   apply "src/shared/gems_shrine.rb"
+  apply "src/shared/e2e.rb"
   apply "src/classic_shared/gems_view_component.rb"
   apply "src/classic_shared/helpers.rb"
 

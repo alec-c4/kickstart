@@ -95,10 +95,18 @@ def show_post_install_message
   $ bundle install
   $ yarn install
   $ rails db:create db:migrate
-  $ rails parallel:create  # Creates parallel test databases (ignore 'already exists' message)
+  $ rails parallel:create      # Creates parallel test databases
+  $ rails inertia_i18n:convert # Sync YAML locales to JSON
   $ bin/dev
 
-  #########################################################################################\n", :green
+  #########################################################################################
+
+  💡 AI-Powered Development Tip:
+  To enable full Rails-aware features for AI assistants, install Rails MCP server:
+  $ gem install rails-mcp-server
+
+  #########################################################################################
+", :green
 end
 
 #==============================================================================
@@ -136,6 +144,8 @@ after_bundle do
   apply "src/shared/gems_i18n_tasks.rb"
   apply "src/shared/gems_lockbox.rb"
   apply "src/shared/gems_shrine.rb"
+  apply "src/shared/e2e.rb"
+  apply "src/inertia_shared/inertia_i18n.rb"
 
   apply "src/inertia_shared/custom_error_pages.rb"
 
