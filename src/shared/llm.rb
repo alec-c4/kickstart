@@ -117,26 +117,43 @@ create_file ".claude.json", force: true do
         "#{env_loader}; if [ -z \"$DATABASE_URL\" ]; then echo 'DATABASE_URL not found' >&2; exit 1; fi; npx -y @modelcontextprotocol/server-postgres \"$DATABASE_URL\""
       ],
       "env" => {}
+    },
+    "github" => {
+      "type" => "stdio",
+      "command" => "npx",
+      "args" => ["-y", "@modelcontextprotocol/server-github"],
+      "env" => {
+        "GITHUB_PERSONAL_ACCESS_TOKEN" => "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+      }
     }
   }
 
   permissions_allow = [
-    "Bash(bin/rails:*)",
+    "Bash(npm:*)",
+    "Bash(pnpm:*)",
+    "Bash(yarn:*)",
+    "Bash(bun:*)",
+    "Bash(python3:*)",
+    "Bash(ruby:*)",
+    "Bash(rails:*)",
     "Bash(bundle:*)",
+    "Bash(rake:*)",
+    "Bash(bundle-audit:*)",
+    "Bash(i18n-tasks:*)",
     "Bash(git:*)",
-    "Bash(ls:*)",
-    "Bash(cat:*)",
-    "Bash(mkdir:*)",
-    "Bash(cp:*)",
-    "Bash(mv:*)",
-    "Bash(find:*)",
+    "Bash(diff:*)",
     "Bash(grep:*)",
-    "Bash(ripgrep:*)",
-    "Bash(tree:*)",
-    "WebSearch",
+    "Bash(tail:*)",
+    "Bash(head:*)",
+    "Bash(ls:*)",
+    "Bash(find:*)",
+    "Bash(sed:*)",
+    "Bash(mkdir:*)",
+    "Bash(pkill:*)",
+    "Read(./**)",
+    "Edit(./**)",
     "WebFetch(domain:github.com)",
-    "WebFetch(domain:raw.githubusercontent.com)",
-    "WebFetch(domain:localhost)",
+    "WebSearch",
     "Mcp(rails-mcp-server:*)",
     "Mcp(postgres:*)",
     "Mcp(github:*)"
@@ -172,11 +189,12 @@ create_file ".claude.json", force: true do
     "mcpServers" => mcp_servers,
     "permissions" => {
       "allow" => permissions_allow,
-      "deny" => [],
-      "ask" => [
+      "deny" => [
         "Bash(rm:*)",
-        "Bash(rmdir:*)"
-      ]
+        "Bash(rmdir:*)",
+        "Read(.env*)"
+      ],
+      "ask" => []
     }
   })
 end
@@ -254,15 +272,112 @@ create_file "opencode.json", force: true do
   }
   permissions["context7_*"] = "allow"
 
+  mcp_configs["sequential-thinking"] = {
+    "type" => "local",
+    "enabled" => true,
+    "command" => ["npx", "-y", "@modelcontextprotocol/server-sequential-thinking"]
+  }
+  permissions["sequential-thinking_*"] = "allow"
+
+  mcp_configs["repomix"] = {
+    "type" => "local",
+    "enabled" => true,
+    "command" => ["npx", "-y", "repomix", "--mcp"]
+  }
+  permissions["repomix_*"] = "allow"
+
   JSON.pretty_generate({
     "mcp" => mcp_configs,
     "permission" => permissions
   })
 end
 
-# 7. Multi-model instructions (specialized)
+# 7. .claudeignore — files Claude should not read/index
+create_file ".claudeignore", force: true do
+  <<~IGNORE
+    node_modules/
+    .git/
+    log/
+    tmp/
+    coverage/
+    public/assets/
+    public/packs/
+    .bundle/
+    vendor/bundle/
+    *.log
+    *.lock
+    dist/
+  IGNORE
+end
+
+# 8. Multi-model instructions (project-specific)
+ui_stack_line = case template_name
+                when "api"              then "Rails 8 API"
+                when "inertia_react"    then "Rails 8 + Inertia.js + React"
+                when "inertia_vue"      then "Rails 8 + Inertia.js + Vue.js"
+                when "inertia_svelte"   then "Rails 8 + Inertia.js + Svelte"
+                when "esbuild_tailwind" then "Rails 8 + esbuild + Tailwind CSS"
+                when "importmap_tailwind" then "Rails 8 + importmap + Tailwind CSS"
+                else                    "Rails 8"
+                end
+
+ui_testing_section = unless is_api_only
+  <<~MD
+
+    ### chrome-devtools / playwright
+
+    Use for browser-based testing and UI verification:
+    - Take screenshots to verify layout and behavior
+    - Fill forms and click through user flows
+    - Assert on rendered HTML and network responses
+    - Run E2E specs via `bin/rails spec:system` and inspect failures visually
+
+  MD
+end.to_s
+
 llm_rules = <<~MARKDOWN
   # Development Guidelines
+
+  ## Project Stack
+
+  - **Framework**: #{ui_stack_line}
+  - **Database**: PostgreSQL (via Solid Cache / Solid Queue for background jobs)
+  - **Testing**: RSpec (unit + request specs#{is_api_only ? "" : " + system specs with Capybara/Playwright"})
+  - **Background jobs**: Solid Queue (`bin/rails solid_queue:start`)
+  - **Assets**: #{case template_name
+                 when "api"               then "N/A (API only)"
+                 when "inertia_react"     then "Vite + React (run with `bin/dev`)"
+                 when "inertia_vue"       then "Vite + Vue.js (run with `bin/dev`)"
+                 when "inertia_svelte"    then "Vite + Svelte (run with `bin/dev`)"
+                 when "esbuild_tailwind"  then "esbuild + Tailwind CSS (run with `bin/dev`)"
+                 when "importmap_tailwind" then "importmap + Tailwind CSS"
+                 else                     "run with `bin/dev`"
+                 end}
+
+  ## Available MCP Tools
+
+  Use MCP tools proactively — they provide live project context faster than grepping files.
+
+  ### rails-mcp-server
+
+  Use for Rails-aware introspection:
+  - List and inspect routes, controllers, models, concerns
+  - Read schema and database structure
+  - Understand existing patterns before adding new code
+
+  ### postgres
+
+  Use for direct database queries:
+  - Inspect table contents, run ad-hoc SQL to verify data state
+  - Debug migration results or seed data
+  - Requires `DATABASE_URL` from `.env` / `.env.local`
+  #{ui_testing_section}
+  ### context7
+
+  Use for up-to-date library documentation:
+  - Resolve correct API for Rails, RSpec, Inertia, React versions in use
+  - Look up gem/package behaviour before assuming defaults
+  - Call with `resolve-library-id` first, then `query-docs`
 
   ## Philosophy
 
@@ -295,15 +410,23 @@ llm_rules = <<~MARKDOWN
 
   ### Rails & Architecture
 
-  - **Rails**: Always use `bin/rails` and `bin/dev`. Follow Rails 8 defaults (Solid Queue, Solid Cache).
-  - **Architecture**: Composition over inheritance, dependencies injected.
-  - **Code Quality**: Every change must compile, pass existing tests, and follow project conventions.
+  - Always use `bin/rails` (not `rails`) and `bin/dev` to start the server.
+  - Follow Rails 8 defaults: Solid Queue for jobs, Solid Cache for caching.
+  - Use `bin/rails db:migrate` — never manually edit schema.rb.
+  - Background jobs go through Solid Queue; inspect with `bin/rails solid_queue:*`.
+  - Composition over inheritance; dependencies injected, not hardcoded.
 
-  ### Testing & Quality
+  ### Testing
 
-  - **Testing**: Use RSpec. Write tests BEFORE production code.
-  - **Naming**: Descriptive, role-based names. No numbered variables.
-  - **Error Handling**: Fail fast with context. Never silently swallow exceptions.
+  - **Unit / request specs**: RSpec. Write tests BEFORE production code.
+  - **Run tests**: `bin/rails spec` or `bundle exec rspec`.#{is_api_only ? "" : "\n  - **System specs**: use Playwright MCP or Capybara to verify UI flows."}
+  - Never disable tests or skip with `--no-verify`.
+
+  ### Code Quality
+
+  - Every change must compile, pass all existing tests, follow project conventions.
+  - Descriptive, role-based names — no numbered variables.
+  - Fail fast with context; never silently swallow exceptions.
 
   ## Rules
 

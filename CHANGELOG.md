@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.1] - 2026-02-23
+
+### Added
+
+- Generated `.claudeignore` file to exclude non-essential paths (logs, tmp, assets, node_modules) from Claude indexing
+
+### Changed
+
+- Improved `CLAUDE.md` / `AGENTS.md` content: added Project Stack section, expanded MCP Tools section with `chrome-devtools`/`playwright` guidance, restructured Technical Standards into dedicated subsections (Rails & Architecture, Testing, Code Quality)
+
+### Fixed
+
+- Removed `~> 9.0` version constraint from `pagy` gem in all Gemfile templates — the constraint caused a `NameError: uninitialized constant Pagy::OPTIONS` because the downloaded initializer targets Pagy v40+ while the locked version was v9.x
+
 ## [1.3.0] - 2026-02-16
 
 ### Added

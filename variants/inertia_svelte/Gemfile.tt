@@ -45,7 +45,7 @@ gem "anyway_config", "~> 2.0"
 gem "active_interaction", "~> 5.5"
 gem "active_decorator"
 gem "madmin"
-gem "pagy", "~> 9.0"
+gem "pagy"
 
 ### Tools
 gem "jbuilder"
