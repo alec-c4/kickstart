@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.5.0] - 2026-02-23
+
+### Added
+
+- E2E smoke test `spec/e2e/landing_spec.rb` generated automatically with the app name, confirming the landing page renders on setup
+- `inertia_i18n:test` generator run on project creation to scaffold the translation health spec
+
+### Fixed
+
+- `inertia_i18n` setup now runs `bundle exec rake inertia_i18n:convert` immediately after install, so frontend JSON locale files are synced with backend YAML from the start (previously the generated JSON had mismatched default keys causing spec failures)
+
+### Removed
+
+- Removed auto-generated `config/initializers/inertia.rb` — `InertiaRails` defaults are sufficient and the initializer was adding noise to new projects
+
 ## [1.4.0] - 2026-02-23
 
 ### Removed

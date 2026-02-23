@@ -3,12 +3,11 @@
 say "🌐 Integrating inertia_i18n for Inertia.js frontend...", :magenta
 
 after_bundle do
-  # Run the generator
   generate "inertia_i18n:install"
+  generate "inertia_i18n:test"
 
-  create_file "app/frontend/locales/en.json", "{}\n"
-  create_file "app/frontend/locales/ru.json", "{}\n"
+  # Sync backend YAML → frontend JSON so translations are in sync from the start
+  run "bundle exec rake inertia_i18n:convert"
 
   say "✓ inertia_i18n integration complete", :green
-  say "  Run 'bundle exec rake inertia_i18n:convert' to sync YAML to JSON", :blue
 end

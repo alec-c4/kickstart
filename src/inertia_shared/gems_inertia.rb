@@ -96,17 +96,4 @@ inside "config/routes" do
   create_file "errors.rb", File.read(File.join(source_paths[1], "config/routes/errors.rb"))
 end
 
-# Configure Inertia Rails
-create_file "config/initializers/inertia.rb", <<~RUBY
-  # frozen_string_literal: true
-
-  # Inertia Rails Configuration
-  # https://inertia-rails.dev
-
-  InertiaRails.configure do |config|
-    # Always include errors hash for Inertia protocol compliance (InertiaRails 4.0+)
-    config.always_include_errors_hash = true
-  end
-RUBY
-
 say "✓ Inertia Rails configured with #{framework}", :green
