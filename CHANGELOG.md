@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.0] - 2026-02-23
+
+### Removed
+
+- Removed `active_decorator` gem from all templates — dropped `app/decorators/` directory and `src/shared/gems_active_decorator.rb` installer
+
 ## [1.3.1] - 2026-02-23
 
 ### Added
@@ -190,7 +196,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [anyway_config](https://github.com/palkan/anyway_config) gem
 - [madmin](https://github.com/excid3/madmin/) gem
 - [pagy](https://github.com/ddnexus/pagy) gem with official initializer
-- [active_decorator](https://github.com/amatsuda/active_decorator) gem
 - [shrine](https://github.com/shrinerb/shrine) gem for file uploads
 - [lockbox](https://github.com/ankane/lockbox) and [blind_index](https://github.com/ankane/blind_index) for encryption
 - [view_component](https://github.com/ViewComponent/view_component) gem with Lookbook for frontend templates

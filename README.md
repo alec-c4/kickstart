@@ -110,7 +110,6 @@ Modern Rails application with ESBuild bundling and Tailwind CSS.
 - PostgreSQL with UUID support
 - Anyway Config for settings
 - Active Interaction for service objects
-- Active Decorator for presenters
 - Pagy for pagination
 - Shrine for file uploads
 - Lockbox & Blind Index for encryption
@@ -159,7 +158,6 @@ Modern SPA with Inertia.js and Svelte 5 for reactive interfaces.
 - PostgreSQL with UUID support
 - Anyway Config for settings
 - Active Interaction for service objects
-- Active Decorator for presenters
 - Pagy for pagination
 - Shrine for file uploads
 - Lockbox & Blind Index for encryption

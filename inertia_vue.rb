@@ -137,7 +137,6 @@ after_bundle do
   apply "src/inertia_shared/gems_anyway_config.rb"
   apply "src/shared/gems_pagy.rb"
   apply "src/shared/gems_active_interaction.rb"
-  apply "src/shared/gems_active_decorator.rb"
 
   apply "src/shared/gems_rspec.rb"
   apply "src/inertia_shared/rspec_inertia.rb"

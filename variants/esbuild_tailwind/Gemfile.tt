@@ -48,7 +48,6 @@ gem "marcel", "~> 1.0", ">= 1.0.2"
 ### Code structure
 gem "anyway_config", "~> 2.0"
 gem "active_interaction", "~> 5.5"
-gem "active_decorator"
 gem "madmin"
 gem "pagy"
 
