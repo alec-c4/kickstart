@@ -144,6 +144,7 @@ after_bundle do
   apply "src/shared/e2e.rb"
   apply "src/classic_shared/gems_view_component.rb"
   apply "src/classic_shared/helpers.rb"
+  apply "src/shared/gems_madmin.rb"
 
   apply "src/shared/ci.rb"
   apply "src/shared/github.rb"

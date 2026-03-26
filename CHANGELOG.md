@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.6.0] - 2026-03-26
+
+### Fixed
+
+- Added missing `pagy` gem to `api` template `Gemfile`
+- Manual setup for `madmin` admin panel (routing and base controller) across all UI templates to bypass generator database connection requirements during project creation
+
 ## [1.5.0] - 2026-02-23
 
 ### Added
@@ -242,7 +249,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Esbuild/Tailwind template
 - Shell-script to create rails app with pre-configured options
 
-[Unreleased]: https://github.com/alec-c4/kickstart/compare/v1.3.0...master
+[Unreleased]: https://github.com/alec-c4/kickstart/compare/v1.6.0...master
+[1.6.0]: https://github.com/alec-c4/kickstart/compare/v1.5.0...v1.6.0
+[1.5.0]: https://github.com/alec-c4/kickstart/compare/v1.4.0...v1.5.0
+[1.4.0]: https://github.com/alec-c4/kickstart/compare/v1.3.1...v1.4.0
+[1.3.1]: https://github.com/alec-c4/kickstart/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/alec-c4/kickstart/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/alec-c4/kickstart/compare/v1.1.1...v1.2.0
 [1.1.1]: https://github.com/alec-c4/kickstart/compare/v1.1.0...v1.1.1

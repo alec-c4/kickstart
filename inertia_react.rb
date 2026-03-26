@@ -145,6 +145,7 @@ after_bundle do
   apply "src/shared/gems_shrine.rb"
   apply "src/shared/e2e.rb"
   apply "src/inertia_shared/inertia_i18n.rb"
+  apply "src/shared/gems_madmin.rb"
 
   apply "src/inertia_shared/custom_error_pages.rb"
 

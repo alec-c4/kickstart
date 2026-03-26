@@ -36,6 +36,7 @@ gem "marcel", "~> 1.0", ">= 1.0.2"
 ### Code structure
 gem "anyway_config", "~> 2.0"
 gem "active_interaction", "~> 5.5"
+gem "pagy"
 
 ### Tools
 gem "tzinfo-data", platforms: %i[ windows jruby ]
