@@ -29,6 +29,9 @@ development:
   primary: &primary_development
     <<: *default
     database: <%= app_name %>_development
+    # Disable GSS/Kerberos encryption to prevent fork-safety crash on macOS
+    # (libkrb5 calls ObjC runtime in fork child → SIGABRT)
+    gssencmode: disable        
   cache:
     <<: *primary_development
     database: <%= app_name %>_development_cache
