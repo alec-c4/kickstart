@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Landing", type: :request, inertia: true do
+RSpec.describe "Landing", type: :request do
   describe "GET /" do
     it "returns http success" do
       get "/"

@@ -1,0 +1,8 @@
+ru:
+  language:
+    toggle: "Переключить язык"
+  theme:
+    toggle: "Переключить тему"
+    light: "Светлая"
+    dark: "Тёмная"
+    system: "Системная"

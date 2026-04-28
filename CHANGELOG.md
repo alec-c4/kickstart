@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.6.3] - 2026-04-29
+
+### Added
+
+- `inertia_i18n:watch` process automatically appended to `Procfile.dev` during Inertia i18n setup, enabling live translation file sync in development
+- Frontend locale files (`ui.en.yml`, `ui.ru.yml`) added to `variants/inertia_shared/config/locales/frontend/`
+
+### Fixed
+
+- Removed `inertia: true` metadata from Inertia shared request specs (`landing_spec.rb`, `pages_spec.rb`) — standard `type: :request` is sufficient and avoids unnecessary Inertia-specific test wrappers
+
 ## [1.6.2] - 2026-04-28
 
 ### Fixed
@@ -271,7 +282,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Esbuild/Tailwind template
 - Shell-script to create rails app with pre-configured options
 
-[Unreleased]: https://github.com/alec-c4/kickstart/compare/v1.6.2...master
+[Unreleased]: https://github.com/alec-c4/kickstart/compare/v1.6.3...master
+[1.6.3]: https://github.com/alec-c4/kickstart/compare/v1.6.2...v1.6.3
 [1.6.2]: https://github.com/alec-c4/kickstart/compare/v1.6.1...v1.6.2
 [1.6.1]: https://github.com/alec-c4/kickstart/compare/v1.6.0...v1.6.1
 [1.6.0]: https://github.com/alec-c4/kickstart/compare/v1.5.0...v1.6.0

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Pages", type: :request, inertia: true do
+RSpec.describe "Pages", type: :request do
   describe "GET /terms" do
     it "returns http success" do
       get "/terms"

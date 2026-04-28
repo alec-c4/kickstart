@@ -9,5 +9,9 @@ after_bundle do
   # Sync backend YAML → frontend JSON so translations are in sync from the start
   run "bundle exec rake inertia_i18n:convert"
 
+  if File.exist?("Procfile.dev")
+    append_to_file "Procfile.dev", "inertia_i18n: bin/rails inertia_i18n:watch\n"
+  end
+
   say "✓ inertia_i18n integration complete", :green
 end
