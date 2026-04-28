@@ -35,10 +35,5 @@ createInertiaApp({
     form: {
       forceIndicesArrayFormatInFormData: false,
     },
-    future: {
-      useDataInertiaHeadAttribute: true,
-      useDialogForErrorModal: true,
-      preserveEqualProps: true,
-    },
   },
 });

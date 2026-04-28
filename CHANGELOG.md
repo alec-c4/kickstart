@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.6.4] - 2026-04-29
+
+### Fixed
+
+- Removed deprecated `future` flags (`useDataInertiaHeadAttribute`, `useDialogForErrorModal`, `preserveEqualProps`) from `createInertiaApp` in all Inertia variants (React, Vue, Svelte) — these options are now the default in Inertia.js v2+
+
 ## [1.6.3] - 2026-04-29
 
 ### Added
@@ -282,7 +288,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Esbuild/Tailwind template
 - Shell-script to create rails app with pre-configured options
 
-[Unreleased]: https://github.com/alec-c4/kickstart/compare/v1.6.3...master
+[Unreleased]: https://github.com/alec-c4/kickstart/compare/v1.6.4...master
+[1.6.4]: https://github.com/alec-c4/kickstart/compare/v1.6.3...v1.6.4
 [1.6.3]: https://github.com/alec-c4/kickstart/compare/v1.6.2...v1.6.3
 [1.6.2]: https://github.com/alec-c4/kickstart/compare/v1.6.1...v1.6.2
 [1.6.1]: https://github.com/alec-c4/kickstart/compare/v1.6.0...v1.6.1
