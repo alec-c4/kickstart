@@ -4,14 +4,14 @@
 </script>
 
 <svelte:head>
-  <title>Home - {$page.props.app_name}</title>
+  <title>Home - {page.props.app_name}</title>
 </svelte:head>
 
 <Layout>
   <div class="flex min-h-screen items-center justify-center">
     <div class="text-center">
       <h1 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
-        {$page.props.app_name}
+        {page.props.app_name}
       </h1>
       <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
         Built with Rails, Inertia.js, and Svelte 5

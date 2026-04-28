@@ -7,7 +7,7 @@
     error?: string;
   }
 
-  let flash = $derived($page.props.flash as Flash);
+  let flash = $derived(page.props.flash as Flash);
   let visible = $state(false);
 
   $effect(() => {

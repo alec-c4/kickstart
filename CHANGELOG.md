@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.6.2] - 2026-04-28
+
+### Fixed
+
+- Fixed Svelte page template issues in the Inertia Svelte variant (`Home`, `About`, `Terms`, `Privacy`)
+- Fixed Svelte layout/component issues in the Inertia Svelte variant (`Layout`, `Flash`) to improve generated app stability
+
 ## [1.6.1] - 2026-04-28
 
 ### Changed
@@ -264,7 +271,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Esbuild/Tailwind template
 - Shell-script to create rails app with pre-configured options
 
-[Unreleased]: https://github.com/alec-c4/kickstart/compare/v1.6.1...master
+[Unreleased]: https://github.com/alec-c4/kickstart/compare/v1.6.2...master
+[1.6.2]: https://github.com/alec-c4/kickstart/compare/v1.6.1...v1.6.2
 [1.6.1]: https://github.com/alec-c4/kickstart/compare/v1.6.0...v1.6.1
 [1.6.0]: https://github.com/alec-c4/kickstart/compare/v1.5.0...v1.6.0
 [1.5.0]: https://github.com/alec-c4/kickstart/compare/v1.4.0...v1.5.0

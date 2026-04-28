@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-  <title>Privacy Policy - {$page.props.app_name}</title>
+  <title>Privacy Policy - {page.props.app_name}</title>
 </svelte:head>
 
 <Layout>
@@ -15,7 +15,7 @@
       </h1>
       <div class="prose prose-gray dark:prose-invert max-w-none">
         <p class="text-lg leading-8 text-gray-600 dark:text-gray-300">
-          At {$page.props.app_name}, we take your privacy seriously. This policy describes how we collect,
+          At {page.props.app_name}, we take your privacy seriously. This policy describes how we collect,
           use, and protect your personal information.
         </p>
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">1. Information We Collect</h2>

@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-  <title>Terms of Service - {$page.props.app_name}</title>
+  <title>Terms of Service - {page.props.app_name}</title>
 </svelte:head>
 
 <Layout>
@@ -15,7 +15,7 @@
       </h1>
       <div class="prose prose-gray dark:prose-invert max-w-none">
         <p class="text-lg leading-8 text-gray-600 dark:text-gray-300">
-          Welcome to {$page.props.app_name}. By using our service, you agree to these terms.
+          Welcome to {page.props.app_name}. By using our service, you agree to these terms.
         </p>
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">1. Use of Service</h2>
         <p class="text-gray-600 dark:text-gray-300 mb-6">

@@ -12,7 +12,7 @@
   let { children }: Props = $props();
 
   $effect(() => {
-    const locale = ($page.props as any).locale;
+    const locale = (page.props as any).locale;
     if (locale) {
       syncLocaleFromProps(locale);
     }
