@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.6.1] - 2026-04-28
+
+### Changed
+
+- Pagy initializer is now generated directly by the template instead of being downloaded at install time
+- Normalized template generator code style (heredocs/indentation) across Inertia and classic shared installers
+
+### Removed
+
+- Universal LLM (AI) bootstrap from all templates (no longer generates `.claude.json`, `opencode.json`, `AGENTS.md`, `CLAUDE.md`, and related `.env` scaffolding)
+
+### Fixed
+
+- Staging environment snippets now append properly indented YAML to `config/database.yml` and `config/cable.yml`
+
 ## [1.6.0] - 2026-03-26
 
 ### Fixed
@@ -249,7 +264,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Esbuild/Tailwind template
 - Shell-script to create rails app with pre-configured options
 
-[Unreleased]: https://github.com/alec-c4/kickstart/compare/v1.6.0...master
+[Unreleased]: https://github.com/alec-c4/kickstart/compare/v1.6.1...master
+[1.6.1]: https://github.com/alec-c4/kickstart/compare/v1.6.0...v1.6.1
 [1.6.0]: https://github.com/alec-c4/kickstart/compare/v1.5.0...v1.6.0
 [1.5.0]: https://github.com/alec-c4/kickstart/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/alec-c4/kickstart/compare/v1.3.1...v1.4.0

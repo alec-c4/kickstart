@@ -13,7 +13,7 @@ TEMPLATE_METADATA = {
   name: "inertia_svelte",
   description: "Rails app with Inertia.js and Svelte 5 for modern SPA development",
   features: %w[postgresql devcontainer rspec rubocop uuid i18n tailwind vite inertia svelte5 kamal solid_queue
-               solid_cache solid_cable llm],
+               solid_cache solid_cable],
   rails_version: RAILS_REQUIREMENT
 }.freeze
 
@@ -78,10 +78,10 @@ def set_variant_source_path(variant_name = nil)
   source_paths.unshift(inertia_shared_path) if File.directory?(inertia_shared_path)
 
   # 3. Variant-specific (highest priority)
-  if variant_name
-    variant_path = File.join(template_root, "variants", variant_name)
-    source_paths.unshift(variant_path) if File.directory?(variant_path)
-  end
+  return unless variant_name
+
+  variant_path = File.join(template_root, "variants", variant_name)
+  source_paths.unshift(variant_path) if File.directory?(variant_path)
 end
 
 def show_post_install_message
@@ -120,7 +120,6 @@ set_variant_source_path(TEMPLATE_NAME)
 apply "src/inertia_shared/general.rb"
 apply "src/shared/yarnconfig.rb"
 apply "src/shared/packages.rb"
-apply "src/shared/llm.rb"
 
 after_bundle do
   apply "src/inertia_shared/gems_inertia.rb"
@@ -153,8 +152,8 @@ after_bundle do
   apply "src/shared/github.rb"
 
   apply "src/inertia_shared/setup_components.rb"
-  
-  apply "src/shared/docs.rb"  
+
+  apply "src/shared/docs.rb"
   apply "src/shared/staging_env.rb"
   apply "src/inertia_shared/finalize_layouts.rb"
   apply "src/shared/run_rubocop.rb"

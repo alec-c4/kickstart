@@ -3,7 +3,7 @@ application_css_path = "app/frontend/entrypoints/application.css"
 
 if File.exist?(application_css_path)
   content = File.read(application_css_path)
-  
+
   # Add dark mode variant if not already present
   unless content.include?("@variant dark")
     content += "\n@variant dark (&:where(.dark, .dark *));\n"

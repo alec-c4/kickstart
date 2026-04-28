@@ -13,7 +13,7 @@ TEMPLATE_METADATA = {
   name: "esbuild_tailwind",
   description: "Rails app with ESBuild and Tailwind CSS for modern frontend development",
   features: %w[postgresql devcontainer rspec rubocop uuid i18n tailwind esbuild turbo stimulus kamal solid_queue
-               solid_cache solid_cable llm],
+               solid_cache solid_cable],
   rails_version: RAILS_REQUIREMENT
 }.freeze
 
@@ -78,10 +78,10 @@ def set_variant_source_path(variant_name = nil)
   source_paths.unshift(classic_shared_path) if File.directory?(classic_shared_path)
 
   # 3. Variant-specific (highest priority)
-  if variant_name
-    variant_path = File.join(template_root, "variants", variant_name)
-    source_paths.unshift(variant_path) if File.directory?(variant_path)
-  end
+  return unless variant_name
+
+  variant_path = File.join(template_root, "variants", variant_name)
+  source_paths.unshift(variant_path) if File.directory?(variant_path)
 end
 
 def show_post_install_message
@@ -98,11 +98,11 @@ def show_post_install_message
   $ bin/dev
 
   #########################################################################################
-  
+
   💡 AI-Powered Development Tip:
   To enable full Rails-aware features for AI assistants, install Rails MCP server:
   $ gem install rails-mcp-server
-  
+
   #########################################################################################
 ", :green
 end
@@ -118,7 +118,6 @@ set_variant_source_path(TEMPLATE_NAME)
 apply "src/shared/general.rb"
 apply "src/shared/yarnconfig.rb"
 apply "src/shared/packages.rb"
-apply "src/shared/llm.rb"
 
 after_bundle do
   apply "src/shared/init_generators.rb"

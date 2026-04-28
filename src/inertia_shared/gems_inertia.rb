@@ -24,27 +24,28 @@ rails_command "generate inertia:install --framework=#{framework} --typescript --
 run "bundle binstub vite_ruby"
 
 # Create Inertia controller concern for shared data
-create_file "app/controllers/concerns/inertia_share.rb", <<-RUBY
-module InertiaShare
-  extend ActiveSupport::Concern
+create_file "app/controllers/concerns/inertia_share.rb", <<~RUBY
+  module InertiaShare
+    extend ActiveSupport::Concern
 
-  included do
-    inertia_share do
-      {
-        app_name: MainConfig.app_name,
-        flash: {
-          notice: flash[:notice],
-          alert: flash[:alert],
-          error: flash[:error]
-        }.compact
-      }
+    included do
+      inertia_share do
+        {
+          app_name: MainConfig.app_name,
+          flash: {
+            notice: flash[:notice],
+            alert: flash[:alert],
+            error: flash[:error]
+          }.compact
+        }
+      end
     end
   end
-end
 RUBY
 
 # Update ApplicationController to include InertiaShare
-inject_into_file "app/controllers/application_controller.rb", after: "class ApplicationController < ActionController::Base\n" do
+inject_into_file "app/controllers/application_controller.rb",
+                 after: "class ApplicationController < ActionController::Base\n" do
   "  include InertiaShare\n"
 end
 
@@ -54,29 +55,29 @@ directory "app/frontend/lib", "app/frontend/lib"
 directory "app/frontend/pages", "app/frontend/pages"
 
 # Create landing controller and route for home page
-create_file "app/controllers/landing_controller.rb", <<-RUBY
-class LandingController < ApplicationController
-  def home
-    render inertia: "Home"
-  end
+create_file "app/controllers/landing_controller.rb", <<~RUBY
+  class LandingController < ApplicationController
+    def home
+      render inertia: "Home"
+    end
 
-  def about
-    render inertia: "About"
+    def about
+      render inertia: "About"
+    end
   end
-end
 RUBY
 
 # Create pages controller for static pages
-create_file "app/controllers/pages_controller.rb", <<-RUBY
-class PagesController < ApplicationController
-  def terms
-    render inertia: "Terms"
-  end
+create_file "app/controllers/pages_controller.rb", <<~RUBY
+  class PagesController < ApplicationController
+    def terms
+      render inertia: "Terms"
+    end
 
-  def privacy
-    render inertia: "Privacy"
+    def privacy
+      render inertia: "Privacy"
+    end
   end
-end
 RUBY
 
 # Copy routes.rb and route partials (after Inertia generator to avoid overwriting)

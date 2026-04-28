@@ -7,10 +7,10 @@ CODE
 # Create or overwrite inflections.rb initializer
 inflections_file = "config/initializers/inflections.rb"
 remove_file inflections_file if File.exist?(inflections_file)
-initializer "inflections.rb", <<-CODE
-ActiveSupport::Inflector.inflections(:en) do |inflect|
-  inflect.acronym "UI"
-end
+initializer "inflections.rb", <<~CODE
+  ActiveSupport::Inflector.inflections(:en) do |inflect|
+    inflect.acronym "UI"
+  end
 CODE
 
 copy_file "app/helpers/view_component_helper.rb", force: true

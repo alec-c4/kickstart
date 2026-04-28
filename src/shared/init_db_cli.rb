@@ -1,7 +1,7 @@
-  initializer "database_cli.rb", <<-CODE
+initializer "database_cli.rb", <<-CODE
     Rails.application.configure do
       if Rails.env.local?
         config.active_record.database_cli = {postgresql: "pgcli"}
       end
     end
-  CODE
+CODE
