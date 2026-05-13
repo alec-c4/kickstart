@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.6.6] - 2026-05-13
+
+### Fixed
+
+- Fixed `svelte-check` warnings "Non-relative paths are not allowed when 'baseUrl' is not set" — `@/*` and `~/*` path aliases in `compilerOptions.paths` were written without the `./` prefix introduced by the 1.6.5 block replacement; TypeScript requires relative paths when `baseUrl` is absent
+
 ## [1.6.5] - 2026-05-13
 
 ### Fixed
@@ -297,7 +303,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Esbuild/Tailwind template
 - Shell-script to create rails app with pre-configured options
 
-[Unreleased]: https://github.com/alec-c4/kickstart/compare/v1.6.5...master
+[Unreleased]: https://github.com/alec-c4/kickstart/compare/v1.6.6...master
+[1.6.6]: https://github.com/alec-c4/kickstart/compare/v1.6.5...v1.6.6
 [1.6.5]: https://github.com/alec-c4/kickstart/compare/v1.6.4...v1.6.5
 [1.6.4]: https://github.com/alec-c4/kickstart/compare/v1.6.3...v1.6.4
 [1.6.3]: https://github.com/alec-c4/kickstart/compare/v1.6.2...v1.6.3

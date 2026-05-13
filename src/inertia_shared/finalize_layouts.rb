@@ -29,9 +29,9 @@ framework_extension = case TEMPLATE_NAME
 copy_file "app/frontend/entrypoints/inertia.#{framework_extension}", force: true
 say "✓ Copied Inertia entrypoint with i18n setup", :green
 
-# Normalize compilerOptions.paths: inertia-rails already defines @/* and ~/* with
-# "./app/frontend/*". Replace the whole block so we get a single pair without ./
-# (injecting after "paths": { duplicated @/*).
+# Normalize compilerOptions.paths: inertia-rails may define @/* and ~/* as duplicates
+# or with inconsistent values. Replace the whole block with a single canonical pair.
+# Keep "./" prefix — TypeScript requires relative paths when baseUrl is not set.
 # React/Vue use tsconfig.app.json, Svelte uses tsconfig.json
 tsconfig_file = if File.exist?("tsconfig.app.json")
                   "tsconfig.app.json"
@@ -46,7 +46,7 @@ if tsconfig_file
     content.sub!(/^([ \t]*)("paths":\s*\{[^}]*\})/m) do
       indent = Regexp.last_match(1)
       inner = "#{indent}  "
-      "#{indent}\"paths\": {\n#{inner}\"@/*\": [\"app/frontend/*\"],\n#{inner}\"~/*\": [\"app/frontend/*\"]\n#{indent}}"
+      "#{indent}\"paths\": {\n#{inner}\"@/*\": [\"./app/frontend/*\"],\n#{inner}\"~/*\": [\"./app/frontend/*\"]\n#{indent}}"
     end
     File.write(tsconfig_path, content)
     say "✓ Set @/* and ~/* path mapping in #{tsconfig_file}", :green
