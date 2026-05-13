@@ -2,16 +2,16 @@
 
 say "🌐 Integrating inertia_i18n for Inertia.js frontend...", :magenta
 
-after_bundle do
-  generate "inertia_i18n:install"
-  generate "inertia_i18n:test"
+# Run inline (not in after_bundle) so rubocop and git_init run after these generators,
+# not before. Nested after_bundle callbacks are queued past the outer block's rubocop step.
+generate "inertia_i18n:install"
+generate "inertia_i18n:test"
 
-  # Sync backend YAML → frontend JSON so translations are in sync from the start
-  run "bundle exec rake inertia_i18n:convert"
+# Sync backend YAML → frontend JSON so translations are in sync from the start
+run "bundle exec rake inertia_i18n:convert"
 
-  if File.exist?("Procfile.dev")
-    append_to_file "Procfile.dev", "inertia_i18n: bin/rails inertia_i18n:watch\n"
-  end
-
-  say "✓ inertia_i18n integration complete", :green
+if File.exist?("Procfile.dev")
+  append_to_file "Procfile.dev", "inertia_i18n: bin/rails inertia_i18n:watch\n"
 end
+
+say "✓ inertia_i18n integration complete", :green

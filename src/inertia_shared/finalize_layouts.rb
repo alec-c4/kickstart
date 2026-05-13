@@ -29,7 +29,9 @@ framework_extension = case TEMPLATE_NAME
 copy_file "app/frontend/entrypoints/inertia.#{framework_extension}", force: true
 say "✓ Copied Inertia entrypoint with i18n setup", :green
 
-# Update tsconfig to add @/* path mapping
+# Normalize compilerOptions.paths: inertia-rails already defines @/* and ~/* with
+# "./app/frontend/*". Replace the whole block so we get a single pair without ./
+# (injecting after "paths": { duplicated @/*).
 # React/Vue use tsconfig.app.json, Svelte uses tsconfig.json
 tsconfig_file = if File.exist?("tsconfig.app.json")
                   "tsconfig.app.json"
@@ -38,12 +40,21 @@ tsconfig_file = if File.exist?("tsconfig.app.json")
                 end
 
 if tsconfig_file
-  inject_into_file tsconfig_file, after: '"paths": {' do
-    "\n      \"@/*\": [\"app/frontend/*\"],"
+  tsconfig_path = tsconfig_file
+  content = File.read(tsconfig_path)
+  if content.match?(/^([ \t]*)("paths":\s*\{[^}]*\})/m)
+    content.sub!(/^([ \t]*)("paths":\s*\{[^}]*\})/m) do
+      indent = Regexp.last_match(1)
+      inner = "#{indent}  "
+      "#{indent}\"paths\": {\n#{inner}\"@/*\": [\"app/frontend/*\"],\n#{inner}\"~/*\": [\"app/frontend/*\"]\n#{indent}}"
+    end
+    File.write(tsconfig_path, content)
+    say "✓ Set @/* and ~/* path mapping in #{tsconfig_file}", :green
+  else
+    say "⚠ Warning: no paths block in #{tsconfig_file}, skipping path mapping", :yellow
   end
-  say "✓ Added @/* path mapping to #{tsconfig_file}", :green
 else
-  say "⚠ Warning: tsconfig file not found, skipping @/* path mapping", :yellow
+  say "⚠ Warning: tsconfig file not found, skipping path mapping", :yellow
 end
 
 # Install @types/node for TypeScript support in vite.config
@@ -80,14 +91,11 @@ if File.exist?("package.json")
   end
 end
 
-# Update tsconfig.node.json to include node types
-# This allows TypeScript to recognize node modules in vite.config
+# Fix tsconfig.node.json: remove "noEmit": true (conflicts with "composite": true when used
+# as a project reference — composite projects must be able to emit) and add node types.
 if File.exist?("tsconfig.node.json")
-  inject_into_file "tsconfig.node.json", after: '"noEmit": true' do
-    ',
-    "types": ["node"]'
-  end
-  say "✓ Added node types to tsconfig.node.json", :green
+  gsub_file "tsconfig.node.json", '"noEmit": true', '"types": ["node"]'
+  say "✓ Fixed tsconfig.node.json (replaced noEmit with node types)", :green
 end
 
 # Update vite.config to add resolve.alias for runtime resolution
@@ -115,7 +123,7 @@ if vite_config
   else
     # For regular .ts files
     inject_into_file vite_config, after: "import RubyPlugin from 'vite-plugin-ruby'\n" do
-      'import path from "path"\n'
+      "import path from \"path\"\n"
     end
   end
 

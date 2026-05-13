@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.6.5] - 2026-05-13
+
+### Fixed
+
+- Fixed duplicate `@/*` path alias in `tsconfig.json` for Inertia Svelte projects — the old `inject_into_file` approach appended a new entry without removing the original ones from `inertia:install`; replaced with a full-block regex substitution that rewrites the entire `paths` object
+- Fixed RuboCop offenses appearing in the initial commit for `config/initializers/inertia_i18n.rb` — the `inertia_i18n:install` generator was wrapped in a nested `after_bundle` that queued past the `rubocop -A` step; unwrapped to run inline so RuboCop fires after the initializer is generated
+- Fixed `svelte-check` warning "Referenced project may not disable emit" — `tsconfig.node.json` had both `"composite": true` and `"noEmit": true`, which conflict when the file is used as a project reference; replaced `"noEmit": true` with `"types": ["node"]`
+- Fixed broken `import path from "path"` injection into `vite.config.ts` for Inertia React and Vue projects — single-quoted Ruby string `'\n'` produced a literal backslash-n instead of a newline; changed to a double-quoted string
+
 ## [1.6.4] - 2026-04-29
 
 ### Fixed
@@ -288,7 +297,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Esbuild/Tailwind template
 - Shell-script to create rails app with pre-configured options
 
-[Unreleased]: https://github.com/alec-c4/kickstart/compare/v1.6.4...master
+[Unreleased]: https://github.com/alec-c4/kickstart/compare/v1.6.5...master
+[1.6.5]: https://github.com/alec-c4/kickstart/compare/v1.6.4...v1.6.5
 [1.6.4]: https://github.com/alec-c4/kickstart/compare/v1.6.3...v1.6.4
 [1.6.3]: https://github.com/alec-c4/kickstart/compare/v1.6.2...v1.6.3
 [1.6.2]: https://github.com/alec-c4/kickstart/compare/v1.6.1...v1.6.2
