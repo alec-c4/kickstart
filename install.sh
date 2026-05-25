@@ -14,11 +14,12 @@ set -euo pipefail
 readonly REPO_URL="https://raw.githubusercontent.com/alec-c4/kickstart/master"
 
 # Template configuration (parallel arrays - compatible with bash 3.0+)
-readonly AVAILABLE_TEMPLATES=("importmap_tailwind" "esbuild_tailwind" "inertia_svelte" "inertia_react" "inertia_vue" "api")
+readonly AVAILABLE_TEMPLATES=("importmap_tailwind" "esbuild_tailwind" "vite_tailwind" "inertia_svelte" "inertia_react" "inertia_vue" "api")
 
 readonly TEMPLATE_DESCRIPTIONS=(
     "Rails app with Importmap and Tailwind CSS"
     "Rails app with ESBuild and Tailwind CSS"
+    "Rails app with Vite and Tailwind CSS v4"
     "Rails app with Inertia.js and Svelte 5 (SPA)"
     "Rails app with Inertia.js and React (SPA)"
     "Rails app with Inertia.js and Vue 3 (SPA)"
@@ -28,6 +29,7 @@ readonly TEMPLATE_DESCRIPTIONS=(
 readonly TEMPLATE_FLAGS=(
     "--skip-test --skip-system-test --database=postgresql --devcontainer --css=tailwind"
     "--skip-test --skip-system-test --database=postgresql --devcontainer --css=tailwind --javascript=esbuild"
+    "--skip-test --skip-system-test --database=postgresql --devcontainer --skip-javascript"
     "--skip-test --skip-system-test --database=postgresql --devcontainer --skip-javascript"
     "--skip-test --skip-system-test --database=postgresql --devcontainer --skip-javascript"
     "--skip-test --skip-system-test --database=postgresql --devcontainer --skip-javascript"

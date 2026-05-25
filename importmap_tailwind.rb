@@ -5,7 +5,7 @@
 #==============================================================================
 
 REPO_LINK = "https://github.com/alec-c4/kickstart.git"
-AVAILABLE_TEMPLATE_NAMES = %w[api importmap_tailwind esbuild_tailwind inertia_svelte inertia_react inertia_vue].freeze
+AVAILABLE_TEMPLATE_NAMES = %w[api importmap_tailwind esbuild_tailwind vite_tailwind inertia_svelte inertia_react inertia_vue].freeze
 TEMPLATE_NAME = "importmap_tailwind"
 RAILS_REQUIREMENT = ">= 8.1.0"
 
@@ -13,7 +13,7 @@ TEMPLATE_METADATA = {
   name: "importmap_tailwind",
   description: "Rails app with Importmap and Tailwind CSS for modern frontend development",
   features: %w[postgresql devcontainer rspec rubocop uuid i18n tailwind importmap turbo stimulus kamal solid_queue
-               solid_cache solid_cable],
+    solid_cache solid_cable],
   rails_version: RAILS_REQUIREMENT
 }.freeze
 
@@ -28,7 +28,7 @@ def assert_minimum_rails_version
   rails_version = Gem::Version.new(Rails::VERSION::STRING)
   return if requirement.satisfied_by?(rails_version)
 
-  prompt = "This template requires Rails #{RAILS_REQUIREMENT}. "\
+  prompt = "This template requires Rails #{RAILS_REQUIREMENT}. " \
            "You are using #{rails_version}. Continue anyway?"
   exit 1 if no?(prompt)
 end
@@ -51,7 +51,7 @@ def add_template_repository_to_source_path
     ].map(&:shellescape).join(" ")
 
     # Check for specific branch in URL path (e.g., /kickstart/branch_name/template.rb)
-    template_pattern = "(?:#{AVAILABLE_TEMPLATE_NAMES.join('|')})"
+    template_pattern = "(?:#{AVAILABLE_TEMPLATE_NAMES.join("|")})"
     if (branch = __FILE__[%r{kickstart/(.+)/#{template_pattern}\.rb}, 1])
       Dir.chdir(tempdir) { git checkout: branch }
     end
@@ -64,10 +64,10 @@ end
 
 def set_variant_source_path(variant_name = nil)
   template_root = if __FILE__.match?(%r{\Ahttps?://})
-                    source_paths.first
-                  else
-                    File.dirname(__FILE__)
-                  end
+    source_paths.first
+  else
+    File.dirname(__FILE__)
+  end
 
   # 1. Universal shared (lowest priority)
   shared_path = File.join(template_root, "variants", "shared")

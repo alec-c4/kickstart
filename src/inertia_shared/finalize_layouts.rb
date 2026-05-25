@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Finalize layouts after Inertia generator has run
 # This ensures we have our custom layout with all necessary tags
 
@@ -61,6 +63,15 @@ end
 # This provides type definitions for path, __dirname, etc.
 run "yarn add -D @types/node"
 
+# Install framework-specific type checker referenced by the "check" script in package.json.
+# The inertia:install generator adds the "check" script but does not install the executable.
+case TEMPLATE_NAME
+when "inertia_svelte"
+  run "yarn add -D svelte-check"
+when "inertia_vue"
+  run "yarn add -D vue-tsc"
+end
+
 # Set package.json type to module for ES modules support
 # Svelte generator doesn't add these fields, so we add them after yarn install
 if File.exist?("package.json")
@@ -86,7 +97,7 @@ if File.exist?("package.json")
 
   if needs_update
     # Write back to file, preserving JSON format
-    File.write(package_json_path, JSON.pretty_generate(package_data) + "\n")
+    File.write(package_json_path, "#{JSON.pretty_generate(package_data)}\n")
     say "✓ Updated package.json", :green
   end
 end

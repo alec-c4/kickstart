@@ -22,7 +22,7 @@ Use the interactive installer script:
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/alec-c4/kickstart/master/install.sh)" -- myapp esbuild_tailwind
 ```
 
-Available templates: `esbuild_tailwind`, `importmap_tailwind`, `inertia_react`, `inertia_vue`, `inertia_svelte`, `api`
+Available templates: `esbuild_tailwind`, `importmap_tailwind`, `vite_tailwind`, `inertia_react`, `inertia_vue`, `inertia_svelte`, `api`
 
 ### Direct Rails Command
 
@@ -33,6 +33,11 @@ If you prefer to use `rails new` directly:
 rails new myapp -m https://raw.githubusercontent.com/alec-c4/kickstart/master/esbuild_tailwind.rb \
   --no-rc --skip-test --skip-system-test --database=postgresql \
   --devcontainer --css=tailwind --javascript=esbuild
+
+# Vite + Tailwind CSS v4 (Classic Rails with Turbo/Stimulus)
+rails new myapp -m https://raw.githubusercontent.com/alec-c4/kickstart/master/vite_tailwind.rb \
+  --no-rc --skip-test --skip-system-test --database=postgresql \
+  --devcontainer --skip-javascript
 
 # Importmap + Tailwind (Classic Rails with Turbo/Stimulus)
 rails new myapp -m https://raw.githubusercontent.com/alec-c4/kickstart/master/importmap_tailwind.rb \
@@ -65,7 +70,7 @@ rails new myapp -m https://raw.githubusercontent.com/alec-c4/kickstart/master/ap
 ```bash
 cd myapp
 bundle install
-yarn install  # Only for esbuild_tailwind and Inertia templates
+yarn install  # Only for esbuild_tailwind, vite_tailwind, and Inertia templates
 rails db:create db:migrate
 rails parallel:create  # Creates parallel test databases
 bin/dev
@@ -126,6 +131,22 @@ Modern Rails application with ESBuild bundling and Tailwind CSS.
 
 - Kamal deployment ready
 - Solid Queue, Cache, Cable
+
+### vite_tailwind
+
+Rails application with Vite and Tailwind CSS v4.
+
+**Frontend:**
+
+- Vite with `vite_rails` (replaces jsbundling-rails + cssbundling-rails)
+- Tailwind CSS v4 via `@tailwindcss/vite` plugin
+- Turbo & Stimulus (TypeScript entry points in `app/frontend/`)
+- ViewComponent with Lookbook
+- Better HTML & ERB Lint
+
+**Backend & Deployment:**
+
+- Same as esbuild_tailwind (see above)
 
 ### importmap_tailwind
 
@@ -239,6 +260,11 @@ rails new myapp -m ~/path/to/kickstart/esbuild_tailwind.rb \
   --no-rc --skip-test --skip-system-test --database=postgresql \
   --devcontainer --css=tailwind --javascript=esbuild
 
+# Vite + Tailwind CSS v4
+rails new myapp -m ~/path/to/kickstart/vite_tailwind.rb \
+  --no-rc --skip-test --skip-system-test --database=postgresql \
+  --devcontainer --skip-javascript
+
 # Importmap + Tailwind
 rails new myapp -m ~/path/to/kickstart/importmap_tailwind.rb \
   --no-rc --skip-test --skip-system-test --database=postgresql \
@@ -274,7 +300,7 @@ cd myapp
 
 # Install dependencies
 bundle install
-yarn install  # Only needed for: esbuild_tailwind, inertia_react, inertia_vue, inertia_svelte
+yarn install  # Only needed for: esbuild_tailwind, vite_tailwind, inertia_react, inertia_vue, inertia_svelte
 
 # Setup database
 rails db:create db:migrate

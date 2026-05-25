@@ -1,0 +1,9 @@
+# <%= app_name %>
+
+## Description
+
+To be defined
+
+## Setup
+
+1. Install [homebrew](https://brew.sh/) and install all required packages using `brew bundle`

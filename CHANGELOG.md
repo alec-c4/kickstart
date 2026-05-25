@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.7.0] - 2026-05-25
+
+### Added
+
+- New `vite_tailwind` template — Rails app with Vite and Tailwind CSS v4; replaces `jsbundling-rails` and `cssbundling-rails` with `vite_rails`, uses `@tailwindcss/vite` plugin, and puts JS/CSS entry points under `app/frontend/`
+
+### Fixed
+
+- Fixed `command not found: svelte-check` error in Inertia Svelte projects and `command not found: vue-tsc` in Inertia Vue projects — the `inertia:install` generator defines a `check` script in `package.json` that references these tools but does not install them as devDependencies; `svelte-check` and `vue-tsc` are now installed explicitly via `yarn add -D` during template setup
+- Fixed `yarn audit` task in `esbuild_tailwind` `mise.toml` — was using Yarn v1 syntax (`yarn audit`), now uses Yarn Berry syntax (`yarn npm audit`) consistent with `lefthook.yml`
+
 ## [1.6.6] - 2026-05-13
 
 ### Fixed
@@ -303,7 +314,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Esbuild/Tailwind template
 - Shell-script to create rails app with pre-configured options
 
-[Unreleased]: https://github.com/alec-c4/kickstart/compare/v1.6.6...master
+[Unreleased]: https://github.com/alec-c4/kickstart/compare/v1.7.0...master
+[1.7.0]: https://github.com/alec-c4/kickstart/compare/v1.6.6...v1.7.0
 [1.6.6]: https://github.com/alec-c4/kickstart/compare/v1.6.5...v1.6.6
 [1.6.5]: https://github.com/alec-c4/kickstart/compare/v1.6.4...v1.6.5
 [1.6.4]: https://github.com/alec-c4/kickstart/compare/v1.6.3...v1.6.4

@@ -6,18 +6,19 @@
 
 REPO_LINK = "https://github.com/alec-c4/kickstart.git"
 AVAILABLE_TEMPLATE_NAMES = %w[api importmap_tailwind esbuild_tailwind vite_tailwind inertia_svelte inertia_react inertia_vue].freeze
-TEMPLATE_NAME = "api"
+TEMPLATE_NAME = "vite_tailwind"
 RAILS_REQUIREMENT = ">= 8.1.0"
 
 TEMPLATE_METADATA = {
-  name: "api",
-  description: "Rails API-only application with essential setup",
-  features: %w[postgresql devcontainer rspec rubocop uuid i18n kamal solid_queue solid_cache solid_cable],
+  name: "vite_tailwind",
+  description: "Rails app with Vite and Tailwind CSS v4 for modern frontend development",
+  features: %w[postgresql devcontainer rspec rubocop uuid i18n tailwind vite turbo stimulus kamal solid_queue
+    solid_cache solid_cable],
   rails_version: RAILS_REQUIREMENT
 }.freeze
 
 #==============================================================================
-# SHARED CODE - Embedded functions
+# SHARED CODE - Embedded functions (auto-generated, do not edit manually)
 #==============================================================================
 
 require "rails/all"
@@ -68,13 +69,19 @@ def set_variant_source_path(variant_name = nil)
     File.dirname(__FILE__)
   end
 
-  if variant_name
-    variant_path = File.join(template_root, "variants", variant_name)
-    source_paths.unshift(variant_path) if File.directory?(variant_path)
-  end
-
+  # 1. Universal shared (lowest priority)
   shared_path = File.join(template_root, "variants", "shared")
   source_paths.unshift(shared_path) if File.directory?(shared_path)
+
+  # 2. Classic shared (medium priority)
+  classic_shared_path = File.join(template_root, "variants", "classic_shared")
+  source_paths.unshift(classic_shared_path) if File.directory?(classic_shared_path)
+
+  # 3. Variant-specific (highest priority)
+  return unless variant_name
+
+  variant_path = File.join(template_root, "variants", variant_name)
+  source_paths.unshift(variant_path) if File.directory?(variant_path)
 end
 
 def show_post_install_message
@@ -109,13 +116,20 @@ add_template_repository_to_source_path
 set_variant_source_path(TEMPLATE_NAME)
 
 apply "src/shared/general.rb"
+apply "src/shared/yarnconfig.rb"
 apply "src/shared/packages.rb"
 
 after_bundle do
+  apply "src/vite_tailwind/prepare.rb"
+
   apply "src/shared/init_generators.rb"
   apply "src/shared/init_db_cli.rb"
   apply "src/shared/solid_queue_setup.rb"
   apply "src/shared/init_i18n.rb"
+
+  apply "src/classic_shared/routes.rb"
+  apply "src/classic_shared/app_static_pages.rb"
+  apply "src/classic_shared/custom_error_pages.rb"
 
   apply "src/shared/env_rubocop.rb"
   apply "src/shared/migrations_uuid.rb"
@@ -125,9 +139,16 @@ after_bundle do
   apply "src/shared/gems_active_interaction.rb"
   apply "src/shared/gems_rspec.rb"
   apply "src/shared/gems_i18n_tasks.rb"
-
+  apply "src/classic_shared/gems_better_html.rb"
+  apply "src/classic_shared/gems_erblint.rb"
   apply "src/shared/gems_lockbox.rb"
   apply "src/shared/gems_shrine.rb"
+  apply "src/shared/e2e.rb"
+  apply "src/classic_shared/gems_view_component.rb"
+  apply "src/classic_shared/helpers.rb"
+  apply "src/shared/gems_madmin.rb"
+
+  apply "src/vite_tailwind/setup.rb"
 
   apply "src/shared/ci.rb"
   apply "src/shared/github.rb"

@@ -16,4 +16,4 @@ brew "zellij"
 
 cask "ghostty"
 cask "orbstack"
-cask "postgres-unofficial"
+cask "postgres-app"
