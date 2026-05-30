@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.7.1] - 2026-05-30
+
+### Added
+
+- Added `oj_serializers` gem replacing `jbuilder` in all templates (`api`, `inertia_react`, `inertia_vue`, `inertia_svelte`) — generates `app/serializers/application_serializer.rb` with a base `OjSerializers::Serializer` class
+- Added `types_from_serializers` gem to Inertia variants — auto-generates TypeScript types from serializers into `app/frontend/types/serializers/` during development; initializer configured at `config/initializers/types_from_serializers.rb`
+- Created `app/serializers/.keep` early in Inertia setup so `types_from_serializers` can watch the directory when the Rails environment loads
+
+### Fixed
+
+- Fixed duplicate `svelte-check` and `vue-tsc` installation in Inertia templates — `inertia:install --typescript` places these packages in regular `dependencies` instead of `devDependencies` (upstream bug in inertia-rails); the template now skips `yarn add -D` if the package is already present anywhere in `package.json`
+
 ## [1.7.0] - 2026-05-25
 
 ### Added

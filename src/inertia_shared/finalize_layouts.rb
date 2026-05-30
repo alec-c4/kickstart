@@ -22,11 +22,7 @@ copy_file "config/i18n-tasks.yml", force: true
 say "✓ Copied i18n-tasks configuration", :green
 
 # Copy inertia entrypoint with i18n setup
-framework_extension = case TEMPLATE_NAME
-                      when "inertia_react" then "tsx"
-                      when "inertia_vue", "inertia_svelte" then "ts"
-                      else "ts"
-                      end
+framework_extension = TEMPLATE_NAME == "inertia_react" ? "tsx" : "ts"
 
 copy_file "app/frontend/entrypoints/inertia.#{framework_extension}", force: true
 say "✓ Copied Inertia entrypoint with i18n setup", :green
@@ -35,11 +31,7 @@ say "✓ Copied Inertia entrypoint with i18n setup", :green
 # or with inconsistent values. Replace the whole block with a single canonical pair.
 # Keep "./" prefix — TypeScript requires relative paths when baseUrl is not set.
 # React/Vue use tsconfig.app.json, Svelte uses tsconfig.json
-tsconfig_file = if File.exist?("tsconfig.app.json")
-                  "tsconfig.app.json"
-                elsif File.exist?("tsconfig.json")
-                  "tsconfig.json"
-                end
+tsconfig_file = %w[tsconfig.app.json tsconfig.json].find { |f| File.exist?(f) }
 
 if tsconfig_file
   tsconfig_path = tsconfig_file
@@ -64,12 +56,24 @@ end
 run "yarn add -D @types/node"
 
 # Install framework-specific type checker referenced by the "check" script in package.json.
-# The inertia:install generator adds the "check" script but does not install the executable.
+# Guard against double-install: inertia:install --typescript puts packages_ts into regular
+# dependencies instead of devDependencies (upstream bug, fixed in inertia-rails PR #376).
+# Until that PR is merged, skip if already present anywhere in package.json.
+# TODO: after inertia-rails PR #376 is merged, remove these guards and the entire case block —
+# inertia:install --typescript will install svelte-check/vue-tsc into devDependencies directly.
 case TEMPLATE_NAME
 when "inertia_svelte"
-  run "yarn add -D svelte-check"
+  if File.exist?("package.json")
+    pkg = JSON.parse(File.read("package.json"))
+    unless pkg.dig("devDependencies", "svelte-check") || pkg.dig("dependencies", "svelte-check")
+      run "yarn add -D svelte-check"
+    end
+  end
 when "inertia_vue"
-  run "yarn add -D vue-tsc"
+  if File.exist?("package.json")
+    pkg = JSON.parse(File.read("package.json"))
+    run "yarn add -D vue-tsc" unless pkg.dig("devDependencies", "vue-tsc") || pkg.dig("dependencies", "vue-tsc")
+  end
 end
 
 # Set package.json type to module for ES modules support
@@ -111,11 +115,7 @@ end
 
 # Update vite.config to add resolve.alias for runtime resolution
 # This is needed for Vite to resolve the paths correctly
-vite_config = if File.exist?("vite.config.ts")
-                "vite.config.ts"
-              elsif File.exist?("vite.config.mts")
-                "vite.config.mts"
-              end
+vite_config = %w[vite.config.ts vite.config.mts].find { |f| File.exist?(f) }
 
 if vite_config
   is_mts = vite_config.end_with?(".mts")

@@ -41,7 +41,7 @@ gem "pagy"
 ### Tools
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
-gem "jbuilder"
+gem "oj_serializers"
 gem "rack-cors"
 
 group :development, :test do

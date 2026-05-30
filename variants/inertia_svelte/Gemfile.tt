@@ -47,7 +47,7 @@ gem "madmin"
 gem "pagy"
 
 ### Tools
-gem "jbuilder"
+gem "oj_serializers"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
 
@@ -84,4 +84,5 @@ group :development do
   gem "amazing_print"
   gem "letter_opener_web", "~> 3.0"
   gem "rails-erd"
+  gem "types_from_serializers"
 end

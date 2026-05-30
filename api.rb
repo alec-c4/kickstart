@@ -123,6 +123,7 @@ after_bundle do
   apply "src/shared/gems_anyway_config.rb"
   apply "src/shared/gems_pagy.rb"
   apply "src/shared/gems_active_interaction.rb"
+  apply "src/shared/gems_oj_serializers.rb"
   apply "src/shared/gems_rspec.rb"
   apply "src/shared/gems_i18n_tasks.rb"
 

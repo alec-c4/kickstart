@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 copy_file ".editorconfig", force: true
 template "README.md", force: true
 copy_file ".gitignore", force: true
@@ -13,5 +15,8 @@ copy_file ".rubocop_todo.yml", force: true
 
 # Copy vite.json early to prevent "file not found" errors during bundle install
 copy_file "config/vite.json", force: true
+
+# Create app/serializers early so types_from_serializers can watch it when Rails environment loads
+create_file "app/serializers/.keep"
 
 # For Inertia templates, layouts will be copied at the end after Inertia generator runs
