@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BaseUploader < Shrine
   def generate_location(io, record: nil, derivative: nil, **)
     return super unless record
@@ -6,6 +8,6 @@ class BaseUploader < Shrine
     id = record.id
     prefix = derivative || "original"
 
-    "uploads/#{table}/#{id}/#{prefix}-#{super}"
+    "#{table}/#{id}/#{prefix}-#{super}"
   end
 end
