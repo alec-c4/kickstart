@@ -24,3 +24,15 @@ jobs:
         run: bash -n install.sh
       - name: Check workflow and Dependabot YAML
         run: ruby -ryaml -e 'ARGV.each { |path| YAML.parse_file(path) }' .github/dependabot.yml .github/workflows/*.yml
+
+  ci:
+    name: CI
+    if: always()
+    needs: [validate]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require the existing CI jobs to succeed
+        env:
+          VALIDATE_RESULT: ${{ needs.validate.result }}
+        run: |
+          test "$VALIDATE_RESULT" = success
