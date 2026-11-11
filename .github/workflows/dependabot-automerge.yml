@@ -19,34 +19,19 @@ jobs:
       github.event.pull_request.base.ref == github.event.repository.default_branch &&
       !github.event.pull_request.draft
     runs-on: ubuntu-latest
-    timeout-minutes: 20
     permissions:
       contents: write
       pull-requests: write
-      checks: read
-      statuses: read
     steps:
-      - name: Read verified Dependabot metadata
+      - name: Read Dependabot metadata
         id: metadata
         uses: dependabot/fetch-metadata@25dd0e34f4fe68f24cc83900b1fe3fe149efef98 # v3.1.0
-      - name: Wait for checks and enable auto-merge
+      - name: Enable native auto-merge
         if: >-
           steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
           steps.metadata.outputs.update-type == 'version-update:semver-minor'
         env:
           GH_TOKEN: ${{ github.token }}
-          GH_REPO: ${{ github.repository }}
           PR_URL: ${{ github.event.pull_request.html_url }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-        run: |
-          gh pr checks "$PR_URL" --watch --fail-fast --interval 10
-          checks=$(gh pr checks "$PR_URL" --json name,bucket)
-          jq -e '
-            length > 0 and
-            all(.[]; .bucket == "pass" or .bucket == "skipping") and
-            any(.[]; .bucket == "pass" and
-              (.name | test("ruby|appraisal|ci|build|test|lint|vercel|validate|syntax"; "i")))
-          ' <<< "$checks"
-          test "$(gh api "repos/$GH_REPO/pulls/$PR_NUMBER" --jq .head.sha)" = "$HEAD_SHA"
-          gh pr merge "$PR_URL" --auto --rebase --match-head-commit "$HEAD_SHA"
+        run: gh pr merge "$PR_URL" --auto --rebase --match-head-commit "$HEAD_SHA"
