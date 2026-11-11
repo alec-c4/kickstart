@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Template syntax
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Check Ruby template syntax
+        run: |
+          find . -maxdepth 1 -name '*.rb' -print0 | xargs -0 -n1 ruby -c
+          find src -name '*.rb' -print0 | xargs -0 -n1 ruby -c
+      - name: Check installer syntax
+        run: bash -n install.sh
+      - name: Check workflow and Dependabot YAML
+        run: ruby -ryaml -e 'ARGV.each { |path| YAML.parse_file(path) }' .github/dependabot.yml .github/workflows/*.yml
